@@ -119,8 +119,8 @@
   "hotPaths": [
     {
       "path": "src/pages/SeatFinder.tsx",
-      "accessCount": 49,
-      "lastAccessed": 1776318055534,
+      "accessCount": 57,
+      "lastAccessed": 1776322297771,
       "type": "file"
     },
     {
@@ -130,15 +130,45 @@
       "type": "file"
     },
     {
+      "path": "src/components/AvatarPreview.css",
+      "accessCount": 37,
+      "lastAccessed": 1776325946868,
+      "type": "file"
+    },
+    {
       "path": "src/i18n.tsx",
-      "accessCount": 24,
-      "lastAccessed": 1776318418469,
+      "accessCount": 35,
+      "lastAccessed": 1776325976579,
+      "type": "file"
+    },
+    {
+      "path": "src/data/subwayData.ts",
+      "accessCount": 30,
+      "lastAccessed": 1776325774643,
       "type": "file"
     },
     {
       "path": "CLAUDE.md",
-      "accessCount": 20,
-      "lastAccessed": 1776317216381,
+      "accessCount": 22,
+      "lastAccessed": 1776319710452,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/AvatarDecorator.tsx",
+      "accessCount": 16,
+      "lastAccessed": 1776322121473,
+      "type": "file"
+    },
+    {
+      "path": "src/api/gemini.ts",
+      "accessCount": 16,
+      "lastAccessed": 1776325760122,
+      "type": "file"
+    },
+    {
+      "path": "src/components/AvatarPreview.tsx",
+      "accessCount": 15,
+      "lastAccessed": 1776325819774,
       "type": "file"
     },
     {
@@ -154,21 +184,9 @@
       "type": "file"
     },
     {
-      "path": "src/pages/AvatarDecorator.tsx",
-      "accessCount": 13,
-      "lastAccessed": 1776318513238,
-      "type": "file"
-    },
-    {
       "path": "src/pages/RegisterSeat.tsx",
-      "accessCount": 12,
-      "lastAccessed": 1776316080099,
-      "type": "file"
-    },
-    {
-      "path": "src/data/subwayData.ts",
-      "accessCount": 11,
-      "lastAccessed": 1776318402359,
+      "accessCount": 13,
+      "lastAccessed": 1776321784777,
       "type": "file"
     },
     {
@@ -179,8 +197,8 @@
     },
     {
       "path": "src/pages/Home.tsx",
-      "accessCount": 9,
-      "lastAccessed": 1776316051544,
+      "accessCount": 10,
+      "lastAccessed": 1776321785189,
       "type": "file"
     },
     {
@@ -244,9 +262,15 @@
       "type": "file"
     },
     {
-      "path": "src/api/gemini.ts",
+      "path": "src",
       "accessCount": 3,
-      "lastAccessed": 1776319531259,
+      "lastAccessed": 1776320003583,
+      "type": "directory"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 3,
+      "lastAccessed": 1776320018576,
       "type": "file"
     },
     {
@@ -260,18 +284,6 @@
       "accessCount": 2,
       "lastAccessed": 1776315681555,
       "type": "file"
-    },
-    {
-      "path": "src/components/AvatarPreview.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1776315689864,
-      "type": "file"
-    },
-    {
-      "path": "src",
-      "accessCount": 2,
-      "lastAccessed": 1776315698038,
-      "type": "directory"
     },
     {
       "path": "vite.config.ts",
@@ -298,15 +310,15 @@
       "type": "file"
     },
     {
+      "path": "",
+      "accessCount": 2,
+      "lastAccessed": 1776323018014,
+      "type": "directory"
+    },
+    {
       "path": "tsconfig.json",
       "accessCount": 1,
       "lastAccessed": 1776304844888,
-      "type": "file"
-    },
-    {
-      "path": "README.md",
-      "accessCount": 1,
-      "lastAccessed": 1776304845136,
       "type": "file"
     },
     {
@@ -340,21 +352,9 @@
       "type": "file"
     },
     {
-      "path": "",
-      "accessCount": 1,
-      "lastAccessed": 1776306943487,
-      "type": "directory"
-    },
-    {
       "path": "src/pages/CountrySelect.css",
       "accessCount": 1,
       "lastAccessed": 1776308862020,
-      "type": "file"
-    },
-    {
-      "path": "src/components/AvatarPreview.css",
-      "accessCount": 1,
-      "lastAccessed": 1776315582695,
       "type": "file"
     },
     {
@@ -367,6 +367,54 @@
       "path": "src/pages/Login.css",
       "accessCount": 1,
       "lastAccessed": 1776316298898,
+      "type": "file"
+    },
+    {
+      "path": ".env.example",
+      "accessCount": 1,
+      "lastAccessed": 1776320025123,
+      "type": "file"
+    },
+    {
+      "path": "avatarexample/SE-70058088-723b-43c5-b02a-08921d9cae61.png",
+      "accessCount": 1,
+      "lastAccessed": 1776323024122,
+      "type": "file"
+    },
+    {
+      "path": "avatarexample/1oLfOn_z2Ej2zjkb_UMwXWMA0xcs7C81s_vmQ9ViUAVnXw7JMgI9nvIBVZjrjQwFx5poQw_JF4Ts-iVjzmpkKA.webp",
+      "accessCount": 1,
+      "lastAccessed": 1776323024649,
+      "type": "file"
+    },
+    {
+      "path": "avatarexample/P4TwfO3jj6abx7YpmI7pH5eJWOgcgXELhCNEeAJOm5m49MCXf-wbjE50kuYheSMiJ6akSkEuYw5DOx87XBivlYKGhJDNTzTSZi7_C6Nn8zzvFNB-RnufnSnpeNtEtV3UWaVVcPdMgi2xnQtWelCmEA.webp",
+      "accessCount": 1,
+      "lastAccessed": 1776323026144,
+      "type": "file"
+    },
+    {
+      "path": "avatarexample/2020050721395600-02CB906EA538A35643C1E1484C4B947D.jpg",
+      "accessCount": 1,
+      "lastAccessed": 1776323032131,
+      "type": "file"
+    },
+    {
+      "path": "avatarexample/2020050708411800-02CB906EA538A35643C1E1484C4B947D.jpg",
+      "accessCount": 1,
+      "lastAccessed": 1776323032723,
+      "type": "file"
+    },
+    {
+      "path": "avatarexample/2020050720345600-02CB906EA538A35643C1E1484C4B947D.jpg",
+      "accessCount": 1,
+      "lastAccessed": 1776323033588,
+      "type": "file"
+    },
+    {
+      "path": "avatarexample/2020050720353600-02CB906EA538A35643C1E1484C4B947D.jpg",
+      "accessCount": 1,
+      "lastAccessed": 1776323033814,
       "type": "file"
     }
   ],

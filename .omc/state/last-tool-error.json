@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"./node_modules/.bin/tsc -b 2>&1 && echo \\\"OK\\\"\",\"timeout\":30000,\"description\":\"TypeScript check\"}",
-  "error": "Exit code 2\nsrc/App.tsx(130,17): error TS2741: Property 'onLogin' is missing in type '{ onStart: () => void; }' but required in type 'LandingProps'.",
-  "timestamp": "2026-04-16T05:13:01.369Z",
+  "tool_input_preview": "{\"command\":\"./node_modules/.bin/tsc -b 2>&1\",\"timeout\":30000,\"description\":\"TypeScript check\"}",
+  "error": "Exit code 2\nsrc/i18n.tsx(86,3): error TS1117: An object literal cannot have multiple properties with the same name.",
+  "timestamp": "2026-04-16T07:52:34.489Z",
   "retry_count": 1
 }

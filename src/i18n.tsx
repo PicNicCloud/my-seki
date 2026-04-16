@@ -73,7 +73,6 @@ const translations = {
   // AvatarDecorator
   'avatar.title': { ko: '아바타 꾸미기', ja: 'アバターを作る' },
   'avatar.complete': { ko: '완성!', ja: '完成！' },
-  'avatar.bottomColor': { ko: '하의 색상', ja: 'ボトムス色' },
   'avatar.tabManual': { ko: '직접 꾸미기', ja: '手動カスタム' },
   'avatar.tabAI': { ko: 'AI 생성', ja: 'AI生成' },
   'avatar.aiPlaceholder': { ko: '인상착의를 문장으로 입력하세요\n예: 짧은 머리에 회색 후드, 안경 쓰고 청바지', ja: '服装を文章で入力してください\n例：ショートヘアにグレーパーカー、メガネにジーンズ' },
@@ -83,6 +82,7 @@ const translations = {
   'avatar.skinColor': { ko: '피부색', ja: '肌の色' },
   'avatar.hairColor': { ko: '머리색', ja: '髪の色' },
   'avatar.topColor': { ko: '옷 색상', ja: '服の色' },
+  'avatar.bottomColor': { ko: '하의 색상', ja: 'ボトムスの色' },
 
   // RegisterSeat
   'register.title': { ko: '내릴 역 등록', ja: '降車駅の登録' },
@@ -107,6 +107,14 @@ const translations = {
   'finder.changeLine': { ko: '노선/호차 변경', ja: '路線/車両 変更' },
   'finder.waiting': { ko: '대기중', ja: '待機中' },
   'finder.waitCount': { ko: '명 대기중', ja: '人待機中' },
+  'finder.tapHint': { ko: '캐릭터를 탭하여 정보 보기', ja: 'キャラをタップして情報を見る' },
+  'finder.chatPlaceholder': { ko: '메시지를 입력하세요', ja: 'メッセージを入力' },
+  'finder.chatSend': { ko: '전송', ja: '送信' },
+  'finder.me': { ko: '나', ja: '私' },
+  'finder.mockMsg1': { ko: '곧 내려요~', ja: 'もうすぐ降ります〜' },
+  'finder.mockMsg2': { ko: '다음역이에요', ja: '次の駅です' },
+  'finder.mockMsg3': { ko: '자리 양도!', ja: '席譲ります！' },
+  'finder.mockMsg4': { ko: '좋은 하루~', ja: '良い一日を〜' },
 
   // Waiting
   'waiting.title': { ko: '빈 자리를\n찾고 있어요', ja: '空席を\n探しています' },

@@ -214,8 +214,8 @@ function MiniPreview({
   if (category === 'accessory') {
     return <MiniAccessory id={itemId} />;
   }
-  // bottom: simple colored shapes
-  return <MiniBottom id={itemId} />;
+  // bottom: leg-shaped previews
+  return <MiniBottom id={itemId} color={avatar.bottomColor} />;
 }
 
 function MiniExpression({ id, skin }: { id: string; skin: string }) {
@@ -238,12 +238,8 @@ function MiniTop({ id, color }: { id: string; color: string }) {
   return <div className={`mini-top mini-top--${id}`} style={{ background: color }} />;
 }
 
-function MiniBottom({ id }: { id: string }) {
-  const colors: Record<string, string> = {
-    jeans: '#4A6FA5', slacks: '#3D3D3D', skirt: '#E85D75',
-    shorts: '#8FBC8B', jogger: '#666', leggings: '#333',
-  };
-  return <div className="mini-bottom" style={{ background: colors[id] || '#666' }} />;
+function MiniBottom({ id, color }: { id: string; color: string }) {
+  return <div className={`mini-bottom mini-bottom--${id}`} style={{ '--mb-color': color } as React.CSSProperties} />;
 }
 
 function MiniAccessory({ id }: { id: string }) {
