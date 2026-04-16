@@ -5,9 +5,9 @@
   background: var(--bg-color);
 }
 
-/* Avatar Preview */
+/* ── Avatar Preview ──────────────────────────── */
 .avatar-preview-section {
-  padding: 8px 20px 20px;
+  padding: 4px 20px 12px;
   display: flex;
   justify-content: center;
 }
@@ -19,66 +19,16 @@
   align-items: center;
 }
 
-.avatar-glow {
+.avatar-pedestal {
   position: absolute;
-  width: 160px;
-  height: 160px;
+  bottom: -6px;
+  width: 100px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.08) 0%, transparent 70%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(127, 156, 255, 0.12) 0%, transparent 70%);
-  top: -10px;
 }
 
-.avatar-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  z-index: 1;
-}
-
-.avatar-face-circle {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(135deg, #FFF5E6, #FFECD2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(255, 200, 120, 0.2);
-  border: 3px solid rgba(255, 255, 255, 0.8);
-}
-
-.avatar-expression {
-  font-size: 52px;
-  line-height: 1;
-  animation: gentlePulse 3s infinite ease-in-out;
-}
-
-@keyframes gentlePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.avatar-outfit-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-  max-width: 260px;
-}
-
-.outfit-tag {
-  background: white;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  color: var(--text-main);
-  box-shadow: var(--shadow-soft);
-  white-space: nowrap;
-  border: 1px solid var(--border-color);
-}
-
-/* Customization Panel */
+/* ── Customization Panel ─────────────────────── */
 .customization-panel {
   flex: 1;
   background: white;
@@ -102,7 +52,7 @@
 
 .category-tab {
   flex: 1;
-  padding: 9px 4px;
+  padding: 9px 2px;
   border-radius: 10px;
   font-size: 13px;
   font-weight: 600;
@@ -121,13 +71,18 @@
   transform: none;
 }
 
+.panel-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 8px;
+}
+
+/* ── Item Grid ───────────────────────────────── */
 .item-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  overflow-y: auto;
-  padding-bottom: 8px;
-  flex: 1;
+  margin-bottom: 16px;
 }
 
 .grid-item {
@@ -153,11 +108,6 @@
   box-shadow: 0 2px 12px rgba(123, 156, 255, 0.15);
 }
 
-.item-emoji {
-  font-size: 28px;
-  line-height: 1;
-}
-
 .item-label {
   font-size: 11px;
   font-weight: 600;
@@ -166,4 +116,388 @@
 
 .grid-item.selected .item-label {
   color: var(--primary-color);
+}
+
+/* ── Color Picker ────────────────────────────── */
+.color-picker-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.color-picker-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-sub);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.color-picker-row {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.color-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.color-dot.active {
+  border-color: var(--primary-color);
+  box-shadow:
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 0 0 2px white,
+    0 0 0 4px var(--primary-color);
+}
+
+.color-dot:active {
+  transform: scale(0.9);
+}
+
+/* ─────────────────────────────────────────────── */
+/* Mini Previews for grid items                    */
+/* ─────────────────────────────────────────────── */
+
+/* ── Mini Face (expression) ──────────────────── */
+.mini-face {
+  width: 36px;
+  height: 38px;
+  border-radius: 50% 50% 46% 46%;
+  position: relative;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.1),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.mini-eyes {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.mini-eye {
+  width: 4px;
+  height: 4px;
+  background: #3D2C22;
+  border-radius: 50%;
+}
+
+/* Mini expression variants */
+.mini-eyes--cool .mini-eye {
+  width: 6px;
+  height: 2px;
+  border-radius: 1px;
+  margin-top: 1px;
+}
+
+.mini-eyes--lovely .mini-eye {
+  width: 5px;
+  height: 5px;
+  background: #E85D75;
+  clip-path: polygon(50% 0%, 0% 35%, 15% 100%, 85% 100%, 100% 35%);
+  border-radius: 0;
+}
+
+.mini-eyes--sleepy .mini-eye {
+  width: 6px;
+  height: 3px;
+  border-bottom: 2px solid #3D2C22;
+  border-radius: 0 0 50% 50%;
+  background: transparent;
+}
+
+.mini-eyes--proud .mini-eye {
+  width: 5px;
+  height: 4px;
+  clip-path: polygon(0% 40%, 100% 0%, 100% 100%, 0% 100%);
+  border-radius: 0;
+}
+.mini-eyes--proud .mini-eye:last-child {
+  clip-path: polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%);
+}
+
+.mini-eyes--chill .mini-eye {
+  width: 5px;
+  height: 3px;
+  margin-top: 1px;
+}
+
+.mini-mouth {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mini-mouth--happy {
+  top: 24px;
+  width: 8px;
+  height: 4px;
+  border-bottom: 2px solid #3D2C22;
+  border-radius: 0 0 50% 50%;
+}
+
+.mini-mouth--cool {
+  top: 26px;
+  width: 5px;
+  border-bottom: 2px solid #3D2C22;
+  border-radius: 1px;
+}
+
+.mini-mouth--lovely {
+  top: 24px;
+  width: 5px;
+  height: 3px;
+  background: #E85D75;
+  border-radius: 0 0 50% 50%;
+  opacity: 0.5;
+}
+
+.mini-mouth--sleepy {
+  top: 25px;
+  width: 4px;
+  height: 3px;
+  border: 1.5px solid #3D2C22;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.mini-mouth--proud {
+  top: 24px;
+  width: 8px;
+  border-bottom: 2px solid #3D2C22;
+  border-radius: 0 0 30% 30%;
+}
+
+.mini-mouth--chill {
+  top: 26px;
+  width: 6px;
+  border-bottom: 2px solid #3D2C22;
+  border-radius: 0 0 50% 50%;
+}
+
+/* ── Mini Hair ───────────────────────────────── */
+.mini-hair {
+  width: 36px;
+  height: 28px;
+  border-radius: 50% 50% 30% 30%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.mini-hair--long {
+  height: 36px;
+  border-radius: 40% 40% 25% 25%;
+}
+
+.mini-hair--curly {
+  border-radius: 50% 30% 40% 50%;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.12),
+    -3px 8px 0 -4px currentColor,
+    3px 8px 0 -4px currentColor;
+}
+
+.mini-hair--tied {
+  height: 24px;
+  position: relative;
+}
+.mini-hair--tied::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: inherit;
+  border-radius: 50%;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mini-hair--cap {
+  height: 20px;
+  border-radius: 50% 50% 0 0;
+  position: relative;
+}
+.mini-hair--cap::after {
+  content: '';
+  position: absolute;
+  width: 42px;
+  height: 6px;
+  background: inherit;
+  border-radius: 50%;
+  bottom: -3px;
+  left: -3px;
+}
+
+.mini-hair--buzz {
+  height: 20px;
+  opacity: 0.5;
+}
+
+/* ── Mini Top ────────────────────────────────── */
+.mini-top {
+  width: 36px;
+  height: 28px;
+  border-radius: 8px 8px 10px 10px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.1),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.mini-top--padding {
+  width: 40px;
+  border-radius: 12px;
+}
+
+.mini-top--coat {
+  height: 34px;
+  border-radius: 6px 6px 10px 10px;
+}
+
+.mini-top--shirt {
+  position: relative;
+}
+.mini-top--shirt::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid rgba(255, 255, 255, 0.5);
+}
+
+/* ── Mini Bottom ─────────────────────────────── */
+.mini-bottom {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px 4px 8px 8px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.1),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Mini Accessory ──────────────────────────── */
+.mini-acc {
+  width: 28px;
+  height: 28px;
+  position: relative;
+}
+
+.mini-acc-none {
+  font-size: 20px;
+  color: var(--text-hint);
+}
+
+/* Glasses */
+.mini-acc--glasses {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+.mini-acc--glasses::before,
+.mini-acc--glasses::after {
+  content: '';
+  width: 11px;
+  height: 10px;
+  border: 2px solid #555;
+  border-radius: 50%;
+}
+
+/* Headphones */
+.mini-acc--headphones::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 12px;
+  border: 3px solid #555;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  top: 4px;
+  left: 3px;
+}
+.mini-acc--headphones::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 10px;
+  background: #555;
+  border-radius: 2px;
+  bottom: 4px;
+  left: 2px;
+  box-shadow: 18px 0 0 0 #555;
+}
+
+/* Backpack */
+.mini-acc--backpack {
+  background: #666;
+  border-radius: 6px 6px 8px 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.mini-acc--backpack::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 3px;
+  background: #888;
+  border-radius: 2px;
+  top: 4px;
+  left: 6px;
+}
+
+/* Scarf */
+.mini-acc--scarf {
+  background: #E85D75;
+  border-radius: 12px;
+  width: 32px;
+  height: 10px;
+  margin-top: 6px;
+  position: relative;
+}
+.mini-acc--scarf::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  background: #E85D75;
+  border-radius: 0 0 4px 4px;
+  right: 6px;
+  top: 6px;
+}
+
+/* Bag */
+.mini-acc--bag {
+  width: 22px;
+  height: 18px;
+  background: #8B6B50;
+  border-radius: 4px;
+  margin-top: 4px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.mini-acc--bag::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 6px;
+  border: 2px solid #8B6B50;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  top: -7px;
+  left: 3px;
 }

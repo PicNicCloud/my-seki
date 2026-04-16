@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { getAvatarEmoji, getAvatarDescription } from '../data/subwayData';
+import { getAvatarDescription } from '../data/subwayData';
 import type { AvatarConfig } from '../data/subwayData';
 import { useI18n } from '../i18n';
+import AvatarPreview from '../components/AvatarPreview';
 import './ProfileRegistration.css';
 
 interface ProfileRegistrationProps {
@@ -16,7 +17,6 @@ const ProfileRegistration: React.FC<ProfileRegistrationProps> = ({
   const { t } = useI18n();
   const [nickname, setNickname] = useState('');
   const [features, setFeatures] = useState('');
-  const emoji = getAvatarEmoji(avatar);
   const desc = getAvatarDescription(avatar, (id) => t(`item.${id}` as Parameters<typeof t>[0]));
 
   return (
@@ -33,8 +33,8 @@ const ProfileRegistration: React.FC<ProfileRegistrationProps> = ({
 
       <div className="profile-content">
         <section className="profile-avatar-section">
-          <div className="profile-avatar-circle">
-            <span>{emoji}</span>
+          <div className="profile-avatar-wrap">
+            <AvatarPreview config={avatar} size={88} />
           </div>
           <p className="profile-outfit-desc">{desc || t('profile.noAvatar')}</p>
         </section>

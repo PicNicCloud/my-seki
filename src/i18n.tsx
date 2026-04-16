@@ -64,6 +64,9 @@ const translations = {
   // AvatarDecorator
   'avatar.title': { ko: '아바타 꾸미기', ja: 'アバターを作る' },
   'avatar.complete': { ko: '완성! ✨', ja: '完成！ ✨' },
+  'avatar.skinColor': { ko: '피부색', ja: '肌の色' },
+  'avatar.hairColor': { ko: '머리색', ja: '髪の色' },
+  'avatar.topColor': { ko: '옷 색상', ja: '服の色' },
 
   // RegisterSeat
   'register.title': { ko: '내릴 역 등록', ja: '降車駅の登録' },

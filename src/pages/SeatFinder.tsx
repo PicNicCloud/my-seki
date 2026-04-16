@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import type { SubwayLine, Country } from '../data/subwayData';
+import type { SubwayLine, AvatarConfig, Country } from '../data/subwayData';
 import { useI18n } from '../i18n';
+import AvatarPreview from '../components/AvatarPreview';
 import './SeatFinder.css';
 
 interface MockUser {
   id: number;
   station: string;
   desc: string;
-  emoji: string;
+  avatar: AvatarConfig;
   time: string;
   stops: number;
 }
@@ -58,44 +59,34 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
 
   const MOCK_USERS: MockUser[] = [
     {
-      id: 1,
-      station: nearbyStations[1] || destination,
-      desc: t('mock.desc.1'),
-      emoji: '😊',
-      time: `1${t('finder.stopsAfter')}`,
-      stops: 1,
+      id: 1, station: nearbyStations[1] || destination,
+      desc: t('mock.desc.1' as Parameters<typeof t>[0]),
+      avatar: { expression: 'happy', skinColor: '#FFDCB5', hair: 'short', hairColor: '#2C2C2C', top: 'padding', topColor: '#C44030', bottom: 'jeans', accessory: 'backpack' },
+      time: `1${t('finder.stopsAfter')}`, stops: 1,
     },
     {
-      id: 2,
-      station: nearbyStations[2] || destination,
-      desc: t('mock.desc.2'),
-      emoji: '😎',
-      time: `2${t('finder.stopsAfter')}`,
-      stops: 2,
+      id: 2, station: nearbyStations[2] || destination,
+      desc: t('mock.desc.2' as Parameters<typeof t>[0]),
+      avatar: { expression: 'cool', skinColor: '#F5C6A0', hair: 'long', hairColor: '#5C3A1E', top: 'coat', topColor: '#E88CB5', bottom: 'slacks', accessory: 'bag' },
+      time: `2${t('finder.stopsAfter')}`, stops: 2,
     },
     {
-      id: 3,
-      station: nearbyStations[3] || destination,
-      desc: t('mock.desc.3'),
-      emoji: '😌',
-      time: `3${t('finder.stopsAfter')}`,
-      stops: 3,
+      id: 3, station: nearbyStations[3] || destination,
+      desc: t('mock.desc.3' as Parameters<typeof t>[0]),
+      avatar: { expression: 'chill', skinColor: '#E8AB8B', hair: 'curly', hairColor: '#D4A56A', top: 'hoodie', topColor: '#808080', bottom: 'jogger', accessory: 'headphones' },
+      time: `3${t('finder.stopsAfter')}`, stops: 3,
     },
     {
-      id: 4,
-      station: nearbyStations[4] || destination,
-      desc: t('mock.desc.4'),
-      emoji: '🥰',
-      time: `4${t('finder.stopsAfter')}`,
-      stops: 4,
+      id: 4, station: nearbyStations[4] || destination,
+      desc: t('mock.desc.4' as Parameters<typeof t>[0]),
+      avatar: { expression: 'lovely', skinColor: '#FFDCB5', hair: 'tied', hairColor: '#2C2C2C', top: 'shirt', topColor: '#F5F5F5', bottom: 'skirt', accessory: 'glasses' },
+      time: `4${t('finder.stopsAfter')}`, stops: 4,
     },
     {
-      id: 5,
-      station: nearbyStations[0] || destination,
-      desc: t('mock.desc.5'),
-      emoji: '😴',
-      time: `1${t('finder.stopsAfter')}`,
-      stops: 1,
+      id: 5, station: nearbyStations[0] || destination,
+      desc: t('mock.desc.5' as Parameters<typeof t>[0]),
+      avatar: { expression: 'sleepy', skinColor: '#C68F6E', hair: 'buzz', hairColor: '#2C2C2C', top: 'cardigan', topColor: '#5B8C5A', bottom: 'jeans', accessory: 'scarf' },
+      time: `1${t('finder.stopsAfter')}`, stops: 1,
     },
   ];
 
@@ -191,8 +182,8 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
       <div className="user-list">
         {filteredUsers.map((user) => (
           <div key={user.id} className="user-card">
-            <div className="user-avatar-circle">
-              <span>{user.emoji}</span>
+            <div className="user-avatar-wrap">
+              <AvatarPreview config={user.avatar} size={46} />
             </div>
             <div className="user-info">
               <div className="user-info-top">

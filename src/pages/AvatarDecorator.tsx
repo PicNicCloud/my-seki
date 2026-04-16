@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { AVATAR_CATEGORIES, getAvatarEmoji } from '../data/subwayData';
+import {
+  AVATAR_CATEGORIES,
+  SKIN_COLORS,
+  HAIR_COLORS,
+  TOP_COLORS,
+} from '../data/subwayData';
 import type { AvatarConfig } from '../data/subwayData';
 import { useI18n } from '../i18n';
+import AvatarPreview from '../components/AvatarPreview';
 import './AvatarDecorator.css';
 
 interface AvatarDecoratorProps {
@@ -11,6 +17,12 @@ interface AvatarDecoratorProps {
   onBack?: () => void;
   showBack?: boolean;
 }
+
+const COLOR_PICKERS: Record<string, { key: keyof AvatarConfig; colors: string[]; labelKey: string }> = {
+  expression: { key: 'skinColor', colors: SKIN_COLORS, labelKey: 'avatar.skinColor' },
+  hair: { key: 'hairColor', colors: HAIR_COLORS, labelKey: 'avatar.hairColor' },
+  top: { key: 'topColor', colors: TOP_COLORS, labelKey: 'avatar.topColor' },
+};
 
 const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
   avatar,
@@ -24,23 +36,16 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
 
   const currentCategory = AVATAR_CATEGORIES[activeCategory];
   const currentValue = avatar[currentCategory.key as keyof AvatarConfig];
+  const colorPicker = COLOR_PICKERS[currentCategory.key];
 
   const handleSelectItem = (itemId: string) => {
-    onUpdateAvatar({
-      ...avatar,
-      [currentCategory.key]: itemId,
-    });
+    onUpdateAvatar({ ...avatar, [currentCategory.key]: itemId });
   };
 
-  const expressionEmoji = getAvatarEmoji(avatar);
-
-  const getSelectedLabel = (catKey: string) => {
-    const cat = AVATAR_CATEGORIES.find((c) => c.key === catKey);
-    const item = cat?.items.find(
-      (i) => i.id === avatar[catKey as keyof AvatarConfig]
-    );
-    if (!item) return null;
-    return { ...item, label: t(`item.${item.id}` as Parameters<typeof t>[0]) };
+  const handleSelectColor = (color: string) => {
+    if (colorPicker) {
+      onUpdateAvatar({ ...avatar, [colorPicker.key]: color });
+    }
   };
 
   return (
@@ -55,26 +60,11 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
         <div className="header-spacer" />
       </header>
 
-      {/* Avatar Preview */}
+      {/* 3D Avatar Preview */}
       <div className="avatar-preview-section">
         <div className="avatar-stage">
-          <div className="avatar-glow" />
-          <div className="avatar-body">
-            <div className="avatar-face-circle">
-              <span className="avatar-expression">{expressionEmoji}</span>
-            </div>
-            <div className="avatar-outfit-tags">
-              {['hair', 'top', 'bottom', 'accessory'].map((key) => {
-                const item = getSelectedLabel(key);
-                if (!item || item.id === 'none') return null;
-                return (
-                  <span key={key} className="outfit-tag">
-                    {item.emoji} {item.label}
-                  </span>
-                );
-              })}
-            </div>
-          </div>
+          <div className="avatar-pedestal" />
+          <AvatarPreview config={avatar} size={140} />
         </div>
       </div>
 
@@ -92,17 +82,45 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
           ))}
         </nav>
 
-        <div className="item-grid">
-          {currentCategory.items.map((item) => (
-            <button
-              key={item.id}
-              className={`grid-item ${currentValue === item.id ? 'selected' : ''}`}
-              onClick={() => handleSelectItem(item.id)}
-            >
-              <span className="item-emoji">{item.emoji}</span>
-              <span className="item-label">{t(`item.${item.id}` as Parameters<typeof t>[0])}</span>
-            </button>
-          ))}
+        <div className="panel-scroll">
+          {/* Item Grid */}
+          <div className="item-grid">
+            {currentCategory.items.map((item) => (
+              <button
+                key={item.id}
+                className={`grid-item ${currentValue === item.id ? 'selected' : ''}`}
+                onClick={() => handleSelectItem(item.id)}
+              >
+                <MiniPreview
+                  category={currentCategory.key}
+                  itemId={item.id}
+                  avatar={avatar}
+                />
+                <span className="item-label">
+                  {t(`item.${item.id}` as Parameters<typeof t>[0])}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* Color Picker (shown for expression/hair/top) */}
+          {colorPicker && (
+            <div className="color-picker-section">
+              <span className="color-picker-label">
+                {t(colorPicker.labelKey as Parameters<typeof t>[0])}
+              </span>
+              <div className="color-picker-row">
+                {colorPicker.colors.map((c) => (
+                  <button
+                    key={c}
+                    className={`color-dot ${avatar[colorPicker.key] === c ? 'active' : ''}`}
+                    style={{ background: c }}
+                    onClick={() => handleSelectColor(c)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -114,5 +132,65 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
     </div>
   );
 };
+
+/* ── Mini preview icons for item grid ────────────── */
+
+function MiniPreview({
+  category,
+  itemId,
+  avatar,
+}: {
+  category: string;
+  itemId: string;
+  avatar: AvatarConfig;
+}) {
+  if (category === 'expression') {
+    return <MiniExpression id={itemId} skin={avatar.skinColor} />;
+  }
+  if (category === 'hair') {
+    return <MiniHair id={itemId} color={avatar.hairColor} />;
+  }
+  if (category === 'top') {
+    return <MiniTop id={itemId} color={avatar.topColor} />;
+  }
+  if (category === 'accessory') {
+    return <MiniAccessory id={itemId} />;
+  }
+  // bottom: simple colored shapes
+  return <MiniBottom id={itemId} />;
+}
+
+function MiniExpression({ id, skin }: { id: string; skin: string }) {
+  return (
+    <div className="mini-face" style={{ background: skin }}>
+      <div className={`mini-eyes mini-eyes--${id}`}>
+        <div className="mini-eye" />
+        <div className="mini-eye" />
+      </div>
+      <div className={`mini-mouth mini-mouth--${id}`} />
+    </div>
+  );
+}
+
+function MiniHair({ id, color }: { id: string; color: string }) {
+  return <div className={`mini-hair mini-hair--${id}`} style={{ background: color }} />;
+}
+
+function MiniTop({ id, color }: { id: string; color: string }) {
+  return <div className={`mini-top mini-top--${id}`} style={{ background: color }} />;
+}
+
+function MiniBottom({ id }: { id: string }) {
+  const colors: Record<string, string> = {
+    jeans: '#4A6FA5', slacks: '#3D3D3D', skirt: '#E85D75',
+    shorts: '#8FBC8B', jogger: '#666', leggings: '#333',
+  };
+  return <div className="mini-bottom" style={{ background: colors[id] || '#666' }} />;
+}
+
+function MiniAccessory({ id }: { id: string }) {
+  if (id === 'none') return <span className="mini-acc-none">✦</span>;
+  return <div className={`mini-acc mini-acc--${id}`} />;
+}
 
 export default AvatarDecorator;

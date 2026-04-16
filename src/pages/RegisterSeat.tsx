@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { getAvatarDescription, getAvatarEmoji } from '../data/subwayData';
+import { getAvatarDescription } from '../data/subwayData';
 import type { SubwayLine, AvatarConfig, Country } from '../data/subwayData';
 import { useI18n } from '../i18n';
+import AvatarPreview from '../components/AvatarPreview';
 import './RegisterSeat.css';
 
 interface RegisterSeatProps {
@@ -24,7 +25,6 @@ const RegisterSeat: React.FC<RegisterSeatProps> = ({
   const { t } = useI18n();
   const [destination, setDestination] = useState('');
   const desc = getAvatarDescription(avatar, (id) => t(`item.${id}` as Parameters<typeof t>[0]));
-  const emoji = getAvatarEmoji(avatar);
 
   return (
     <div className="register-seat page-enter">
@@ -71,8 +71,8 @@ const RegisterSeat: React.FC<RegisterSeatProps> = ({
         <section className="outfit-confirm-section">
           <h3 className="section-title">{t('register.appearance')}</h3>
           <div className="outfit-preview-card">
-            <div className="preview-avatar">
-              <span>{emoji}</span>
+            <div className="preview-avatar-wrap">
+              <AvatarPreview config={avatar} size={50} />
             </div>
             <div className="outfit-details">
               <p className="outfit-desc">{desc || t('register.noOutfit')}</p>
