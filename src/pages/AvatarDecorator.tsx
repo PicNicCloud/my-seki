@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { AVATAR_CATEGORIES, getAvatarEmoji } from '../data/subwayData';
 import type { AvatarConfig } from '../data/subwayData';
-import { useI18n } from '../i18n';
 import './AvatarDecorator.css';
 
 interface AvatarDecoratorProps {
@@ -19,7 +18,6 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
   onBack,
   showBack = true,
 }) => {
-  const { t } = useI18n();
   const [activeCategory, setActiveCategory] = useState(0);
 
   const currentCategory = AVATAR_CATEGORIES[activeCategory];
@@ -39,8 +37,7 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
     const item = cat?.items.find(
       (i) => i.id === avatar[catKey as keyof AvatarConfig]
     );
-    if (!item) return null;
-    return { ...item, label: t(`item.${item.id}` as Parameters<typeof t>[0]) };
+    return item;
   };
 
   return (
@@ -51,7 +48,7 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
         ) : (
           <div className="header-spacer" />
         )}
-        <h2 className="page-title">{t('avatar.title')}</h2>
+        <h2 className="page-title">아바타 꾸미기</h2>
         <div className="header-spacer" />
       </header>
 
@@ -87,7 +84,7 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
               className={`category-tab ${idx === activeCategory ? 'active' : ''}`}
               onClick={() => setActiveCategory(idx)}
             >
-              {t(`cat.${cat.key}` as Parameters<typeof t>[0])}
+              {cat.label}
             </button>
           ))}
         </nav>
@@ -100,7 +97,7 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
               onClick={() => handleSelectItem(item.id)}
             >
               <span className="item-emoji">{item.emoji}</span>
-              <span className="item-label">{t(`item.${item.id}` as Parameters<typeof t>[0])}</span>
+              <span className="item-label">{item.label}</span>
             </button>
           ))}
         </div>
@@ -108,7 +105,7 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
 
       <div className="footer-btn-container">
         <button className="submit-btn" onClick={onComplete}>
-          {t('avatar.complete')}
+          완성! ✨
         </button>
       </div>
     </div>

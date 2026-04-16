@@ -1,0 +1,290 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776304825685,
+  "projectRoot": "/Users/nhn/Desktop/my-seki/my-seki",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "react",
+        "version": "19.2.4",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.4",
+        "category": "frontend"
+      },
+      {
+        "name": "vite",
+        "version": "8.0.4",
+        "category": "build"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": "npm run lint",
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc -b && vite build",
+      "lint": "eslint .",
+      "preview": "vite preview"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 2,
+      "lastAccessed": 1776304825635,
+      "keyFiles": [
+        "favicon.svg",
+        "icons.svg"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 2,
+      "lastAccessed": 1776304825635,
+      "keyFiles": [
+        "App.tsx",
+        "main.tsx"
+      ]
+    },
+    "src/assets": {
+      "path": "src/assets",
+      "purpose": "Static assets",
+      "fileCount": 3,
+      "lastAccessed": 1776304825638,
+      "keyFiles": [
+        "hero.png",
+        "react.svg",
+        "vite.svg"
+      ]
+    },
+    "src/pages": {
+      "path": "src/pages",
+      "purpose": "Page components",
+      "fileCount": 6,
+      "lastAccessed": 1776304825638,
+      "keyFiles": [
+        "AvatarDecorator.css",
+        "AvatarDecorator.tsx",
+        "ProfileRegistration.css"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 14,
+      "lastAccessed": 1776306783998,
+      "type": "file"
+    },
+    {
+      "path": "src/App.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1776307102079,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/AvatarDecorator.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776307151954,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/SeatFinder.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776307205745,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/ProfileRegistration.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776307220235,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1776304945093,
+      "type": "file"
+    },
+    {
+      "path": "src/styles/global.css",
+      "accessCount": 2,
+      "lastAccessed": 1776306044006,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Landing.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776307120798,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/LineSelect.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776307138362,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Home.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776307145422,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/RegisterSeat.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776307197705,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Waiting.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776307212682,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.json",
+      "accessCount": 1,
+      "lastAccessed": 1776304844888,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 1,
+      "lastAccessed": 1776304845136,
+      "type": "file"
+    },
+    {
+      "path": "vite.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776304845189,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.app.json",
+      "accessCount": 1,
+      "lastAccessed": 1776304847346,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.node.json",
+      "accessCount": 1,
+      "lastAccessed": 1776304847541,
+      "type": "file"
+    },
+    {
+      "path": "eslint.config.js",
+      "accessCount": 1,
+      "lastAccessed": 1776304851744,
+      "type": "file"
+    },
+    {
+      "path": "src/main.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776304855904,
+      "type": "file"
+    },
+    {
+      "path": "index.html",
+      "accessCount": 1,
+      "lastAccessed": 1776304856299,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/SeatFinder.css",
+      "accessCount": 1,
+      "lastAccessed": 1776304862343,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/AvatarDecorator.css",
+      "accessCount": 1,
+      "lastAccessed": 1776304862399,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/ProfileRegistration.css",
+      "accessCount": 1,
+      "lastAccessed": 1776304862588,
+      "type": "file"
+    },
+    {
+      "path": "src/data/subwayData.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776306043726,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1776306943487,
+      "type": "directory"
+    },
+    {
+      "path": "src/i18n.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776307040217,
+      "type": "file"
+    },
+    {
+      "path": "src/components/LanguageToggle.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776307054943,
+      "type": "file"
+    },
+    {
+      "path": "src/components/LanguageToggle.css",
+      "accessCount": 1,
+      "lastAccessed": 1776307056718,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import type { SubwayLine } from '../data/subwayData';
-import { useI18n } from '../i18n';
 import './Waiting.css';
 
 interface WaitingProps {
@@ -16,8 +15,6 @@ const Waiting: React.FC<WaitingProps> = ({
   destination,
   onCancel,
 }) => {
-  const { t } = useI18n();
-
   return (
     <div className="waiting-page page-enter">
       <div className="waiting-content">
@@ -33,18 +30,16 @@ const Waiting: React.FC<WaitingProps> = ({
         </div>
 
         <h1 className="waiting-title">
-          {t('waiting.title').split('\n').map((line, i) => (
-            <React.Fragment key={i}>{i > 0 && <br />}{line}</React.Fragment>
-          ))}
+          빈 자리를<br />찾고 있어요
         </h1>
         <p className="waiting-subtitle">
-          {destination}{t('waiting.subtitle1')}<br />
-          {t('waiting.subtitle2')}
+          {destination} 방면 하차 예정자를 찾고 있습니다<br />
+          발견되면 바로 알려드릴게요! 🍃
         </p>
 
         <div className="wait-info-card">
           <div className="wait-info-row">
-            <span className="wait-info-label">{t('waiting.route')}</span>
+            <span className="wait-info-label">노선</span>
             <div className="wait-info-value">
               <div
                 className="line-badge"
@@ -57,25 +52,25 @@ const Waiting: React.FC<WaitingProps> = ({
           </div>
           <div className="wait-info-divider" />
           <div className="wait-info-row">
-            <span className="wait-info-label">{t('waiting.car')}</span>
-            <strong className="wait-info-value">{carNumber}{t('home.car')}</strong>
+            <span className="wait-info-label">칸</span>
+            <strong className="wait-info-value">{carNumber}호차</strong>
           </div>
           <div className="wait-info-divider" />
           <div className="wait-info-row">
-            <span className="wait-info-label">{t('waiting.dest')}</span>
+            <span className="wait-info-label">목적지</span>
             <strong className="wait-info-value">{destination}</strong>
           </div>
           <div className="wait-info-divider" />
           <div className="wait-info-row">
-            <span className="wait-info-label">{t('waiting.waitCount')}</span>
-            <strong className="wait-info-value wait-count">3{t('waiting.people')}</strong>
+            <span className="wait-info-label">대기 인원</span>
+            <strong className="wait-info-value wait-count">3명</strong>
           </div>
         </div>
       </div>
 
       <div className="waiting-footer">
         <button className="cancel-btn" onClick={onCancel}>
-          {t('waiting.cancel')}
+          대기 취소하기
         </button>
       </div>
     </div>

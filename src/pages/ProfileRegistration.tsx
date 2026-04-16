@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { getAvatarEmoji, getAvatarDescription } from '../data/subwayData';
 import type { AvatarConfig } from '../data/subwayData';
-import { useI18n } from '../i18n';
 import './ProfileRegistration.css';
 
 interface ProfileRegistrationProps {
@@ -13,7 +12,6 @@ const ProfileRegistration: React.FC<ProfileRegistrationProps> = ({
   avatar,
   onBack,
 }) => {
-  const { t } = useI18n();
   const [nickname, setNickname] = useState('');
   const [features, setFeatures] = useState('');
   const emoji = getAvatarEmoji(avatar);
@@ -27,7 +25,7 @@ const ProfileRegistration: React.FC<ProfileRegistrationProps> = ({
         ) : (
           <div className="header-spacer" />
         )}
-        <h2 className="page-title">{t('profile.title')}</h2>
+        <h2 className="page-title">내 프로필</h2>
         <div className="header-spacer" />
       </header>
 
@@ -36,32 +34,32 @@ const ProfileRegistration: React.FC<ProfileRegistrationProps> = ({
           <div className="profile-avatar-circle">
             <span>{emoji}</span>
           </div>
-          <p className="profile-outfit-desc">{desc || t('profile.noAvatar')}</p>
+          <p className="profile-outfit-desc">{desc || '아바타를 꾸며보세요'}</p>
         </section>
 
         <section className="profile-form-section">
           <div className="form-group">
-            <label className="form-label">{t('profile.nickname')}</label>
+            <label className="form-label">닉네임</label>
             <input
               type="text"
               className="form-input"
-              placeholder={t('profile.nicknamePlaceholder')}
+              placeholder="닉네임을 입력하세요"
               value={nickname}
               onChange={(e) => setNickname(e.target.value)}
             />
           </div>
 
           <div className="form-group">
-            <label className="form-label">{t('profile.features')}</label>
+            <label className="form-label">기타 특징</label>
             <input
               type="text"
               className="form-input"
-              placeholder={t('profile.featuresPlaceholder')}
+              placeholder="예: 안경, 에어팟, 큰 가방"
               value={features}
               onChange={(e) => setFeatures(e.target.value)}
             />
             <p className="form-hint">
-              {t('profile.featuresHint')}
+              정확한 인상착의는 다른 이용자가 자리를 찾는 데 도움이 돼요 🍃
             </p>
           </div>
         </section>
@@ -69,16 +67,15 @@ const ProfileRegistration: React.FC<ProfileRegistrationProps> = ({
         <section className="profile-info-section">
           <div className="info-box">
             <p>
-              {t('profile.infoBoxKo').split('\n').map((line, i) => (
-                <React.Fragment key={i}>{i > 0 && <br />}{line}</React.Fragment>
-              ))}
+              이 정보는 같은 칸에 탄 이용자에게만 보여요.
+              언제든 수정할 수 있어요!
             </p>
           </div>
         </section>
       </div>
 
       <div className="footer-btn-container">
-        <button className="submit-btn">{t('profile.save')}</button>
+        <button className="submit-btn">저장하기</button>
       </div>
     </div>
   );

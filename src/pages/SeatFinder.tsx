@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import type { SubwayLine } from '../data/subwayData';
-import { useI18n } from '../i18n';
 import './SeatFinder.css';
 
 interface MockUser {
@@ -25,7 +24,6 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
   destination,
   onWait,
 }) => {
-  const { t } = useI18n();
   const [activeFilter, setActiveFilter] = useState('all');
 
   // Build station progress around destination
@@ -46,7 +44,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
       station: nearbyStations[1] || destination,
       desc: '빨간 자켓 · 백팩 · 짧은 머리',
       emoji: '😊',
-      time: `1${t('finder.stopsAfter')}`,
+      time: '1정거장 후',
       stops: 1,
     },
     {
@@ -54,7 +52,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
       station: nearbyStations[2] || destination,
       desc: '코랄 코트 · 긴 머리 · 가방',
       emoji: '😎',
-      time: `2${t('finder.stopsAfter')}`,
+      time: '2정거장 후',
       stops: 2,
     },
     {
@@ -62,7 +60,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
       station: nearbyStations[3] || destination,
       desc: '회색 후드 · 헤드폰 · 곱슬',
       emoji: '😌',
-      time: `3${t('finder.stopsAfter')}`,
+      time: '3정거장 후',
       stops: 3,
     },
     {
@@ -70,7 +68,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
       station: nearbyStations[4] || destination,
       desc: '검정 패딩 · 안경 · 슬랙스',
       emoji: '🥰',
-      time: `4${t('finder.stopsAfter')}`,
+      time: '4정거장 후',
       stops: 4,
     },
     {
@@ -78,7 +76,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
       station: nearbyStations[0] || destination,
       desc: '니트 · 청바지 · 목도리',
       emoji: '😴',
-      time: `1${t('finder.stopsAfter')}`,
+      time: '1정거장 후',
       stops: 1,
     },
   ];
@@ -91,14 +89,14 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
         : MOCK_USERS.filter((u) => u.stops >= 3);
 
   const filters = [
-    { key: 'all', label: `${t('finder.all')} ${MOCK_USERS.length}` },
+    { key: 'all', label: `전체 ${MOCK_USERS.length}` },
     {
       key: 'near',
-      label: `${t('finder.near')} ${MOCK_USERS.filter((u) => u.stops <= 2).length}`,
+      label: `1~2정거장 ${MOCK_USERS.filter((u) => u.stops <= 2).length}`,
     },
     {
       key: 'far',
-      label: `${t('finder.far')} ${MOCK_USERS.filter((u) => u.stops >= 3).length}`,
+      label: `3정거장+ ${MOCK_USERS.filter((u) => u.stops >= 3).length}`,
     },
   ];
 
@@ -110,12 +108,12 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
             {line.id}
           </div>
           <span className="finder-line-text">
-            {line.name} {carNumber}{t('home.car')}
+            {line.name} {carNumber}호차
           </span>
         </div>
-        <h1 className="finder-station-title">{destination} {t('finder.direction')} 🚃</h1>
+        <h1 className="finder-station-title">{destination} 방면 🚃</h1>
         <p className="finder-count">
-          {t('finder.registered')} <strong>{MOCK_USERS.length}{t('finder.count')}</strong>
+          이 칸에 등록된 좌석 <strong>{MOCK_USERS.length}개</strong>
         </p>
       </header>
 
@@ -168,7 +166,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
       </div>
 
       <div className="sort-bar">
-        <span>{t('finder.sortLabel')}</span>
+        <span>하차 예정이 빠른 순</span>
       </div>
 
       {/* User List */}
@@ -187,14 +185,14 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
                     color: user.stops <= 1 ? '#FF7070' : user.stops <= 2 ? '#E09540' : '#7B9CFF',
                   }}
                 >
-                  {user.time} {t('finder.exit')}
+                  {user.time} 하차
                 </span>
               </div>
               <h3 className="user-station">{user.station}</h3>
               <p className="user-desc">{user.desc}</p>
             </div>
             <button className="wait-btn" onClick={onWait}>
-              {t('finder.wait')}
+              대기
             </button>
           </div>
         ))}
