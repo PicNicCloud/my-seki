@@ -4,6 +4,7 @@ import {
   SKIN_COLORS,
   HAIR_COLORS,
   TOP_COLORS,
+  BOTTOM_COLORS,
 } from '../data/subwayData';
 import type { AvatarConfig } from '../data/subwayData';
 import { useI18n } from '../i18n';
@@ -23,6 +24,7 @@ const COLOR_PICKERS: Record<string, { key: keyof AvatarConfig; colors: string[];
   expression: { key: 'skinColor', colors: SKIN_COLORS, labelKey: 'avatar.skinColor' },
   hair: { key: 'hairColor', colors: HAIR_COLORS, labelKey: 'avatar.hairColor' },
   top: { key: 'topColor', colors: TOP_COLORS, labelKey: 'avatar.topColor' },
+  bottom: { key: 'bottomColor', colors: BOTTOM_COLORS, labelKey: 'avatar.bottomColor' },
 };
 
 const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({

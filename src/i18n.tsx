@@ -73,6 +73,7 @@ const translations = {
   // AvatarDecorator
   'avatar.title': { ko: '아바타 꾸미기', ja: 'アバターを作る' },
   'avatar.complete': { ko: '완성!', ja: '完成！' },
+  'avatar.bottomColor': { ko: '하의 색상', ja: 'ボトムス色' },
   'avatar.tabManual': { ko: '직접 꾸미기', ja: '手動カスタム' },
   'avatar.tabAI': { ko: 'AI 생성', ja: 'AI生成' },
   'avatar.aiPlaceholder': { ko: '인상착의를 문장으로 입력하세요\n예: 짧은 머리에 회색 후드, 안경 쓰고 청바지', ja: '服装を文章で入力してください\n例：ショートヘアにグレーパーカー、メガネにジーンズ' },
@@ -155,6 +156,12 @@ const translations = {
   'item.sleepy': { ko: '졸림', ja: '眠い' },
   'item.proud': { ko: '당당', ja: '堂々' },
   'item.chill': { ko: '여유', ja: 'リラックス' },
+  'item.surprised': { ko: '놀람', ja: 'びっくり' },
+  'item.angry': { ko: '화남', ja: '怒り' },
+  'item.wink': { ko: '윙크', ja: 'ウィンク' },
+  'item.smirk': { ko: '씩', ja: 'ニヤリ' },
+  'item.tearful': { ko: '울먹', ja: 'うるうる' },
+  'item.excited': { ko: '신남', ja: 'ワクワク' },
   // Avatar items - hair
   'item.short': { ko: '짧은 머리', ja: 'ショート' },
   'item.long': { ko: '긴 머리', ja: 'ロング' },
@@ -162,6 +169,15 @@ const translations = {
   'item.tied': { ko: '묶은 머리', ja: 'まとめ髪' },
   'item.cap': { ko: '모자 착용', ja: '帽子' },
   'item.buzz': { ko: '짧은 커트', ja: 'ショートカット' },
+  'item.bob': { ko: '단발', ja: 'ボブ' },
+  'item.twintail': { ko: '양갈래', ja: 'ツインテール' },
+  'item.bun': { ko: '똥머리', ja: 'おだんご' },
+  'item.wavy': { ko: '웨이브', ja: 'ウェーブ' },
+  'item.spiky': { ko: '삐침머리', ja: 'スパイキー' },
+  'item.parted': { ko: '가르마', ja: 'サイドパート' },
+  'item.slickback': { ko: '올백', ja: 'オールバック' },
+  'item.ponytail': { ko: '포니테일', ja: 'ポニーテール' },
+  'item.bald': { ko: '대머리', ja: 'スキンヘッド' },
   // Avatar items - top
   'item.padding': { ko: '패딩', ja: 'ダウン' },
   'item.shirt': { ko: '셔츠', ja: 'シャツ' },
@@ -169,6 +185,9 @@ const translations = {
   'item.tshirt': { ko: '티셔츠', ja: 'Tシャツ' },
   'item.coat': { ko: '코트', ja: 'コート' },
   'item.cardigan': { ko: '가디건', ja: 'カーディガン' },
+  'item.sweater': { ko: '스웨터', ja: 'セーター' },
+  'item.vest': { ko: '조끼', ja: 'ベスト' },
+  'item.blazer': { ko: '블레이저', ja: 'ブレザー' },
   // Avatar items - bottom
   'item.jeans': { ko: '청바지', ja: 'ジーンズ' },
   'item.slacks': { ko: '슬랙스', ja: 'スラックス' },
@@ -182,6 +201,8 @@ const translations = {
   'item.headphones': { ko: '헤드폰', ja: 'ヘッドホン' },
   'item.scarf': { ko: '목도리', ja: 'マフラー' },
   'item.bag': { ko: '가방', ja: 'カバン' },
+  'item.earbuds': { ko: '이어버드', ja: 'イヤホン' },
+  'item.watch': { ko: '시계', ja: '腕時計' },
   'item.none': { ko: '없음', ja: 'なし' },
 } as const;
 

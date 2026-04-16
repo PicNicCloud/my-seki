@@ -46,6 +46,7 @@ export interface AvatarConfig {
   top: string;
   topColor: string;
   bottom: string;
+  bottomColor: string;
   accessory: string;
 }
 
@@ -57,12 +58,14 @@ export const DEFAULT_AVATAR: AvatarConfig = {
   top: 'hoodie',
   topColor: '#808080',
   bottom: 'jeans',
+  bottomColor: '#4A6FA5',
   accessory: 'none',
 };
 
-export const SKIN_COLORS = ['#FFDCB5', '#F5C6A0', '#E8AB8B', '#C68F6E', '#A06B4E', '#7B4F35'];
+export const SKIN_COLORS = ['#FFF0E0', '#FFE8D0', '#FFDCB5', '#F5C6A0', '#E8AB8B', '#C68F6E', '#A06B4E', '#7B4F35'];
 export const HAIR_COLORS = ['#2C2C2C', '#5C3A1E', '#D4A56A', '#C44030', '#4A7FBA', '#E88CB5'];
 export const TOP_COLORS = ['#2C2C2C', '#F5F5F5', '#808080', '#4A7FBA', '#C44030', '#5B8C5A'];
+export const BOTTOM_COLORS = ['#4A6FA5', '#2C2C2C', '#6B7B5E', '#808080', '#D4C9B8', '#8B3A4A'];
 export interface AvatarItem {
   id: string;
   label: string;
@@ -84,6 +87,12 @@ export const AVATAR_CATEGORIES: AvatarCategory[] = [
       { id: 'sleepy', label: '졸림' },
       { id: 'proud', label: '당당' },
       { id: 'chill', label: '여유' },
+      { id: 'surprised', label: '놀람' },
+      { id: 'angry', label: '화남' },
+      { id: 'wink', label: '윙크' },
+      { id: 'smirk', label: '씩' },
+      { id: 'tearful', label: '울먹' },
+      { id: 'excited', label: '신남' },
     ],
   },
   {
@@ -95,6 +104,15 @@ export const AVATAR_CATEGORIES: AvatarCategory[] = [
       { id: 'tied', label: '묶은 머리' },
       { id: 'cap', label: '모자 착용' },
       { id: 'buzz', label: '짧은 커트' },
+      { id: 'bob', label: '단발' },
+      { id: 'twintail', label: '양갈래' },
+      { id: 'bun', label: '똥머리' },
+      { id: 'wavy', label: '웨이브' },
+      { id: 'spiky', label: '삐침머리' },
+      { id: 'parted', label: '가르마' },
+      { id: 'slickback', label: '올백' },
+      { id: 'ponytail', label: '포니테일' },
+      { id: 'bald', label: '대머리' },
     ],
   },
   {
@@ -106,6 +124,9 @@ export const AVATAR_CATEGORIES: AvatarCategory[] = [
       { id: 'tshirt', label: '티셔츠' },
       { id: 'coat', label: '코트' },
       { id: 'cardigan', label: '가디건' },
+      { id: 'sweater', label: '스웨터' },
+      { id: 'vest', label: '조끼' },
+      { id: 'blazer', label: '블레이저' },
     ],
   },
   {
@@ -127,6 +148,8 @@ export const AVATAR_CATEGORIES: AvatarCategory[] = [
       { id: 'headphones', label: '헤드폰' },
       { id: 'scarf', label: '목도리' },
       { id: 'bag', label: '가방' },
+      { id: 'earbuds', label: '이어버드' },
+      { id: 'watch', label: '시계' },
       { id: 'none', label: '없음' },
     ],
   },
