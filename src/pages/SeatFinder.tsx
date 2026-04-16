@@ -365,7 +365,10 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
           type="text"
           value={chatInput}
           onChange={(e) => setChatInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && sendChat()}
+          onKeyDown={(e) => {
+            if (e.nativeEvent.isComposing) return;
+            if (e.key === 'Enter') sendChat();
+          }}
           placeholder={t('finder.chatPlaceholder' as Parameters<typeof t>[0])}
           maxLength={30}
         />
