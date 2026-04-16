@@ -119,14 +119,20 @@
   "hotPaths": [
     {
       "path": "src/pages/SeatFinder.tsx",
-      "accessCount": 48,
-      "lastAccessed": 1776317801910,
+      "accessCount": 49,
+      "lastAccessed": 1776318055534,
       "type": "file"
     },
     {
       "path": "src/App.tsx",
-      "accessCount": 39,
-      "lastAccessed": 1776316553336,
+      "accessCount": 41,
+      "lastAccessed": 1776317982731,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n.tsx",
+      "accessCount": 23,
+      "lastAccessed": 1776318168604,
       "type": "file"
     },
     {
@@ -136,27 +142,21 @@
       "type": "file"
     },
     {
-      "path": "src/i18n.tsx",
-      "accessCount": 16,
-      "lastAccessed": 1776317634729,
-      "type": "file"
-    },
-    {
       "path": "src/pages/SeatFinder.css",
       "accessCount": 13,
       "lastAccessed": 1776317505265,
       "type": "file"
     },
     {
-      "path": "src/pages/RegisterSeat.tsx",
-      "accessCount": 12,
-      "lastAccessed": 1776316080099,
+      "path": "src/pages/Waiting.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1776318067653,
       "type": "file"
     },
     {
-      "path": "src/pages/Waiting.tsx",
+      "path": "src/pages/RegisterSeat.tsx",
       "accessCount": 12,
-      "lastAccessed": 1776316124253,
+      "lastAccessed": 1776316080099,
       "type": "file"
     },
     {
@@ -167,8 +167,8 @@
     },
     {
       "path": "src/pages/LineSelect.tsx",
-      "accessCount": 9,
-      "lastAccessed": 1776316040821,
+      "accessCount": 10,
+      "lastAccessed": 1776318026141,
       "type": "file"
     },
     {
@@ -181,6 +181,12 @@
       "path": "src/pages/Landing.tsx",
       "accessCount": 9,
       "lastAccessed": 1776316325467,
+      "type": "file"
+    },
+    {
+      "path": "src/styles/global.css",
+      "accessCount": 7,
+      "lastAccessed": 1776318002304,
       "type": "file"
     },
     {
@@ -202,15 +208,9 @@
       "type": "file"
     },
     {
-      "path": "src/styles/global.css",
-      "accessCount": 5,
-      "lastAccessed": 1776316142817,
-      "type": "file"
-    },
-    {
       "path": "src/pages/CountrySelect.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1776315702330,
+      "accessCount": 5,
+      "lastAccessed": 1776318043470,
       "type": "file"
     },
     {
@@ -229,6 +229,12 @@
       "path": "public/favicon.svg",
       "accessCount": 3,
       "lastAccessed": 1776316596518,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Login.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776318200874,
       "type": "file"
     },
     {
@@ -272,6 +278,12 @@
       "accessCount": 2,
       "lastAccessed": 1776316148688,
       "type": "file"
+    },
+    {
+      "path": "src/pages",
+      "accessCount": 2,
+      "lastAccessed": 1776318013376,
+      "type": "directory"
     },
     {
       "path": "tsconfig.json",
@@ -337,18 +349,6 @@
       "path": "src/pages/RegisterSeat.css",
       "accessCount": 1,
       "lastAccessed": 1776315703231,
-      "type": "file"
-    },
-    {
-      "path": "src/pages",
-      "accessCount": 1,
-      "lastAccessed": 1776316021361,
-      "type": "directory"
-    },
-    {
-      "path": "src/pages/Login.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1776316294065,
       "type": "file"
     },
     {

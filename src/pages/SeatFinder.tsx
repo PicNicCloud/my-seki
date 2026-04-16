@@ -121,7 +121,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
             </button>
           )}
         </div>
-        <h1 className="finder-station-title">{destination} {t('finder.direction')} 🚃</h1>
+        <h1 className="finder-station-title">{destination} {t('finder.direction')}</h1>
         <p className="finder-count">
           {t('finder.registered')} <strong>{MOCK_USERS.length}{t('finder.count')}</strong>
         </p>

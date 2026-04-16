@@ -21,7 +21,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ onSelect, onBack }) => {
 
       <div className="country-select-content">
         <div className="country-hero">
-          <span className="country-hero-emoji">🌏</span>
+          <span className="country-hero-emoji"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
           <h1 className="country-title">{t('countrySelect.title')}</h1>
           <p className="country-subtitle">
             {lang === 'ko' ? 'どこの地下鉄ですか？' : '어디 지하철인가요?'}

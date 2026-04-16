@@ -17,7 +17,7 @@ function getInitialLang(): Lang {
 const translations = {
   // Landing
   'landing.title': { ko: 'myseki', ja: 'myseki' },
-  'landing.subtitle': { ko: '내릴 사람을 미리 찾고\n포근하게 앉아서 가세요 🍃', ja: '降りる人を先に見つけて\nゆったり座っていきましょう 🍃' },
+  'landing.subtitle': { ko: '내릴 사람을 미리 찾고\n포근하게 앉아서 가세요', ja: '降りる人を先に見つけて\nゆったり座っていきましょう' },
   'landing.start': { ko: '탑승하기', ja: '乗車する' },
   'landing.login': { ko: '이미 캐릭터가 있나요?', ja: 'すでにキャラクターがありますか？' },
   'landing.loginLink': { ko: '로그인', ja: 'ログイン' },
@@ -68,11 +68,11 @@ const translations = {
   'home.heading': { ko: ' 어느 칸에\n계신가요?', ja: ' どの車両に\nいますか？' },
   'home.subtitle': { ko: '현재 탑승하신 칸을 선택해주세요', ja: '現在乗っている車両を選んでください' },
   'home.car': { ko: '호차', ja: '号車' },
-  'home.info': { ko: '🍃 칸을 선택하면 같은 칸에서 내릴 사람을 찾을 수 있어요', ja: '🍃 車両を選ぶと同じ車両で降りる人を探せます' },
+  'home.info': { ko: '칸을 선택하면 같은 칸에서 내릴 사람을 찾을 수 있어요', ja: '車両を選ぶと同じ車両で降りる人を探せます' },
 
   // AvatarDecorator
   'avatar.title': { ko: '아바타 꾸미기', ja: 'アバターを作る' },
-  'avatar.complete': { ko: '완성! ✨', ja: '完成！ ✨' },
+  'avatar.complete': { ko: '완성!', ja: '完成！' },
   'avatar.skinColor': { ko: '피부색', ja: '肌の色' },
   'avatar.hairColor': { ko: '머리색', ja: '髪の色' },
   'avatar.topColor': { ko: '옷 색상', ja: '服の色' },
@@ -80,7 +80,7 @@ const translations = {
   // RegisterSeat
   'register.title': { ko: '내릴 역 등록', ja: '降車駅の登録' },
   'register.riding': { ko: '에 타고 계시군요!', ja: 'に乗っていますね！' },
-  'register.where': { ko: '어디에서 내리시나요? 🚏', ja: 'どこで降りますか？ 🚏' },
+  'register.where': { ko: '어디에서 내리시나요?', ja: 'どこで降りますか？' },
   'register.appearance': { ko: '다른 사람에게 보이는 내 모습', ja: '他の人に見える私の姿' },
   'register.noOutfit': { ko: '아직 설정하지 않았어요', ja: 'まだ設定していません' },
   'register.confirm': { ko: '에서 내릴게요!', ja: 'で降ります！' },
@@ -104,7 +104,7 @@ const translations = {
   // Waiting
   'waiting.title': { ko: '빈 자리를\n찾고 있어요', ja: '空席を\n探しています' },
   'waiting.subtitle1': { ko: ' 방면 하차 예정자를 찾고 있습니다', ja: ' 方面の降車予定者を探しています' },
-  'waiting.subtitle2': { ko: '발견되면 바로 알려드릴게요! 🍃', ja: '見つかったらすぐお知らせします！ 🍃' },
+  'waiting.subtitle2': { ko: '발견되면 바로 알려드릴게요!', ja: '見つかったらすぐお知らせします！' },
   'waiting.route': { ko: '노선', ja: '路線' },
   'waiting.car': { ko: '칸', ja: '車両' },
   'waiting.dest': { ko: '목적지', ja: '目的地' },
@@ -119,7 +119,7 @@ const translations = {
   'profile.nicknamePlaceholder': { ko: '닉네임을 입력하세요', ja: 'ニックネームを入力' },
   'profile.features': { ko: '기타 특징', ja: 'その他の特徴' },
   'profile.featuresPlaceholder': { ko: '예: 안경, 에어팟, 큰 가방', ja: '例：メガネ、AirPods、大きいカバン' },
-  'profile.featuresHint': { ko: '정확한 인상착의는 다른 이용자가 자리를 찾는 데 도움이 돼요 🍃', ja: '正確な服装情報は他の利用者が席を探すのに役立ちます 🍃' },
+  'profile.featuresHint': { ko: '정확한 인상착의는 다른 이용자가 자리를 찾는 데 도움이 돼요', ja: '正確な服装情報は他の利用者が席を探すのに役立ちます' },
   'profile.infoBox': { ko: '이 정보는 같은 칸에 탄 이용자에게만 보여요.\n언제든 수정할 수 있어요!', ja: 'この情報は同じ車両の利用者にのみ表示されます。\nいつでも修正できます！' },
   'profile.save': { ko: '저장하기', ja: '保存する' },
 

@@ -25,7 +25,7 @@ const LineSelect: React.FC<LineSelectProps> = ({ country, onSelectLine, onBack }
 
       <div className="line-select-content">
         <div className="line-select-hero">
-          <span className="hero-emoji">🚇</span>
+          <span className="hero-emoji"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><circle cx="8.5" cy="20" r="1.5"/><circle cx="15.5" cy="20" r="1.5"/><path d="M7 17l-1.5 3M17 17l1.5 3"/></svg></span>
           <h1 className="line-select-title">
             {t('lineSelect.heading').split('\n').map((line, i) => (
               <React.Fragment key={i}>{i > 0 && <br />}{line}</React.Fragment>

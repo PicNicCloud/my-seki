@@ -30,7 +30,7 @@ const Waiting: React.FC<WaitingProps> = ({
       <div className="waiting-content">
         <div className="waiting-animation">
           <div className="waiting-train">
-            <span className="waiting-emoji">🚃</span>
+            <span className="waiting-emoji"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--secondary-color)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><circle cx="8.5" cy="20" r="1.5"/><circle cx="15.5" cy="20" r="1.5"/><path d="M7 17l-1.5 3M17 17l1.5 3"/></svg></span>
           </div>
           <div className="waiting-dots">
             <div className="w-dot" />
