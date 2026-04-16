@@ -1,0 +1,134 @@
+.landing-page {
+  height: 100%;
+  background: var(--bg-color); /* Cream #FDF9F0 */
+  display: flex;
+  flex-direction: column;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.logo-container {
+  margin-bottom: 24px;
+}
+
+.subway-car {
+  width: 120px;
+  height: 60px;
+  background: #A8E6CF; /* Mint green */
+  border-radius: 12px 12px 4px 4px;
+  margin: 0 auto 16px;
+  position: relative;
+  border-bottom: 4px solid #88D8B0;
+}
+
+.window {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 10px 8px;
+}
+
+.wheel {
+  width: 12px;
+  height: 12px;
+  background: #555;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -6px;
+}
+.wheel:nth-child(3) { left: 20px; }
+.wheel:nth-child(4) { right: 20px; }
+
+.app-title {
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--text-main);
+  font-weight: 900;
+}
+
+.app-subtitle {
+  font-size: 16px;
+  color: var(--text-sub);
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.illustration {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.character-silhouette {
+  width: 40px;
+  height: 60px;
+  background: #FFD3B6; /* Peach */
+  border-radius: 20px 20px 4px 4px;
+  margin: 0 auto;
+}
+
+.cloud {
+  background: white;
+  width: 60px;
+  height: 24px;
+  border-radius: 20px;
+  position: absolute;
+  opacity: 0.8;
+}
+
+.c1 { top: 10px; left: 10%; animation: float 6s infinite ease-in-out; }
+.c2 { top: 40px; right: 10%; animation: float 8s infinite ease-in-out reverse; }
+
+@keyframes float {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(20px); }
+}
+
+.landing-footer {
+  margin-top: auto;
+  text-align: center;
+  z-index: 2;
+}
+
+.start-btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--secondary-color); /* Green */
+  color: white;
+  border-radius: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 4px 0 #6FB969;
+  margin-bottom: 16px;
+}
+
+.start-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #6FB969;
+}
+
+.login-link {
+  font-size: 14px;
+  color: var(--text-sub);
+}
+
+.login-link span {
+  color: var(--primary-color);
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
