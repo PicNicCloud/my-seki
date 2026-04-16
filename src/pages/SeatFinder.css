@@ -165,10 +165,7 @@
 }
 
 .user-avatar-wrap {
-  width: 46px;
-  height: 56px;
   flex-shrink: 0;
-  overflow: hidden;
 }
 
 .user-info {

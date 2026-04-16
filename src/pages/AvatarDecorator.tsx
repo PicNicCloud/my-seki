@@ -64,7 +64,7 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
       <div className="avatar-preview-section">
         <div className="avatar-stage">
           <div className="avatar-pedestal" />
-          <AvatarPreview config={avatar} size={140} />
+          <AvatarPreview config={avatar} size={140} animate />
         </div>
       </div>
 
