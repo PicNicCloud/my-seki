@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"head -5 /Users/nhn/Desktop/my-seki/my-seki/src/App.tsx && echo \\\"---\\\" && head -3 /Users/nhn/Desktop/my-seki/my-seki/src/pages/Landing.tsx && echo \\\"---\\\" && ls /Users/nhn/Desktop/my-seki/...",
-  "error": "Exit code 1\nimport { useState } from 'react';\nimport './styles/global.css';\nimport { SUBWAY_LINES, DEFAULT_AVATAR } from './data/subwayData';\nimport type { AvatarConfig } from './data/subwayData';\nimport Landing from './pages/Landing';\n---\nimport React from 'react';\nimport './Landing.css';\n\n---\nls: /Users/nhn/Desktop/my-seki/my-seki/src/components/LanguageToggle.tsx: No such file or directory\nls: /Users/nhn/Desktop/my-seki/my-seki/src/i18n.tsx: No such file or directory",
-  "timestamp": "2026-04-16T02:49:44.314Z",
-  "retry_count": 1
-}

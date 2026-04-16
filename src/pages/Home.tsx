@@ -1,16 +1,18 @@
 import React from 'react';
-import type { SubwayLine } from '../data/subwayData';
+import type { SubwayLine, Country } from '../data/subwayData';
 import { useI18n } from '../i18n';
 import './Home.css';
 
 interface HomeProps {
   line: SubwayLine;
+  country: Country;
   onSelectCar: (carNumber: number) => void;
   onBack: () => void;
 }
 
-const Home: React.FC<HomeProps> = ({ line, onSelectCar, onBack }) => {
+const Home: React.FC<HomeProps> = ({ line, country, onSelectCar, onBack }) => {
   const { t } = useI18n();
+  const lineKey = `${country === 'jp' ? 'line.jp.' : 'line.'}${line.id}` as Parameters<typeof t>[0];
   const cars = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
@@ -30,7 +32,7 @@ const Home: React.FC<HomeProps> = ({ line, onSelectCar, onBack }) => {
             {line.id}
           </div>
           <h1 className="home-title">
-            {(t(`line.${line.id}` as Parameters<typeof t>[0]) + t('home.heading')).split('\n').map((text, i) => (
+            {(t(lineKey) + t('home.heading')).split('\n').map((text, i) => (
               <React.Fragment key={i}>{i > 0 && <br />}{text}</React.Fragment>
             ))}
           </h1>

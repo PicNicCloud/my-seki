@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { SubwayLine } from '../data/subwayData';
+import type { SubwayLine, Country } from '../data/subwayData';
 import { useI18n } from '../i18n';
 import './SeatFinder.css';
 
@@ -14,19 +14,35 @@ interface MockUser {
 
 interface SeatFinderProps {
   line: SubwayLine;
+  country: Country;
   carNumber: number;
   destination: string;
-  onWait: () => void;
 }
 
 const SeatFinder: React.FC<SeatFinderProps> = ({
   line,
+  country,
   carNumber,
   destination,
-  onWait,
 }) => {
   const { t } = useI18n();
   const [activeFilter, setActiveFilter] = useState('all');
+  const [waitingIds, setWaitingIds] = useState<Set<number>>(new Set());
+
+  const toggleWait = (id: number) => {
+    setWaitingIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  // Mock wait counts (random 0~3 per user, + 1 if current user is waiting)
+  const getWaitCount = (id: number) => {
+    const base = (id * 7 + 3) % 4; // deterministic pseudo-random 0~3
+    return base + (waitingIds.has(id) ? 1 : 0);
+  };
 
   // Build station progress around destination
   const destIdx = line.stations.indexOf(destination);
@@ -44,7 +60,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
     {
       id: 1,
       station: nearbyStations[1] || destination,
-      desc: '빨간 자켓 · 백팩 · 짧은 머리',
+      desc: t('mock.desc.1'),
       emoji: '😊',
       time: `1${t('finder.stopsAfter')}`,
       stops: 1,
@@ -52,7 +68,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
     {
       id: 2,
       station: nearbyStations[2] || destination,
-      desc: '코랄 코트 · 긴 머리 · 가방',
+      desc: t('mock.desc.2'),
       emoji: '😎',
       time: `2${t('finder.stopsAfter')}`,
       stops: 2,
@@ -60,7 +76,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
     {
       id: 3,
       station: nearbyStations[3] || destination,
-      desc: '회색 후드 · 헤드폰 · 곱슬',
+      desc: t('mock.desc.3'),
       emoji: '😌',
       time: `3${t('finder.stopsAfter')}`,
       stops: 3,
@@ -68,7 +84,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
     {
       id: 4,
       station: nearbyStations[4] || destination,
-      desc: '검정 패딩 · 안경 · 슬랙스',
+      desc: t('mock.desc.4'),
       emoji: '🥰',
       time: `4${t('finder.stopsAfter')}`,
       stops: 4,
@@ -76,7 +92,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
     {
       id: 5,
       station: nearbyStations[0] || destination,
-      desc: '니트 · 청바지 · 목도리',
+      desc: t('mock.desc.5'),
       emoji: '😴',
       time: `1${t('finder.stopsAfter')}`,
       stops: 1,
@@ -110,7 +126,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
             {line.id}
           </div>
           <span className="finder-line-text">
-            {t(`line.${line.id}` as Parameters<typeof t>[0])} {carNumber}{t('home.car')}
+            {t(`${country === 'jp' ? 'line.jp.' : 'line.'}${line.id}` as Parameters<typeof t>[0])} {carNumber}{t('home.car')}
           </span>
         </div>
         <h1 className="finder-station-title">{destination} {t('finder.direction')} 🚃</h1>
@@ -192,9 +208,15 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
               </div>
               <h3 className="user-station">{user.station}</h3>
               <p className="user-desc">{user.desc}</p>
+              {getWaitCount(user.id) > 0 && (
+                <span className="wait-count-tag">{getWaitCount(user.id)}{t('finder.waitCount')}</span>
+              )}
             </div>
-            <button className="wait-btn" onClick={onWait}>
-              {t('finder.wait')}
+            <button
+              className={`wait-btn ${waitingIds.has(user.id) ? 'active' : ''}`}
+              onClick={() => toggleWait(user.id)}
+            >
+              {waitingIds.has(user.id) ? t('finder.waiting') : t('finder.wait')}
             </button>
           </div>
         ))}

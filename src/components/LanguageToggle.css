@@ -1,7 +1,7 @@
 .lang-toggle {
-  position: fixed;
-  top: 12px;
-  right: 12px;
+  position: absolute;
+  top: 18px;
+  right: 16px;
   z-index: 200;
   display: flex;
   align-items: center;
@@ -38,8 +38,4 @@
   font-weight: 400;
 }
 
-@media (min-width: 431px) {
-  .lang-toggle {
-    right: calc(50% - 215px + 12px);
-  }
-}
+/* positioned absolute within #root, no media query needed */

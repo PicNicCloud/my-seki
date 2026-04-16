@@ -1,57 +1,75 @@
 import { useState } from 'react';
 import './styles/global.css';
-import { SUBWAY_LINES, DEFAULT_AVATAR } from './data/subwayData';
-import type { AvatarConfig } from './data/subwayData';
+import { DEFAULT_AVATAR, getSubwayLines } from './data/subwayData';
+import type { AvatarConfig, Country } from './data/subwayData';
 import { I18nProvider, useI18n } from './i18n';
 import LanguageToggle from './components/LanguageToggle';
 import Landing from './pages/Landing';
+import CountrySelect from './pages/CountrySelect';
 import LineSelect from './pages/LineSelect';
 import Home from './pages/Home';
 import AvatarDecorator from './pages/AvatarDecorator';
 import RegisterSeat from './pages/RegisterSeat';
 import SeatFinder from './pages/SeatFinder';
-import Waiting from './pages/Waiting';
 import ProfileRegistration from './pages/ProfileRegistration';
 
 type Page =
   | 'landing'
+  | 'countrySelect'
   | 'lineSelect'
   | 'home'
   | 'avatar'
   | 'register'
   | 'finder'
-  | 'waiting'
   | 'profile';
 
 function AppContent() {
+  const { t, setLang } = useI18n();
   const [currentPage, setCurrentPage] = useState<Page>('landing');
+  // country = 지하철 데이터 (KR노선 vs JP노선), lang toggle과 독립
+  const [country, setCountry] = useState<Country>('kr');
   const [selectedLineId, setSelectedLineId] = useState<number>(2);
   const [selectedCar, setSelectedCar] = useState<number>(1);
   const [destination, setDestination] = useState<string>('');
   const [avatar, setAvatar] = useState<AvatarConfig>(DEFAULT_AVATAR);
 
-  const selectedLine = SUBWAY_LINES.find((l) => l.id === selectedLineId) ?? SUBWAY_LINES[1];
+  const subwayLines = getSubwayLines(country);
+  const selectedLine = subwayLines.find((l) => l.id === selectedLineId) ?? subwayLines[0];
 
   const renderPage = () => {
     switch (currentPage) {
       case 'landing':
         return (
-          <Landing onStart={() => setCurrentPage('lineSelect')} />
+          <Landing onStart={() => setCurrentPage('countrySelect')} />
+        );
+      case 'countrySelect':
+        return (
+          <CountrySelect
+            onSelect={(c) => {
+              setCountry(c);
+              setLang(c === 'jp' ? 'ja' : 'ko');
+              setSelectedLineId(c === 'jp' ? 1 : 2);
+              setCurrentPage('lineSelect');
+            }}
+            onBack={() => setCurrentPage('landing')}
+          />
         );
       case 'lineSelect':
         return (
           <LineSelect
+            country={country}
             onSelectLine={(lineId) => {
               setSelectedLineId(lineId);
               setCurrentPage('home');
             }}
-            onBack={() => setCurrentPage('landing')}
+            onBack={() => setCurrentPage('countrySelect')}
           />
         );
       case 'home':
         return (
           <Home
             line={selectedLine}
+            country={country}
             onSelectCar={(car) => {
               setSelectedCar(car);
               setCurrentPage('avatar');
@@ -73,6 +91,7 @@ function AppContent() {
         return (
           <RegisterSeat
             line={selectedLine}
+            country={country}
             carNumber={selectedCar}
             avatar={avatar}
             onComplete={(station) => {
@@ -86,18 +105,9 @@ function AppContent() {
         return (
           <SeatFinder
             line={selectedLine}
+            country={country}
             carNumber={selectedCar}
             destination={destination}
-            onWait={() => setCurrentPage('waiting')}
-          />
-        );
-      case 'waiting':
-        return (
-          <Waiting
-            line={selectedLine}
-            carNumber={selectedCar}
-            destination={destination}
-            onCancel={() => setCurrentPage('finder')}
           />
         );
       case 'profile':
@@ -109,7 +119,6 @@ function AppContent() {
     }
   };
 
-  const { t } = useI18n();
   const showBottomNav = ['finder', 'avatar', 'profile'].includes(currentPage);
 
   return (

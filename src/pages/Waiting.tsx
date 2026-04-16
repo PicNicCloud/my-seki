@@ -1,10 +1,11 @@
 import React from 'react';
-import type { SubwayLine } from '../data/subwayData';
+import type { SubwayLine, Country } from '../data/subwayData';
 import { useI18n } from '../i18n';
 import './Waiting.css';
 
 interface WaitingProps {
   line: SubwayLine;
+  country: Country;
   carNumber: number;
   destination: string;
   onCancel: () => void;
@@ -12,6 +13,7 @@ interface WaitingProps {
 
 const Waiting: React.FC<WaitingProps> = ({
   line,
+  country,
   carNumber,
   destination,
   onCancel,
@@ -20,6 +22,11 @@ const Waiting: React.FC<WaitingProps> = ({
 
   return (
     <div className="waiting-page page-enter">
+      <header className="page-header">
+        <button className="back-btn" onClick={onCancel}>←</button>
+        <div className="header-spacer" />
+        <div className="header-spacer" />
+      </header>
       <div className="waiting-content">
         <div className="waiting-animation">
           <div className="waiting-train">
@@ -52,7 +59,7 @@ const Waiting: React.FC<WaitingProps> = ({
               >
                 {line.id}
               </div>
-              <strong>{t(`line.${line.id}` as Parameters<typeof t>[0])}</strong>
+              <strong>{t(`${country === 'jp' ? 'line.jp.' : 'line.'}${line.id}` as Parameters<typeof t>[0])}</strong>
             </div>
           </div>
           <div className="wait-info-divider" />

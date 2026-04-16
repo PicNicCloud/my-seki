@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { getAvatarDescription, getAvatarEmoji } from '../data/subwayData';
-import type { SubwayLine, AvatarConfig } from '../data/subwayData';
+import type { SubwayLine, AvatarConfig, Country } from '../data/subwayData';
 import { useI18n } from '../i18n';
 import './RegisterSeat.css';
 
 interface RegisterSeatProps {
   line: SubwayLine;
+  country: Country;
   carNumber: number;
   avatar: AvatarConfig;
   onComplete: (station: string) => void;
@@ -14,6 +15,7 @@ interface RegisterSeatProps {
 
 const RegisterSeat: React.FC<RegisterSeatProps> = ({
   line,
+  country,
   carNumber,
   avatar,
   onComplete,
@@ -41,7 +43,7 @@ const RegisterSeat: React.FC<RegisterSeatProps> = ({
             {line.id}
           </div>
           <div className="car-info-text">
-            <strong>{t(`line.${line.id}` as Parameters<typeof t>[0])} {carNumber}{t('home.car')}</strong>
+            <strong>{t(`${country === 'jp' ? 'line.jp.' : 'line.'}${line.id}` as Parameters<typeof t>[0])} {carNumber}{t('home.car')}</strong>
             <span>{t('register.riding')}</span>
           </div>
         </div>

@@ -1,15 +1,19 @@
 import React from 'react';
-import { SUBWAY_LINES } from '../data/subwayData';
+import { getSubwayLines } from '../data/subwayData';
+import type { Country } from '../data/subwayData';
 import { useI18n } from '../i18n';
 import './LineSelect.css';
 
 interface LineSelectProps {
+  country: Country;
   onSelectLine: (lineId: number) => void;
   onBack: () => void;
 }
 
-const LineSelect: React.FC<LineSelectProps> = ({ onSelectLine, onBack }) => {
+const LineSelect: React.FC<LineSelectProps> = ({ country, onSelectLine, onBack }) => {
   const { t } = useI18n();
+  const lines = getSubwayLines(country);
+  const lineKeyPrefix = country === 'jp' ? 'line.jp.' : 'line.';
 
   return (
     <div className="line-select-page page-enter">
@@ -31,7 +35,7 @@ const LineSelect: React.FC<LineSelectProps> = ({ onSelectLine, onBack }) => {
         </div>
 
         <div className="lines-grid">
-          {SUBWAY_LINES.map((line) => (
+          {lines.map((line) => (
             <button
               key={line.id}
               className="line-card"
@@ -43,7 +47,7 @@ const LineSelect: React.FC<LineSelectProps> = ({ onSelectLine, onBack }) => {
               >
                 {line.id}
               </div>
-              <span className="line-card-name">{t(`line.${line.id}` as Parameters<typeof t>[0])}</span>
+              <span className="line-card-name">{t(`${lineKeyPrefix}${line.id}` as Parameters<typeof t>[0])}</span>
               <span className="line-card-count">{line.stations.length}{t('lineSelect.stationCount')}</span>
             </button>
           ))}

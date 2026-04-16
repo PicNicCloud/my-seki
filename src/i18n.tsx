@@ -22,13 +22,17 @@ const translations = {
   'landing.login': { ko: '이미 캐릭터가 있나요?', ja: 'すでにキャラクターがありますか？' },
   'landing.loginLink': { ko: '로그인', ja: 'ログイン' },
 
+  // CountrySelect
+  'countrySelect.title': { ko: '어디 지하철인가요?', ja: 'どこの地下鉄ですか？' },
+  'countrySelect.subtitle': { ko: 'どこの地下鉄ですか？', ja: 'どの国の地下鉄ですか？' },
+
   // LineSelect
   'lineSelect.title': { ko: '호선 선택', ja: '路線選択' },
   'lineSelect.heading': { ko: '어떤 호선을\n타고 계신가요?', ja: 'どの路線に\n乗っていますか？' },
   'lineSelect.subtitle': { ko: '탑승 중인 노선을 선택해주세요', ja: '乗車中の路線を選んでください' },
   'lineSelect.stationCount': { ko: '개역', ja: '駅' },
 
-  // Line names
+  // Line names - Korea
   'line.1': { ko: '1호선', ja: '1号線' },
   'line.2': { ko: '2호선', ja: '2号線' },
   'line.3': { ko: '3호선', ja: '3号線' },
@@ -38,6 +42,17 @@ const translations = {
   'line.7': { ko: '7호선', ja: '7号線' },
   'line.8': { ko: '8호선', ja: '8号線' },
   'line.9': { ko: '9호선', ja: '9号線' },
+
+  // Line names - Japan (name is already Japanese, show as-is for both langs)
+  'line.jp.1': { ko: '야마노테선', ja: '山手線' },
+  'line.jp.2': { ko: '주오선', ja: '中央線' },
+  'line.jp.3': { ko: '긴자선', ja: '銀座線' },
+  'line.jp.4': { ko: '마루노우치선', ja: '丸ノ内線' },
+  'line.jp.5': { ko: '히비야선', ja: '日比谷線' },
+  'line.jp.6': { ko: '도자이선', ja: '東西線' },
+  'line.jp.7': { ko: '치요다선', ja: '千代田線' },
+  'line.jp.8': { ko: '유라쿠초선', ja: '有楽町線' },
+  'line.jp.9': { ko: '한조몬선', ja: '半蔵門線' },
 
   // Home
   'home.title': { ko: '칸 선택', ja: '車両選択' },
@@ -70,6 +85,8 @@ const translations = {
   'finder.stopsAfter': { ko: '정거장 후', ja: '駅後' },
   'finder.exit': { ko: '하차', ja: '降車' },
   'finder.wait': { ko: '대기', ja: '待機' },
+  'finder.waiting': { ko: '대기중', ja: '待機中' },
+  'finder.waitCount': { ko: '명 대기중', ja: '人待機中' },
 
   // Waiting
   'waiting.title': { ko: '빈 자리를\n찾고 있어요', ja: '空席を\n探しています' },
@@ -97,6 +114,13 @@ const translations = {
   'nav.finder': { ko: '좌석 찾기', ja: '席を探す' },
   'nav.avatar': { ko: '내 아바타', ja: 'アバター' },
   'nav.settings': { ko: '설정', ja: '設定' },
+
+  // Mock user descriptions (SeatFinder)
+  'mock.desc.1': { ko: '빨간 자켓 · 백팩 · 짧은 머리', ja: '赤いジャケット · リュック · ショートヘア' },
+  'mock.desc.2': { ko: '코랄 코트 · 긴 머리 · 가방', ja: 'コーラルコート · ロングヘア · カバン' },
+  'mock.desc.3': { ko: '회색 후드 · 헤드폰 · 곱슬', ja: 'グレーパーカー · ヘッドホン · カーリーヘア' },
+  'mock.desc.4': { ko: '검정 패딩 · 안경 · 슬랙스', ja: '黒ダウン · メガネ · スラックス' },
+  'mock.desc.5': { ko: '니트 · 청바지 · 목도리', ja: 'ニット · ジーンズ · マフラー' },
 
   // Avatar categories
   'cat.expression': { ko: '표정', ja: '表情' },
