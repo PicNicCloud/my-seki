@@ -2,7 +2,7 @@ import type { AvatarConfig } from '../data/subwayData';
 import { SKIN_COLORS, HAIR_COLORS, TOP_COLORS, BOTTOM_COLORS, DEFAULT_AVATAR } from '../data/subwayData';
 
 interface KeywordRule {
-  field: keyof AvatarConfig;
+  field: keyof AvatarConfig | 'accessory';
   value: string;
   keywords: string[];
   priority?: number;
@@ -168,19 +168,29 @@ export function parseAvatarFromText(text: string): AvatarConfig {
   const matched: Partial<AvatarConfig> = {};
 
   const matchedFields = new Map<keyof AvatarConfig, { value: string; priority: number; index: number }>();
+  const matchedAccessories: string[] = [];
 
   for (const rule of KEYWORD_RULES) {
-    for (const keyword of rule.keywords) {
-      const idx = input.indexOf(keyword.toLowerCase());
-      if (idx === -1) continue;
-
-      const priority = rule.priority ?? 1;
-      const existing = matchedFields.get(rule.field);
-
-      if (!existing || priority > existing.priority || (priority === existing.priority && idx < existing.index)) {
-        matchedFields.set(rule.field, { value: rule.value, priority, index: idx });
+    if (rule.field === 'accessory') {
+      for (const keyword of rule.keywords) {
+        if (input.includes(keyword.toLowerCase())) {
+          matchedAccessories.push(rule.value);
+          break;
+        }
       }
-      break;
+    } else {
+      for (const keyword of rule.keywords) {
+        const idx = input.indexOf(keyword.toLowerCase());
+        if (idx === -1) continue;
+
+        const priority = rule.priority ?? 1;
+        const existing = matchedFields.get(rule.field);
+
+        if (!existing || priority > existing.priority || (priority === existing.priority && idx < existing.index)) {
+          matchedFields.set(rule.field, { value: rule.value, priority, index: idx });
+        }
+        break;
+      }
     }
   }
 
@@ -222,6 +232,6 @@ export function parseAvatarFromText(text: string): AvatarConfig {
     topColor: colorOverrides.topColor ?? DEFAULT_AVATAR.topColor,
     bottom: matched.bottom ?? DEFAULT_AVATAR.bottom,
     bottomColor: colorOverrides.bottomColor ?? DEFAULT_AVATAR.bottomColor,
-    accessory: matched.accessory ?? DEFAULT_AVATAR.accessory,
+    accessories: matchedAccessories.length > 0 ? matchedAccessories : DEFAULT_AVATAR.accessories,
   };
 }
