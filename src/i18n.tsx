@@ -82,6 +82,7 @@ const translations = {
   'avatar.skinColor': { ko: '피부색', ja: '肌の色' },
   'avatar.hairColor': { ko: '머리색', ja: '髪の色' },
   'avatar.topColor': { ko: '옷 색상', ja: '服の色' },
+  'avatar.bottomColor': { ko: '하의 색상', ja: 'ボトムスの色' },
 
   // RegisterSeat
   'register.title': { ko: '내릴 역 등록', ja: '降車駅の登録' },
@@ -106,6 +107,14 @@ const translations = {
   'finder.changeLine': { ko: '노선/호차 변경', ja: '路線/車両 変更' },
   'finder.waiting': { ko: '대기중', ja: '待機中' },
   'finder.waitCount': { ko: '명 대기중', ja: '人待機中' },
+  'finder.tapHint': { ko: '캐릭터를 탭하여 정보 보기', ja: 'キャラをタップして情報を見る' },
+  'finder.chatPlaceholder': { ko: '메시지를 입력하세요', ja: 'メッセージを入力' },
+  'finder.chatSend': { ko: '전송', ja: '送信' },
+  'finder.me': { ko: '나', ja: '私' },
+  'finder.mockMsg1': { ko: '곧 내려요~', ja: 'もうすぐ降ります〜' },
+  'finder.mockMsg2': { ko: '다음역이에요', ja: '次の駅です' },
+  'finder.mockMsg3': { ko: '자리 양도!', ja: '席譲ります！' },
+  'finder.mockMsg4': { ko: '좋은 하루~', ja: '良い一日を〜' },
 
   // Waiting
   'waiting.title': { ko: '빈 자리를\n찾고 있어요', ja: '空席を\n探しています' },

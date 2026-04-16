@@ -1,17 +1,23 @@
 .seat-finder {
-  padding: 20px;
-  padding-top: 24px;
+  padding: 16px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
 }
 
+/* ── Header ──────────────────────────────────────── */
 .finder-header {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
 }
 
 .finder-line-info {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .finder-line-text {
@@ -21,15 +27,15 @@
 }
 
 .finder-station-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--text-main);
   letter-spacing: -0.5px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .finder-count {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-sub);
 }
 
@@ -38,31 +44,45 @@
   font-weight: 700;
 }
 
-/* Station Progress */
-.station-progress {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  padding: 12px 4px;
+.change-line-btn {
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-color);
+  background: var(--primary-light);
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* ── Station Progress ────────────────────────────── */
+.station-progress-wrap {
+  margin-bottom: 14px;
   overflow-x: auto;
+  flex-shrink: 0;
   scrollbar-width: none;
 }
 
-.station-progress::-webkit-scrollbar {
+.station-progress-wrap::-webkit-scrollbar {
   display: none;
+}
+
+.station-progress {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 4px 4px;
 }
 
 .progress-node {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   flex-shrink: 0;
 }
 
 .node-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #E0E0E0;
   border: 2.5px solid #E0E0E0;
@@ -77,8 +97,8 @@
 .progress-node.current .node-dot {
   background: white;
   border-color: var(--secondary-color);
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   box-shadow: 0 0 0 3px rgba(143, 212, 164, 0.25);
 }
 
@@ -97,8 +117,8 @@
 
 .progress-line {
   flex: 1;
-  min-width: 20px;
-  height: 2.5px;
+  min-width: 16px;
+  height: 2px;
   background: #E8E8E8;
   margin-top: 5px;
   border-radius: 2px;
@@ -108,55 +128,415 @@
   background: var(--secondary-color);
 }
 
-/* Filters */
-.filter-chips {
+/* ═══════════════════════════════════════════════════
+   Subway Car Interior (top-down view)
+   ═══════════════════════════════════════════════════ */
+.subway-car {
+  position: relative;
+  height: 200px;
+  flex-shrink: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.04) 100%),
+    linear-gradient(180deg, #F0ECE4 0%, #EAE6DE 100%);
+  border: 3px solid #D0CBC2;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+/* ── Walls with seats ────────────────────────────── */
+.car-wall {
+  position: absolute;
+  left: 34px;
+  right: 34px;
   display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
+  justify-content: space-evenly;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.chip {
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: 1.5px solid var(--border-color);
-  background: var(--card-bg);
-  font-size: 13px;
+.car-wall-top {
+  top: 0;
+  padding: 5px 6px;
+}
+
+.car-wall-bot {
+  bottom: 0;
+  padding: 5px 6px;
+}
+
+.car-seat {
+  width: 26px;
+  height: 12px;
+  background: linear-gradient(180deg, #A8C4F0 0%, #8BAEE0 100%);
+  border-radius: 3px 3px 5px 5px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.car-wall-bot .car-seat {
+  background: linear-gradient(0deg, #A8C4F0 0%, #8BAEE0 100%);
+  border-radius: 5px 5px 3px 3px;
+}
+
+/* ── Doors ────────────────────────────────────────── */
+.car-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(180deg, #E2DED6 0%, #D8D4CC 100%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-door-l {
+  left: 0;
+  border-right: 2px solid #C8C3BA;
+  border-radius: 16px 0 0 16px;
+}
+
+.car-door-r {
+  right: 0;
+  border-left: 2px solid #C8C3BA;
+  border-radius: 0 16px 16px 0;
+}
+
+.car-door-line {
+  width: 2px;
+  height: 60%;
+  background: #BBB6AD;
+  border-radius: 1px;
+}
+
+/* ── Poles ─────────────────────────────────────────── */
+.car-pole {
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+  width: 5px;
+  background: linear-gradient(90deg, #C8C3BA 0%, #D8D4CC 50%, #C8C3BA 100%);
+  border-radius: 3px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.car-pole-1 { left: 62px; }
+.car-pole-2 { right: 62px; }
+
+/* ── Hanging handles ──────────────────────────────── */
+.car-handle-row {
+  position: absolute;
+  top: 0;
+  left: 42px;
+  right: 42px;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.car-handle {
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* ── Wandering Avatars ────────────────────────────── */
+.car-avatar {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  transition: left 3.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+              top 3.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.car-avatar:active {
+  transform: translate(-50%, -50%) scale(0.92);
+  opacity: 1;
+}
+
+.car-avatar-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: var(--prox-color);
+  opacity: 0.2;
+  filter: blur(8px);
+  z-index: -1;
+  animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.15); }
+}
+
+/* ── Speech Bubbles ──────────────────────────────── */
+.speech-bubble {
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: var(--text-main);
+  font-size: 10px;
   font-weight: 600;
-  color: var(--text-sub);
-  transition: all 0.2s;
+  line-height: 1.3;
+  padding: 4px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 10;
+  pointer-events: none;
+  animation: bubbleIn 0.3s ease-out;
 }
 
-.chip.active {
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: white;
+}
+
+.speech-bubble-me {
   background: var(--primary-color);
   color: white;
-  border-color: var(--primary-color);
-  box-shadow: 0 2px 8px rgba(123, 156, 255, 0.25);
 }
 
-.sort-bar {
+.speech-bubble-me::after {
+  border-top-color: var(--primary-color);
+}
+
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px) scale(0.85); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+/* ── Me Avatar ───────────────────────────────────── */
+.car-avatar-me {
+  cursor: default;
+  transition: left 3.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+              top 3.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.car-me-tag {
+  display: block;
+  font-size: 8px;
+  font-weight: 700;
+  color: white;
+  background: var(--primary-color);
+  padding: 1px 5px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: -2px;
+  pointer-events: none;
+}
+
+/* ── Chat Input Bar (floating) ────────────────────── */
+.chat-input-bar {
+  position: absolute;
+  bottom: 96px;
+  left: 16px;
+  right: 16px;
   display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--text-hint);
-  margin-bottom: 12px;
-  font-weight: 500;
+  gap: 8px;
+  z-index: 50;
 }
 
-/* User List */
+.chat-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid #E0E0E0;
+  border-radius: 20px;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  outline: none;
+  transition: border-color 0.2s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.chat-input:focus {
+  border-color: var(--primary-color);
+}
+
+.chat-input::placeholder {
+  color: var(--text-hint);
+}
+
+.chat-send-btn {
+  padding: 10px 16px;
+  border-radius: 20px;
+  background: var(--primary-color);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.4;
+}
+
+.chat-send-btn:active:not(:disabled) {
+  opacity: 0.8;
+}
+
+.car-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text-hint);
+  white-space: nowrap;
+  z-index: 4;
+  pointer-events: none;
+  animation: hintFade 4s ease-in-out forwards;
+}
+
+@keyframes hintFade {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════
+   Detail Bottom Sheet
+   ═══════════════════════════════════════════════════ */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: overlayIn 0.2s ease-out;
+}
+
+@keyframes overlayIn {
+  from { background: rgba(0, 0, 0, 0); }
+  to { background: rgba(0, 0, 0, 0.3); }
+}
+
+.detail-sheet {
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+  padding: 12px 24px 28px;
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.12);
+  animation: sheetSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes sheetSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.detail-handle {
+  width: 36px;
+  height: 4px;
+  background: #DDD;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.detail-body {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.detail-avatar-wrap {
+  flex-shrink: 0;
+}
+
+.detail-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.detail-prox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.detail-prox-badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.detail-wait-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: #FF7070;
+}
+
+.detail-desc {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+.detail-wait-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: var(--border-radius-md);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════
+   User List
+   ═══════════════════════════════════════════════════ */
 .user-list {
+  flex: 1;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 56px;
 }
 
 .user-card {
   background: var(--card-bg);
-  padding: 16px;
+  padding: 14px;
   border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   box-shadow: var(--shadow-soft);
+  cursor: pointer;
   transition: transform 0.15s;
 }
 
@@ -174,15 +554,7 @@
 }
 
 .user-info-top {
-  margin-bottom: 4px;
-}
-
-.time-tag {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 6px;
-  display: inline-block;
+  margin-bottom: 3px;
 }
 
 .proximity-dot {
@@ -190,13 +562,6 @@
   height: 10px;
   border-radius: 50%;
   display: inline-block;
-}
-
-.user-station {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 2px;
 }
 
 .user-desc {
@@ -207,6 +572,15 @@
   text-overflow: ellipsis;
 }
 
+.wait-count-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #FF7070;
+  margin-top: 2px;
+}
+
+/* ── Wait button (shared) ─────────────────────────── */
 .wait-btn {
   padding: 10px 14px;
   border-radius: var(--border-radius-sm);
@@ -231,22 +605,4 @@
 .wait-btn.active:active {
   background: #FF5050;
   color: white;
-}
-
-.change-line-btn {
-  padding: 4px 8px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--primary-color);
-  background: var(--primary-light);
-  border-radius: 8px;
-  white-space: nowrap;
-}
-
-.wait-count-tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  color: #FF7070;
-  margin-top: 3px;
 }

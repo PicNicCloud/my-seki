@@ -1,58 +1,48 @@
-/* ── Outer wrapper: takes correct layout space ──── */
+/* ═══════════════════════════════════════════════════
+   Animal Crossing–style Avatar
+   Big round head, stubby body, cute proportions
+   Canvas: 140 × 160
+   ═══════════════════════════════════════════════════ */
+
 .av-outer {
   position: relative;
   flex-shrink: 0;
 }
 
-/* ── Inner: always 140×170, scaled via CSS var ──── */
 .av {
   position: absolute;
   top: 0;
   left: 0;
   width: 140px;
-  height: 170px;
+  height: 160px;
   transform: scale(var(--av-s, 1));
   transform-origin: top left;
 }
 
-/* Breathing animation only when enabled */
 .av--animate {
-  animation: avBreathe 4s infinite ease-in-out;
+  animation: avBreathe 3.5s infinite ease-in-out;
 }
 
 @keyframes avBreathe {
   0%, 100% { transform: scale(var(--av-s, 1)) translateY(0); }
-  50% { transform: scale(var(--av-s, 1)) translateY(-3px); }
+  50% { transform: scale(var(--av-s, 1)) translateY(-2px); }
 }
 
-/* ── Ears ──────────────────────────────────────────── */
-.av-ear {
-  position: absolute;
-  width: 12px;
-  height: 16px;
-  border-radius: 50%;
-  top: 44px;
-  z-index: 2;
-  box-shadow: inset -1px -1px 3px rgba(0, 0, 0, 0.1);
-}
-.av-ear-l { left: 24px; }
-.av-ear-r { right: 24px; }
-
-/* ── Head ──────────────────────────────────────────── */
+/* ── Head (big, perfectly round — AC chibi) ─────── */
 .av-head {
   position: absolute;
-  width: 80px;
-  height: 88px;
-  left: 30px;
-  top: 16px;
-  border-radius: 50% 50% 46% 46%;
+  width: 92px;
+  height: 84px;
+  left: 24px;
+  top: 6px;
+  border-radius: 50%;
   z-index: 3;
   box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.1),
-    inset 0 -3px 6px rgba(0, 0, 0, 0.05);
+    0 4px 14px rgba(0, 0, 0, 0.08),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.03);
 }
 
-/* ── Eyes ──────────────────────────────────────────── */
+/* ── Eyes ────────────────────────────────────────── */
 .av-eyes {
   position: absolute;
   top: 36px;
@@ -60,349 +50,501 @@
   right: 0;
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 .av-eye { position: relative; }
 
-/* Happy */
+/* Happy — big round AC eyes with double highlight */
 .av-eyes--happy .av-eye {
-  width: 7px; height: 7px;
-  background: #3D2C22; border-radius: 50%;
+  width: 12px; height: 12px;
+  background: #2C2C2C; border-radius: 50%;
+}
+.av-eyes--happy .av-eye::before {
+  content: ''; position: absolute;
+  width: 4px; height: 4px;
+  background: white; border-radius: 50%;
+  top: 1px; left: 2px;
 }
 .av-eyes--happy .av-eye::after {
   content: ''; position: absolute;
   width: 2.5px; height: 2.5px;
+  background: rgba(255, 255, 255, 0.55); border-radius: 50%;
+  bottom: 2px; right: 1.5px;
+}
+
+/* Cool — half-lidded with highlight */
+.av-eyes--cool .av-eye {
+  width: 13px; height: 6px;
+  background: #2C2C2C; border-radius: 50%;
+  margin-top: 3px;
+}
+.av-eyes--cool .av-eye::after {
+  content: ''; position: absolute;
+  width: 3px; height: 3px;
+  background: white; border-radius: 50%;
+  top: 0; left: 2px;
+}
+
+/* Lovely — big sparkly pink eyes */
+.av-eyes--lovely .av-eye {
+  width: 14px; height: 14px;
+  background: #E85D75; border-radius: 50%;
+}
+.av-eyes--lovely .av-eye::before {
+  content: ''; position: absolute;
+  width: 5px; height: 5px;
+  background: white; border-radius: 50%;
+  top: 1.5px; left: 2px;
+}
+.av-eyes--lovely .av-eye::after {
+  content: ''; position: absolute;
+  width: 3px; height: 3px;
+  background: rgba(255, 255, 255, 0.5); border-radius: 50%;
+  bottom: 2.5px; right: 2px;
+}
+
+/* Sleepy — droopy closed arcs */
+.av-eyes--sleepy .av-eye {
+  width: 12px; height: 4px;
+  border-bottom: 2.5px solid #3D2C22;
+  border-radius: 0 0 50% 50%;
+  margin-top: 4px;
+}
+
+/* Proud — determined flat-top eyes */
+.av-eyes--proud .av-eye {
+  width: 11px; height: 9px;
+  background: #2C2C2C;
+  border-radius: 2px 2px 50% 50%;
+}
+.av-eyes--proud .av-eye::after {
+  content: ''; position: absolute;
+  width: 3.5px; height: 3.5px;
+  background: white; border-radius: 50%;
+  top: 1px; left: 2px;
+}
+
+/* Chill — relaxed half-open */
+.av-eyes--chill .av-eye {
+  width: 10px; height: 7px;
+  background: #2C2C2C; border-radius: 50%;
+  margin-top: 2px;
+}
+.av-eyes--chill .av-eye::after {
+  content: ''; position: absolute;
+  width: 3px; height: 3px;
   background: white; border-radius: 50%;
   top: 1px; left: 1.5px;
 }
 
-/* Cool */
-.av-eyes--cool .av-eye {
-  width: 10px; height: 3px;
-  background: #3D2C22; border-radius: 2px;
-  margin-top: 2px;
+/* ── Nose (tiny AC triangle) ────────────────────── */
+.av-nose {
+  position: absolute;
+  left: 50%;
+  top: 54px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3.5px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Lovely */
-.av-eyes--lovely .av-eye {
-  width: 10px; height: 9px; position: relative;
-}
-.av-eyes--lovely .av-eye::before,
-.av-eyes--lovely .av-eye::after {
-  content: ''; position: absolute;
-  width: 6px; height: 9px;
-  background: #E85D75;
-  border-radius: 6px 6px 0 0;
-  transform-origin: bottom;
-}
-.av-eyes--lovely .av-eye::before { left: 0; transform: rotate(-20deg); }
-.av-eyes--lovely .av-eye::after { right: 0; transform: rotate(20deg); }
-
-/* Sleepy */
-.av-eyes--sleepy .av-eye {
-  width: 10px; height: 5px;
-  border-bottom: 2.5px solid #3D2C22;
-  border-radius: 0 0 50% 50%;
-  margin-top: 2px;
-}
-
-/* Proud */
-.av-eyes--proud .av-eye {
-  width: 8px; height: 7px;
-  background: #3D2C22; border-radius: 50%;
-}
-.av-eyes--proud .av-eye-l {
-  clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
-  border-radius: 0 0 4px 4px;
-}
-.av-eyes--proud .av-eye-r {
-  clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
-  border-radius: 0 0 4px 4px;
-}
-
-/* Chill */
-.av-eyes--chill .av-eye {
-  width: 8px; height: 4px;
-  background: #3D2C22; border-radius: 50%;
-  margin-top: 2px;
-}
-
-/* ── Blush ─────────────────────────────────────────── */
+/* ── Blush (prominent round AC cheeks) ──────────── */
 .av-blush {
   position: absolute;
-  width: 14px; height: 7px;
-  background: rgba(255, 140, 140, 0.35);
+  width: 14px;
+  height: 9px;
+  background: rgba(255, 130, 130, 0.35);
   border-radius: 50%;
-  top: 50px; z-index: 1;
+  top: 50px;
+  z-index: 1;
 }
-.av-blush-l { left: 10px; }
-.av-blush-r { right: 10px; }
+.av-blush-l { left: 8px; }
+.av-blush-r { right: 8px; }
 
-/* ── Mouth ─────────────────────────────────────────── */
+/* ── Mouth ───────────────────────────────────────── */
 .av-mouth {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 .av-mouth--happy {
-  top: 56px; width: 14px; height: 7px;
+  top: 60px; width: 12px; height: 6px;
   border-bottom: 2.5px solid #3D2C22;
   border-left: 2px solid #3D2C22;
   border-right: 2px solid #3D2C22;
   border-radius: 0 0 50% 50%;
 }
 .av-mouth--cool {
-  top: 58px; width: 8px;
+  top: 62px; width: 7px;
   border-bottom: 2.5px solid #3D2C22;
   border-radius: 2px;
   transform: translateX(-50%) rotate(-5deg);
 }
 .av-mouth--lovely {
-  top: 56px; width: 10px; height: 6px;
+  top: 60px; width: 8px; height: 5px;
   background: #E85D75;
-  border-radius: 0 0 50% 50%;
-  opacity: 0.6;
+  border-radius: 50%;
+  opacity: 0.5;
 }
 .av-mouth--sleepy {
-  top: 57px; width: 8px; height: 6px;
+  top: 60px; width: 7px; height: 5px;
   border: 2px solid #3D2C22;
   border-radius: 50%;
   background: transparent;
 }
 .av-mouth--proud {
-  top: 56px; width: 16px; height: 5px;
+  top: 60px; width: 14px; height: 4px;
   border-bottom: 2.5px solid #3D2C22;
   border-radius: 0 0 40% 40%;
 }
 .av-mouth--chill {
-  top: 58px; width: 10px; height: 4px;
+  top: 62px; width: 8px; height: 3px;
   border-bottom: 2.5px solid #3D2C22;
   border-radius: 0 0 50% 50%;
 }
 
-/* ── Glasses ───────────────────────────────────────── */
+/* ── Glasses ──────────────────────────────────────── */
 .av-glasses {
   position: absolute;
-  top: 32px; left: 50%;
+  top: 32px;
+  left: 50%;
   transform: translateX(-50%);
-  display: flex; align-items: center; gap: 2px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
   z-index: 2;
 }
 .av-glass-l, .av-glass-r {
-  width: 18px; height: 16px;
+  width: 20px;
+  height: 18px;
   border: 2.5px solid #555;
   border-radius: 50%;
   background: rgba(200, 220, 255, 0.15);
 }
 .av-glass-bridge {
-  width: 6px; border-top: 2px solid #555;
+  width: 4px;
+  border-top: 2px solid #555;
   margin-top: -4px;
 }
 
-/* ── Hair Back ─────────────────────────────────────── */
+/* ── Hair Back ───────────────────────────────────── */
 .av-hair-back {
-  position: absolute; z-index: 2;
+  position: absolute;
+  z-index: 2;
   border-radius: 50%;
 }
 .av-hair-back--short {
-  width: 86px; height: 48px;
-  left: 27px; top: 10px;
+  width: 96px; height: 50px;
+  left: 22px; top: 0;
   border-radius: 50% 50% 30% 30%;
 }
 .av-hair-back--long {
-  width: 92px; height: 96px;
-  left: 24px; top: 8px;
-  border-radius: 46% 46% 30% 30%;
+  width: 100px; height: 96px;
+  left: 20px; top: -2px;
+  border-radius: 48% 48% 32% 32%;
 }
 .av-hair-back--curly {
-  width: 94px; height: 68px;
-  left: 23px; top: 6px;
-  border-radius: 48% 48% 35% 35%;
+  width: 100px; height: 70px;
+  left: 20px; top: -2px;
+  border-radius: 50% 50% 36% 36%;
   box-shadow:
-    -5px 22px 0 -2px currentColor,
-    5px 24px 0 -2px currentColor,
-    -9px 14px 0 -2px currentColor,
-    9px 16px 0 -2px currentColor;
+    -5px 24px 0 -2px currentColor,
+    5px 26px 0 -2px currentColor,
+    -9px 16px 0 -2px currentColor,
+    9px 18px 0 -2px currentColor;
 }
 .av-hair-back--tied {
-  width: 86px; height: 48px;
-  left: 27px; top: 10px;
+  width: 96px; height: 50px;
+  left: 22px; top: 0;
   border-radius: 50% 50% 30% 30%;
 }
 .av-hair-back--cap { display: none; }
 .av-hair-back--buzz {
-  width: 84px; height: 44px;
-  left: 28px; top: 12px;
+  width: 94px; height: 46px;
+  left: 23px; top: 2px;
   border-radius: 50% 50% 30% 30%;
   opacity: 0.5;
 }
 
-/* ── Hair Front ────────────────────────────────────── */
+/* ── Hair Front ──────────────────────────────────── */
 .av-hair-front {
-  position: absolute; z-index: 4;
+  position: absolute;
+  z-index: 4;
 }
 .av-hair-front--short {
-  width: 60px; height: 20px;
-  left: 40px; top: 14px;
+  width: 66px; height: 22px;
+  left: 37px; top: 4px;
   border-radius: 40% 40% 20% 30%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 .av-hair-front--long {
-  width: 70px; height: 26px;
-  left: 35px; top: 12px;
+  width: 76px; height: 28px;
+  left: 32px; top: 2px;
   border-radius: 40% 40% 60% 20%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 .av-hair-front--curly {
-  width: 68px; height: 24px;
-  left: 36px; top: 10px;
+  width: 72px; height: 26px;
+  left: 34px; top: 0;
   border-radius: 50% 30% 40% 50%;
   box-shadow:
-    0 2px 4px rgba(0,0,0,0.1),
-    -6px 6px 0 -3px currentColor,
-    6px 4px 0 -3px currentColor;
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    -6px 8px 0 -3px currentColor,
+    6px 6px 0 -3px currentColor;
 }
 .av-hair-front--tied {
-  width: 56px; height: 18px;
-  left: 42px; top: 16px;
+  width: 62px; height: 20px;
+  left: 39px; top: 6px;
   border-radius: 40% 40% 20% 30%;
 }
 .av-hair-front--tied::after {
   content: ''; position: absolute;
   width: 22px; height: 22px;
   background: inherit; border-radius: 50%;
-  top: -18px; left: 50%;
+  top: -20px; left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 .av-hair-front--cap {
-  width: 90px; height: 18px;
-  left: 25px; top: 28px;
+  width: 98px; height: 20px;
+  left: 21px; top: 20px;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 .av-hair-front--cap::after {
   content: ''; position: absolute;
-  width: 76px; height: 36px;
+  width: 82px; height: 38px;
   background: inherit;
-  left: 7px; top: -26px;
+  left: 8px; top: -28px;
   border-radius: 50% 50% 0 0;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.04);
 }
 .av-hair-front--buzz {
-  width: 58px; height: 14px;
-  left: 41px; top: 16px;
+  width: 64px; height: 16px;
+  left: 38px; top: 6px;
   border-radius: 40% 40% 20% 30%;
   opacity: 0.5;
 }
 
-/* ── Neck ──────────────────────────────────────────── */
-.av-neck {
+/* ── Arms (round AC stubs) ───────────────────────── */
+.av-arm {
   position: absolute;
-  width: 24px; height: 14px;
-  left: 58px; top: 96px;
-  border-radius: 0 0 6px 6px;
-  z-index: 2;
-  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.08);
+  width: 14px;
+  height: 20px;
+  border-radius: 50%;
+  top: 90px;
+  z-index: 0;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.05);
 }
+.av-arm-l { left: 24px; }
+.av-arm-r { right: 24px; }
 
-/* ── Body ──────────────────────────────────────────── */
+/* ── Body (short, round — AC chibi torso) ────────── */
 .av-body {
   position: absolute;
-  width: 86px; height: 60px;
-  left: 27px; top: 106px;
-  border-radius: 18px 18px 22px 22px;
+  width: 70px;
+  height: 38px;
+  left: 35px;
+  top: 84px;
+  border-radius: 16px 16px 20px 20px;
   z-index: 1;
   box-shadow:
-    0 4px 12px rgba(0,0,0,0.08),
-    inset 0 -3px 8px rgba(0,0,0,0.06);
+    0 3px 10px rgba(0, 0, 0, 0.06),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 .av-body--padding {
-  border-radius: 22px;
-  width: 92px; left: 24px;
+  width: 76px; left: 32px;
+  border-radius: 20px;
 }
 .av-body--coat {
-  height: 66px;
+  height: 44px;
   border-radius: 14px 14px 18px 18px;
 }
 
-/* Collar */
 .av-collar {
   position: absolute;
   top: 0; left: 50%;
   transform: translateX(-50%);
-  width: 20px; height: 10px;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 10px solid rgba(255,255,255,0.5);
+  width: 16px; height: 8px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid rgba(255, 255, 255, 0.5);
 }
-/* Hoodie string */
 .av-hood-string {
   position: absolute;
-  top: 6px; left: 50%;
+  top: 4px; left: 50%;
   transform: translateX(-50%);
-  width: 12px;
+  width: 10px;
   display: flex; justify-content: space-between;
 }
 .av-hood-string::before, .av-hood-string::after {
   content: '';
-  width: 2px; height: 12px;
-  background: rgba(255,255,255,0.45);
+  width: 2px; height: 10px;
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 1px;
 }
-/* T-shirt neck */
 .av-tshirt-neck {
   position: absolute;
   top: -1px; left: 50%;
   transform: translateX(-50%);
-  width: 28px; height: 10px;
+  width: 24px; height: 8px;
   border-radius: 0 0 50% 50%;
-  background: rgba(0,0,0,0.08);
+  background: rgba(0, 0, 0, 0.07);
 }
 
-/* ── Scarf ─────────────────────────────────────────── */
+/* ── Scarf ────────────────────────────────────────── */
 .av-scarf {
   position: absolute;
   top: -4px; left: 50%;
   transform: translateX(-50%);
-  width: 50px; height: 14px;
+  width: 42px; height: 12px;
   background: #E85D75;
-  border-radius: 8px;
+  border-radius: 6px;
   z-index: 2;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .av-scarf::after {
   content: ''; position: absolute;
-  width: 10px; height: 18px;
+  width: 8px; height: 14px;
   background: #E85D75;
-  border-radius: 0 0 6px 6px;
-  right: 8px; top: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 0 0 4px 4px;
+  right: 6px; top: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Straps ────────────────────────────────────────── */
+/* ── Legs ─────────────────────────────────────────── */
+.av-legs {
+  position: absolute;
+  top: 118px;
+  left: 36px;
+  width: 68px;
+  height: 18px;
+  z-index: 0;
+}
+
+.av-leg {
+  position: absolute;
+  bottom: 0;
+  border-radius: 4px 4px 3px 3px;
+  box-shadow:
+    inset 0 -2px 3px rgba(0, 0, 0, 0.06),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Jeans */
+.av-legs--jeans .av-leg {
+  width: 16px; height: 16px;
+}
+.av-legs--jeans .av-leg-l { left: 10px; }
+.av-legs--jeans .av-leg-r { right: 10px; }
+
+/* Slacks */
+.av-legs--slacks .av-leg {
+  width: 18px; height: 16px;
+  border-radius: 3px 3px 2px 2px;
+}
+.av-legs--slacks .av-leg-l { left: 8px; }
+.av-legs--slacks .av-leg-r { right: 8px; }
+.av-legs--slacks .av-leg::after {
+  content: '';
+  position: absolute;
+  width: 1px; height: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  top: 2px; left: 50%;
+}
+
+/* Skirt — garment piece + bare legs */
+.av-legs--skirt .av-leg {
+  width: 10px; height: 10px;
+  border-radius: 4px;
+}
+.av-legs--skirt .av-leg-l { left: 14px; }
+.av-legs--skirt .av-leg-r { right: 14px; }
+
+.av-skirt-piece {
+  position: absolute;
+  top: -4px; left: -4px;
+  width: 76px; height: 14px;
+  border-radius: 2px 2px 50% 50%;
+  z-index: 1;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Shorts — short garment + bare legs */
+.av-legs--shorts .av-leg {
+  width: 12px; height: 12px;
+  border-radius: 4px;
+}
+.av-legs--shorts .av-leg-l { left: 12px; }
+.av-legs--shorts .av-leg-r { right: 12px; }
+
+.av-shorts-piece {
+  position: absolute;
+  top: -4px; left: 2px;
+  width: 64px; height: 10px;
+  border-radius: 2px 2px 6px 6px;
+  z-index: 1;
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Jogger — tapered */
+.av-legs--jogger .av-leg {
+  width: 18px; height: 16px;
+  border-radius: 6px 6px 4px 4px;
+  clip-path: polygon(0% 0%, 100% 0%, 85% 90%, 80% 100%, 20% 100%, 15% 90%);
+}
+.av-legs--jogger .av-leg-l { left: 8px; }
+.av-legs--jogger .av-leg-r { right: 8px; }
+
+/* Leggings — slim */
+.av-legs--leggings .av-leg {
+  width: 12px; height: 16px;
+  border-radius: 4px 4px 2px 2px;
+}
+.av-legs--leggings .av-leg-l { left: 14px; }
+.av-legs--leggings .av-leg-r { right: 14px; }
+
+/* ── Shoes (round AC shoes) ──────────────────────── */
+.av-shoe {
+  position: absolute;
+  width: 20px;
+  height: 8px;
+  background: #555;
+  border-radius: 5px 8px 3px 3px;
+  top: 134px;
+  z-index: 0;
+  box-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+.av-shoe-l { left: 40px; }
+.av-shoe-r { right: 40px; }
+
+/* ── Straps ───────────────────────────────────────── */
 .av-strap { position: absolute; z-index: 5; }
 .av-strap--backpack {
-  top: 108px; left: 34px;
-  width: 4px; height: 34px;
+  top: 86px; left: 43px;
+  width: 3px; height: 26px;
   background: #666; border-radius: 2px;
-  box-shadow: 38px 0 0 0 #666;
+  box-shadow: 51px 0 0 0 #666;
 }
 .av-strap--bag {
-  top: 104px; left: 26px;
-  width: 88px;
+  top: 84px; left: 30px;
+  width: 80px;
   border-top: 3px solid #8B6B50;
   transform: rotate(-15deg);
   transform-origin: left;
 }
 
-/* ── Headphones ───────────────────────────────────── */
+/* ── Headphones ──────────────────────────────────── */
 .av-headphones-band {
   position: absolute;
-  width: 76px; height: 28px;
-  left: 32px; top: 6px;
+  width: 84px; height: 28px;
+  left: 28px; top: -2px;
   border: 4px solid #555;
   border-bottom: none;
   border-radius: 50% 50% 0 0;
@@ -412,8 +554,8 @@
   position: absolute;
   width: 14px; height: 18px;
   background: #555; border-radius: 4px;
-  top: 30px; z-index: 5;
+  top: 24px; z-index: 5;
   box-shadow: inset 0 0 0 2px #444;
 }
-.av-hp-cup-l { left: 26px; }
-.av-hp-cup-r { right: 26px; }
+.av-hp-cup-l { left: 18px; }
+.av-hp-cup-r { right: 18px; }

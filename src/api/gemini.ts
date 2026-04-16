@@ -1,11 +1,11 @@
 import type { AvatarConfig } from '../data/subwayData';
-import { SKIN_COLORS, HAIR_COLORS, TOP_COLORS } from '../data/subwayData';
+import { SKIN_COLORS, HAIR_COLORS, TOP_COLORS, BOTTOM_COLORS } from '../data/subwayData';
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
 const SYSTEM_PROMPT = `Return ONLY a JSON object, no markdown, no code blocks, no explanation.
-Example: {"expression":"happy","skinColor":"#FFDCB5","hair":"short","hairColor":"#4A3728","top":"hoodie","topColor":"#808080","bottom":"jeans","accessory":"glasses"}
+Example: {"expression":"happy","skinColor":"#FFDCB5","hair":"short","hairColor":"#4A3728","top":"hoodie","topColor":"#808080","bottom":"jeans","bottomColor":"#4A6FA5","accessory":"glasses"}
 Allowed values:
 expression=[happy,cool,lovely,sleepy,proud,chill]
 skinColor=${JSON.stringify(SKIN_COLORS)}
@@ -14,6 +14,7 @@ hairColor=${JSON.stringify(HAIR_COLORS)}
 top=[padding,shirt,hoodie,tshirt,coat,cardigan]
 topColor=${JSON.stringify(TOP_COLORS)}
 bottom=[jeans,slacks,skirt,shorts,jogger,leggings]
+bottomColor=${JSON.stringify(BOTTOM_COLORS)}
 accessory=[backpack,glasses,headphones,scarf,bag,none]
 Pick the closest match. If not mentioned, pick a reasonable default. Input can be Korean or Japanese.`;
 
@@ -53,6 +54,7 @@ export async function generateAvatarFromText(text: string): Promise<AvatarConfig
     top: parsed.top || 'tshirt',
     topColor: parsed.topColor || TOP_COLORS[0],
     bottom: parsed.bottom || 'jeans',
+    bottomColor: parsed.bottomColor || BOTTOM_COLORS[0],
     accessory: parsed.accessory || 'none',
   };
 }
