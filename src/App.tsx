@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './styles/global.css';
 import SeatFinder from './pages/SeatFinder';
 import AvatarDecorator from './pages/AvatarDecorator';
