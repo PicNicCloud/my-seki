@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './styles/global.css';
 import { SUBWAY_LINES, DEFAULT_AVATAR } from './data/subwayData';
 import type { AvatarConfig } from './data/subwayData';
+import { I18nProvider, useI18n } from './i18n';
+import LanguageToggle from './components/LanguageToggle';
 import Landing from './pages/Landing';
 import LineSelect from './pages/LineSelect';
 import Home from './pages/Home';
@@ -21,7 +23,7 @@ type Page =
   | 'waiting'
   | 'profile';
 
-function App() {
+function AppContent() {
   const [currentPage, setCurrentPage] = useState<Page>('landing');
   const [selectedLineId, setSelectedLineId] = useState<number>(2);
   const [selectedCar, setSelectedCar] = useState<number>(1);
@@ -107,10 +109,12 @@ function App() {
     }
   };
 
+  const { t } = useI18n();
   const showBottomNav = ['finder', 'avatar', 'profile'].includes(currentPage);
 
   return (
     <>
+      <LanguageToggle />
       <div className={`app-container ${showBottomNav ? 'has-nav' : ''}`}>
         {renderPage()}
       </div>
@@ -122,25 +126,33 @@ function App() {
             onClick={() => setCurrentPage('finder')}
           >
             <span className="nav-icon">🪑</span>
-            <span>좌석 찾기</span>
+            <span>{t('nav.finder')}</span>
           </button>
           <button
             className={`nav-item ${currentPage === 'avatar' ? 'active' : ''}`}
             onClick={() => setCurrentPage('avatar')}
           >
             <span className="nav-icon">🧑</span>
-            <span>내 아바타</span>
+            <span>{t('nav.avatar')}</span>
           </button>
           <button
             className={`nav-item ${currentPage === 'profile' ? 'active' : ''}`}
             onClick={() => setCurrentPage('profile')}
           >
             <span className="nav-icon">⚙️</span>
-            <span>설정</span>
+            <span>{t('nav.settings')}</span>
           </button>
         </nav>
       )}
     </>
+  );
+}
+
+function App() {
+  return (
+    <I18nProvider>
+      <AppContent />
+    </I18nProvider>
   );
 }
 

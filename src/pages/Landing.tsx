@@ -1,4 +1,5 @@
 import React from 'react';
+import { useI18n } from '../i18n';
 import './Landing.css';
 
 interface LandingProps {
@@ -6,6 +7,8 @@ interface LandingProps {
 }
 
 const Landing: React.FC<LandingProps> = ({ onStart }) => {
+  const { t } = useI18n();
+
   return (
     <div className="landing-page">
       <div className="landing-bg">
@@ -45,21 +48,24 @@ const Landing: React.FC<LandingProps> = ({ onStart }) => {
 
         <div className="landing-text">
           <h1 className="app-title">
-            지하철<br />자리의 주인
+            {t('landing.title').split('\n').map((line, i) => (
+              <React.Fragment key={i}>{i > 0 && <br />}{line}</React.Fragment>
+            ))}
           </h1>
           <p className="app-subtitle">
-            내릴 사람을 미리 찾고<br />
-            포근하게 앉아서 가세요 🍃
+            {t('landing.subtitle').split('\n').map((line, i) => (
+              <React.Fragment key={i}>{i > 0 && <br />}{line}</React.Fragment>
+            ))}
           </p>
         </div>
       </div>
 
       <div className="landing-footer">
         <button className="start-btn submit-btn green" onClick={onStart}>
-          🚃 기차 타기
+          {t('landing.start')}
         </button>
         <p className="login-link">
-          이미 캐릭터가 있나요? <span>로그인</span>
+          {t('landing.login')} <span>{t('landing.loginLink')}</span>
         </p>
       </div>
     </div>

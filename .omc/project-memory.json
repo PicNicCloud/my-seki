@@ -125,26 +125,56 @@
     },
     {
       "path": "src/App.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1776307102079,
+      "accessCount": 11,
+      "lastAccessed": 1776307924122,
       "type": "file"
     },
     {
       "path": "src/pages/AvatarDecorator.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1776307151954,
+      "accessCount": 4,
+      "lastAccessed": 1776307965573,
       "type": "file"
     },
     {
       "path": "src/pages/SeatFinder.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1776307205745,
+      "accessCount": 4,
+      "lastAccessed": 1776307998260,
       "type": "file"
     },
     {
       "path": "src/pages/ProfileRegistration.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1776308012852,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Landing.tsx",
       "accessCount": 3,
-      "lastAccessed": 1776307220235,
+      "lastAccessed": 1776307940873,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/LineSelect.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776307946240,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Home.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776307952266,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/RegisterSeat.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776307974642,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Waiting.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776308005760,
       "type": "file"
     },
     {
@@ -160,33 +190,21 @@
       "type": "file"
     },
     {
-      "path": "src/pages/Landing.tsx",
+      "path": "src/i18n.tsx",
       "accessCount": 2,
-      "lastAccessed": 1776307120798,
+      "lastAccessed": 1776307866112,
       "type": "file"
     },
     {
-      "path": "src/pages/LineSelect.tsx",
+      "path": "src/components/LanguageToggle.tsx",
       "accessCount": 2,
-      "lastAccessed": 1776307138362,
+      "lastAccessed": 1776307879448,
       "type": "file"
     },
     {
-      "path": "src/pages/Home.tsx",
+      "path": "src/components/LanguageToggle.css",
       "accessCount": 2,
-      "lastAccessed": 1776307145422,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/RegisterSeat.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1776307197705,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/Waiting.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1776307212682,
+      "lastAccessed": 1776307883570,
       "type": "file"
     },
     {
@@ -266,24 +284,6 @@
       "accessCount": 1,
       "lastAccessed": 1776306943487,
       "type": "directory"
-    },
-    {
-      "path": "src/i18n.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1776307040217,
-      "type": "file"
-    },
-    {
-      "path": "src/components/LanguageToggle.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1776307054943,
-      "type": "file"
-    },
-    {
-      "path": "src/components/LanguageToggle.css",
-      "accessCount": 1,
-      "lastAccessed": 1776307056718,
-      "type": "file"
     }
   ],
   "userDirectives": []
