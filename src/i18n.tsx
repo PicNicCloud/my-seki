@@ -172,6 +172,7 @@ const translations = {
   'item.excited': { ko: '신남', ja: 'ワクワク' },
   // Avatar items - hair
   'item.short': { ko: '짧은 머리', ja: 'ショート' },
+  'item.bangs': { ko: '내림머리', ja: '前髪おろし' },
   'item.long': { ko: '긴 머리', ja: 'ロング' },
   'item.curly': { ko: '곱슬', ja: 'カーリー' },
   'item.tied': { ko: '묶은 머리', ja: 'まとめ髪' },

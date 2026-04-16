@@ -19,7 +19,7 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
   const skinGrad = `radial-gradient(ellipse at 40% 35%, color-mix(in srgb, ${skinColor} 60%, white) 0%, ${skinColor} 50%, color-mix(in srgb, ${skinColor} 75%, #5D4037) 100%)`;
   const bodyGrad = `linear-gradient(180deg, color-mix(in srgb, ${topColor} 80%, white) 0%, ${topColor} 50%, color-mix(in srgb, ${topColor} 80%, #333) 100%)`;
   const legGrad = `linear-gradient(180deg, ${bottomColor} 0%, color-mix(in srgb, ${bottomColor} 80%, #222) 100%)`;
-  const showBareLeg = bottom === 'skirt';
+  const showBareLeg = bottom === 'skirt' || bottom === 'shorts';
 
   return (
     <div
@@ -94,6 +94,12 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
           {bottom === 'skirt' && (
             <div className="av-skirt-piece" style={{ background: legGrad }} />
           )}
+          {bottom === 'shorts' && (
+            <>
+              <div className="av-shorts-piece av-shorts-l" style={{ background: legGrad }} />
+              <div className="av-shorts-piece av-shorts-r" style={{ background: legGrad }} />
+            </>
+          )}
         </div>
 
         {/* Shoes */}
@@ -106,7 +112,12 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
         )}
 
         {/* Earbuds */}
-        {accessories.includes('earbuds') && <div className="av-earbuds" />}
+        {accessories.includes('earbuds') && (
+          <>
+            <div className="av-earbud av-earbud-l" />
+            <div className="av-earbud av-earbud-r" />
+          </>
+        )}
         {/* Watch */}
         {accessories.includes('watch') && <div className="av-watch" />}
       </div>

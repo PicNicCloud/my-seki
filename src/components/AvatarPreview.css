@@ -114,6 +114,12 @@
 .av-hair-back--short { width:96px; height:50px; left:22px; top:0; border-radius:50% 50% 30% 30%; }
 .av-hair-front--short { width:66px; height:22px; left:37px; top:4px; border-radius:40% 40% 20% 30%; box-shadow:0 2px 4px rgba(0,0,0,0.08); }
 
+/* bangs — male hair with naturally messy bangs hanging down */
+.av-hair-back--bangs { width:96px; height:50px; left:22px; top:0; border-radius:50% 50% 30% 30%; }
+.av-hair-front--bangs { width:72px; height:26px; left:34px; top:2px; border-radius:40% 50% 25% 35%; box-shadow:0 2px 4px rgba(0,0,0,0.08); }
+.av-hair-front--bangs::before { content:''; position:absolute; background:inherit; width:16px; height:12px; bottom:-8px; left:8px; border-radius:30% 20% 50% 50%; transform:rotate(-5deg); }
+.av-hair-front--bangs::after { content:''; position:absolute; background:inherit; width:18px; height:10px; bottom:-6px; right:8px; border-radius:20% 30% 50% 50%; transform:rotate(4deg); }
+
 /* long — feminine long hair (extends behind body, body covers bottom) */
 .av-hair-back--long { width:100px; height:110px; left:20px; top:-2px; border-radius:48% 48% 30% 30%; }
 .av-hair-front--long { width:78px; height:24px; left:31px; top:4px; border-radius:4px 4px 50% 50%; box-shadow:0 2px 4px rgba(0,0,0,0.08); }
@@ -280,11 +286,13 @@
 .av-legs--skirt .av-leg-r { right:14px; }
 .av-skirt-piece { position:absolute; top:-4px; left:4px; width:60px; height:14px; border-radius:2px 2px 40% 40%; z-index:1; box-shadow:inset 0 -2px 4px rgba(0,0,0,0.06); }
 
-/* shorts — clearly shorter, not skirt-like */
-/* shorts — short pants, two separate legs clearly visible */
-.av-legs--shorts .av-leg { width:15px; height:14px; border-radius:4px 4px 3px 3px; }
-.av-legs--shorts .av-leg-l { left:10px; }
-.av-legs--shorts .av-leg-r { right:10px; }
+/* shorts — half-length pants with bare legs visible below */
+.av-legs--shorts .av-leg { width:12px; height:16px; border-radius:4px 4px 3px 3px; }
+.av-legs--shorts .av-leg-l { left:12px; }
+.av-legs--shorts .av-leg-r { right:12px; }
+.av-shorts-piece { position:absolute; top:-2px; width:24px; height:10px; border-radius:3px 3px 5px 5px; z-index:1; box-shadow:inset 0 -2px 4px rgba(0,0,0,0.06); }
+.av-shorts-l { left:4px; }
+.av-shorts-r { right:4px; }
 
 .av-legs--jogger .av-leg { width:18px; height:16px; border-radius:6px 6px 4px 4px; clip-path:polygon(0% 0%,100% 0%,85% 90%,80% 100%,20% 100%,15% 90%); }
 .av-legs--jogger .av-leg-l { left:8px; }
@@ -312,11 +320,10 @@
 .av-hp-cup-l { left:18px; }
 .av-hp-cup-r { right:18px; }
 
-/* Earbuds — positioned at ear level */
-.av-earbuds { position:absolute; z-index:6; }
-.av-earbuds::before, .av-earbuds::after { content:''; position:absolute; width:6px; height:6px; background:white; border-radius:50%; box-shadow:0 1px 3px rgba(0,0,0,0.25); top:46px; }
-.av-earbuds::before { left:16px; }
-.av-earbuds::after { right:16px; }
+/* Earbuds — positioned at ear level on both sides of face */
+.av-earbud { position:absolute; width:6px; height:6px; background:white; border-radius:50%; box-shadow:0 1px 3px rgba(0,0,0,0.25); top:44px; z-index:6; }
+.av-earbud-l { left:19px; }
+.av-earbud-r { right:19px; }
 
 /* Watch — on left wrist near arm */
 .av-watch { position:absolute; width:7px; height:5px; background:#333; border:1.5px solid #999; border-radius:2px; left:22px; top:104px; z-index:6; }

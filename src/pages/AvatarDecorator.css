@@ -445,6 +445,30 @@
   left: -3px;
 }
 
+.mini-hair--bangs {
+  height: 26px;
+  position: relative;
+  border-radius: 50% 50% 20% 30%;
+}
+.mini-hair--bangs::before {
+  content: '';
+  position: absolute;
+  background: inherit;
+  width: 10px; height: 6px;
+  bottom: -4px; left: 4px;
+  border-radius: 30% 20% 50% 50%;
+  transform: rotate(-4deg);
+}
+.mini-hair--bangs::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  width: 12px; height: 5px;
+  bottom: -3px; right: 4px;
+  border-radius: 20% 30% 50% 50%;
+  transform: rotate(3deg);
+}
+
 .mini-hair--buzz {
   height: 20px;
   opacity: 0.5;

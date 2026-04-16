@@ -67,6 +67,7 @@ const KEYWORD_RULES: KeywordRule[] = [
 
   // ── Hair ──
   { field: 'hair', value: 'short', keywords: ['짧은 머리', '숏컷', '숏', 'ショート', '短い髪', '短髪'], priority: 2 },
+  { field: 'hair', value: 'bangs', keywords: ['내림머리', '앞머리', '뱅', 'バング', '前髪おろし', '前髪'], priority: 2 },
   { field: 'hair', value: 'long', keywords: ['긴 머리', '장발', '롱', 'ロング', '長い髪', '長髪'], priority: 2 },
   { field: 'hair', value: 'curly', keywords: ['곱슬', '웨이브', '파마', 'カーリー', 'パーマ', '巻き', 'ウェーブ'] },
   { field: 'hair', value: 'tied', keywords: ['묶은', '포니테일', '묶음', 'ポニーテール', '束ね', '結び', '포니'] },

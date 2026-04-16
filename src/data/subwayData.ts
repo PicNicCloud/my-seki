@@ -99,6 +99,7 @@ export const AVATAR_CATEGORIES: AvatarCategory[] = [
     key: 'hair', label: '헤어',
     items: [
       { id: 'short', label: '짧은 머리' },
+      { id: 'bangs', label: '내림머리' },
       { id: 'long', label: '긴 머리' },
       { id: 'bob', label: '단발' },
       { id: 'curly', label: '곱슬' },
