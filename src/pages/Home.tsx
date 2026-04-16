@@ -1,5 +1,6 @@
 import React from 'react';
 import type { SubwayLine } from '../data/subwayData';
+import { useI18n } from '../i18n';
 import './Home.css';
 
 interface HomeProps {
@@ -9,13 +10,14 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ line, onSelectCar, onBack }) => {
+  const { t } = useI18n();
   const cars = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <div className="home-page page-enter">
       <header className="page-header">
         <button className="back-btn" onClick={onBack}>←</button>
-        <h2 className="page-title">칸 선택</h2>
+        <h2 className="page-title">{t('home.title')}</h2>
         <div className="header-spacer" />
       </header>
 
@@ -27,8 +29,12 @@ const Home: React.FC<HomeProps> = ({ line, onSelectCar, onBack }) => {
           >
             {line.id}
           </div>
-          <h1 className="home-title">{line.name} 어느 칸에<br />계신가요?</h1>
-          <p className="home-subtitle">현재 탑승하신 칸을 선택해주세요</p>
+          <h1 className="home-title">
+            {(line.name + t('home.heading')).split('\n').map((text, i) => (
+              <React.Fragment key={i}>{i > 0 && <br />}{text}</React.Fragment>
+            ))}
+          </h1>
+          <p className="home-subtitle">{t('home.subtitle')}</p>
         </div>
 
         <div className="cars-grid">
@@ -43,13 +49,13 @@ const Home: React.FC<HomeProps> = ({ line, onSelectCar, onBack }) => {
                 <div className="car-window" />
                 <div className="car-window" />
               </div>
-              <div className="car-label">{num}호차</div>
+              <div className="car-label">{num}{t('home.car')}</div>
             </button>
           ))}
         </div>
 
         <div className="info-box">
-          <p>🍃 칸을 선택하면 같은 칸에서 내릴 사람을 찾을 수 있어요</p>
+          <p>{t('home.info')}</p>
         </div>
       </div>
     </div>
