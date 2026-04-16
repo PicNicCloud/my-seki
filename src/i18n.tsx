@@ -73,6 +73,12 @@ const translations = {
   // AvatarDecorator
   'avatar.title': { ko: '아바타 꾸미기', ja: 'アバターを作る' },
   'avatar.complete': { ko: '완성!', ja: '完成！' },
+  'avatar.tabManual': { ko: '직접 꾸미기', ja: '手動カスタム' },
+  'avatar.tabAI': { ko: 'AI 생성', ja: 'AI生成' },
+  'avatar.aiPlaceholder': { ko: '인상착의를 문장으로 입력하세요\n예: 짧은 머리에 회색 후드, 안경 쓰고 청바지', ja: '服装を文章で入力してください\n例：ショートヘアにグレーパーカー、メガネにジーンズ' },
+  'avatar.aiGenerate': { ko: '아바타 생성', ja: 'アバター生成' },
+  'avatar.aiGenerating': { ko: '생성 중...', ja: '生成中...' },
+  'avatar.aiError': { ko: '생성에 실패했어요. 다시 시도해주세요', ja: '生成に失敗しました。もう一度お試しください' },
   'avatar.skinColor': { ko: '피부색', ja: '肌の色' },
   'avatar.hairColor': { ko: '머리색', ja: '髪の色' },
   'avatar.topColor': { ko: '옷 색상', ja: '服の色' },

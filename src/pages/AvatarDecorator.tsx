@@ -7,6 +7,7 @@ import {
 } from '../data/subwayData';
 import type { AvatarConfig } from '../data/subwayData';
 import { useI18n } from '../i18n';
+import { generateAvatarFromText } from '../api/gemini';
 import AvatarPreview from '../components/AvatarPreview';
 import './AvatarDecorator.css';
 
@@ -32,7 +33,25 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
   showBack = true,
 }) => {
   const { t } = useI18n();
+  const [mode, setMode] = useState<'manual' | 'ai'>('manual');
   const [activeCategory, setActiveCategory] = useState(0);
+  const [aiText, setAiText] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState(false);
+
+  const handleAiGenerate = async () => {
+    if (!aiText.trim() || aiLoading) return;
+    setAiLoading(true);
+    setAiError(false);
+    try {
+      const config = await generateAvatarFromText(aiText);
+      onUpdateAvatar(config);
+    } catch {
+      setAiError(true);
+    } finally {
+      setAiLoading(false);
+    }
+  };
 
   const currentCategory = AVATAR_CATEGORIES[activeCategory];
   const currentValue = avatar[currentCategory.key as keyof AvatarConfig];
@@ -68,8 +87,45 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
         </div>
       </div>
 
+      {/* Mode Tabs */}
+      <div className="mode-tabs">
+        <button
+          className={`mode-tab ${mode === 'manual' ? 'active' : ''}`}
+          onClick={() => setMode('manual')}
+        >
+          {t('avatar.tabManual')}
+        </button>
+        <button
+          className={`mode-tab ${mode === 'ai' ? 'active' : ''}`}
+          onClick={() => setMode('ai')}
+        >
+          {t('avatar.tabAI')}
+        </button>
+      </div>
+
+      {/* AI Panel */}
+      {mode === 'ai' && (
+        <div className="ai-panel">
+          <textarea
+            className="ai-textarea"
+            placeholder={t('avatar.aiPlaceholder')}
+            value={aiText}
+            onChange={(e) => { setAiText(e.target.value); setAiError(false); }}
+            rows={3}
+          />
+          <button
+            className={`ai-generate-btn submit-btn ${!aiText.trim() || aiLoading ? 'disabled' : ''}`}
+            onClick={handleAiGenerate}
+            disabled={!aiText.trim() || aiLoading}
+          >
+            {aiLoading ? t('avatar.aiGenerating') : t('avatar.aiGenerate')}
+          </button>
+          {aiError && <p className="ai-error">{t('avatar.aiError')}</p>}
+        </div>
+      )}
+
       {/* Customization Panel */}
-      <div className="customization-panel">
+      {mode === 'manual' && <div className="customization-panel">
         <nav className="category-nav">
           {AVATAR_CATEGORIES.map((cat, idx) => (
             <button
@@ -122,7 +178,7 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
             </div>
           )}
         </div>
-      </div>
+      </div>}
 
       <div className="footer-btn-container">
         <button className="submit-btn" onClick={onComplete}>

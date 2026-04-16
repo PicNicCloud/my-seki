@@ -29,6 +29,70 @@
 }
 
 /* ── Customization Panel ─────────────────────── */
+/* Mode Tabs */
+.mode-tabs {
+  display: flex;
+  gap: 0;
+  margin: 0 20px 0;
+}
+
+.mode-tab {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-sub);
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.mode-tab.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* AI Panel */
+.ai-panel {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ai-textarea {
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-main);
+  background: var(--card-bg);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  resize: none;
+  outline: none;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+
+.ai-textarea:focus {
+  border-color: var(--primary-color);
+}
+
+.ai-generate-btn {
+  margin-top: 4px;
+}
+
+.ai-error {
+  font-size: 13px;
+  color: #FF5050;
+  text-align: center;
+  padding: 8px;
+  background: #FFF0F0;
+  border-radius: var(--border-radius-sm);
+}
+
 .customization-panel {
   flex: 1;
   background: white;

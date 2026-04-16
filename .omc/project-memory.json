@@ -131,8 +131,8 @@
     },
     {
       "path": "src/i18n.tsx",
-      "accessCount": 23,
-      "lastAccessed": 1776318168604,
+      "accessCount": 24,
+      "lastAccessed": 1776318418469,
       "type": "file"
     },
     {
@@ -154,6 +154,12 @@
       "type": "file"
     },
     {
+      "path": "src/pages/AvatarDecorator.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1776318513238,
+      "type": "file"
+    },
+    {
       "path": "src/pages/RegisterSeat.tsx",
       "accessCount": 12,
       "lastAccessed": 1776316080099,
@@ -161,8 +167,8 @@
     },
     {
       "path": "src/data/subwayData.ts",
-      "accessCount": 10,
-      "lastAccessed": 1776316014699,
+      "accessCount": 11,
+      "lastAccessed": 1776318402359,
       "type": "file"
     },
     {
@@ -190,12 +196,6 @@
       "type": "file"
     },
     {
-      "path": "src/pages/AvatarDecorator.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1776315675437,
-      "type": "file"
-    },
-    {
       "path": "src/components/LanguageToggle.css",
       "accessCount": 5,
       "lastAccessed": 1776309280071,
@@ -211,6 +211,12 @@
       "path": "src/pages/CountrySelect.tsx",
       "accessCount": 5,
       "lastAccessed": 1776318043470,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/AvatarDecorator.css",
+      "accessCount": 5,
+      "lastAccessed": 1776318542891,
       "type": "file"
     },
     {
@@ -235,12 +241,6 @@
       "path": "src/pages/Login.tsx",
       "accessCount": 3,
       "lastAccessed": 1776318200874,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/AvatarDecorator.css",
-      "accessCount": 2,
-      "lastAccessed": 1776315681454,
       "type": "file"
     },
     {
@@ -355,6 +355,18 @@
       "path": "src/pages/Login.css",
       "accessCount": 1,
       "lastAccessed": 1776316298898,
+      "type": "file"
+    },
+    {
+      "path": ".env",
+      "accessCount": 1,
+      "lastAccessed": 1776318388940,
+      "type": "file"
+    },
+    {
+      "path": "src/api/gemini.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776318434368,
       "type": "file"
     }
   ],
