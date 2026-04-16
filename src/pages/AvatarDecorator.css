@@ -233,50 +233,74 @@
 /* Mini Previews for grid items                    */
 /* ─────────────────────────────────────────────── */
 
-/* ── Mini Face (expression) ──────────────────── */
+/* ── Mini Face (expression) — AC round style ── */
 .mini-face {
-  width: 36px;
-  height: 38px;
-  border-radius: 50% 50% 46% 46%;
+  width: 38px;
+  height: 36px;
+  border-radius: 50%;
   position: relative;
   box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.1),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.06);
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .mini-eyes {
   position: absolute;
-  top: 15px;
+  top: 14px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 9px;
 }
 
 .mini-eye {
-  width: 4px;
-  height: 4px;
-  background: #3D2C22;
-  border-radius: 50%;
-}
-
-/* Mini expression variants */
-.mini-eyes--cool .mini-eye {
-  width: 6px;
-  height: 2px;
-  border-radius: 1px;
-  margin-top: 1px;
-}
-
-.mini-eyes--lovely .mini-eye {
   width: 5px;
   height: 5px;
-  background: #E85D75;
-  clip-path: polygon(50% 0%, 0% 35%, 15% 100%, 85% 100%, 100% 35%);
-  border-radius: 0;
+  background: #2C2C2C;
+  border-radius: 50%;
+  position: relative;
 }
 
+/* Happy — round with highlight */
+.mini-eyes--happy .mini-eye::after {
+  content: '';
+  position: absolute;
+  width: 1.5px; height: 1.5px;
+  background: white; border-radius: 50%;
+  top: 0.5px; left: 1px;
+}
+
+/* Cool — half-lidded */
+.mini-eyes--cool .mini-eye {
+  width: 7px;
+  height: 3px;
+  border-radius: 50%;
+  margin-top: 1px;
+}
+.mini-eyes--cool .mini-eye::after {
+  content: '';
+  position: absolute;
+  width: 1.5px; height: 1.5px;
+  background: white; border-radius: 50%;
+  top: 0; left: 1px;
+}
+
+/* Lovely — pink sparkly */
+.mini-eyes--lovely .mini-eye {
+  width: 6px;
+  height: 6px;
+  background: #E85D75;
+}
+.mini-eyes--lovely .mini-eye::after {
+  content: '';
+  position: absolute;
+  width: 2px; height: 2px;
+  background: white; border-radius: 50%;
+  top: 0.5px; left: 1px;
+}
+
+/* Sleepy — closed arcs */
 .mini-eyes--sleepy .mini-eye {
   width: 6px;
   height: 3px;
@@ -285,20 +309,32 @@
   background: transparent;
 }
 
+/* Proud — flat-top determined */
 .mini-eyes--proud .mini-eye {
   width: 5px;
   height: 4px;
-  clip-path: polygon(0% 40%, 100% 0%, 100% 100%, 0% 100%);
-  border-radius: 0;
+  border-radius: 1px 1px 50% 50%;
 }
-.mini-eyes--proud .mini-eye:last-child {
-  clip-path: polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%);
+.mini-eyes--proud .mini-eye::after {
+  content: '';
+  position: absolute;
+  width: 1.5px; height: 1.5px;
+  background: white; border-radius: 50%;
+  top: 0.5px; left: 1px;
 }
 
+/* Chill — relaxed */
 .mini-eyes--chill .mini-eye {
   width: 5px;
-  height: 3px;
+  height: 3.5px;
   margin-top: 1px;
+}
+.mini-eyes--chill .mini-eye::after {
+  content: '';
+  position: absolute;
+  width: 1.5px; height: 1.5px;
+  background: white; border-radius: 50%;
+  top: 0; left: 1px;
 }
 
 .mini-mouth {
@@ -308,32 +344,34 @@
 }
 
 .mini-mouth--happy {
-  top: 24px;
-  width: 8px;
-  height: 4px;
+  top: 23px;
+  width: 7px;
+  height: 3.5px;
   border-bottom: 2px solid #3D2C22;
+  border-left: 1.5px solid #3D2C22;
+  border-right: 1.5px solid #3D2C22;
   border-radius: 0 0 50% 50%;
 }
 
 .mini-mouth--cool {
-  top: 26px;
-  width: 5px;
+  top: 25px;
+  width: 4px;
   border-bottom: 2px solid #3D2C22;
   border-radius: 1px;
 }
 
 .mini-mouth--lovely {
-  top: 24px;
-  width: 5px;
+  top: 23px;
+  width: 4px;
   height: 3px;
   background: #E85D75;
-  border-radius: 0 0 50% 50%;
+  border-radius: 50%;
   opacity: 0.5;
 }
 
 .mini-mouth--sleepy {
-  top: 25px;
-  width: 4px;
+  top: 24px;
+  width: 3.5px;
   height: 3px;
   border: 1.5px solid #3D2C22;
   border-radius: 50%;
@@ -341,15 +379,15 @@
 }
 
 .mini-mouth--proud {
-  top: 24px;
-  width: 8px;
+  top: 23px;
+  width: 7px;
   border-bottom: 2px solid #3D2C22;
   border-radius: 0 0 30% 30%;
 }
 
 .mini-mouth--chill {
-  top: 26px;
-  width: 6px;
+  top: 25px;
+  width: 5px;
   border-bottom: 2px solid #3D2C22;
   border-radius: 0 0 50% 50%;
 }
@@ -448,13 +486,79 @@
 
 /* ── Mini Bottom ─────────────────────────────── */
 .mini-bottom {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px 4px 8px 8px;
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.1),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+  width: 32px;
+  height: 32px;
+  position: relative;
 }
+
+/* Two-leg base shape via pseudo-elements */
+.mini-bottom::before,
+.mini-bottom::after {
+  content: '';
+  position: absolute;
+  background: var(--mb-color, #666);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    inset 0 -1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Jeans — straight legs */
+.mini-bottom--jeans::before, .mini-bottom--jeans::after {
+  width: 11px; height: 26px;
+  bottom: 0; border-radius: 3px 3px 2px 2px;
+}
+.mini-bottom--jeans::before { left: 3px; }
+.mini-bottom--jeans::after { right: 3px; }
+
+/* Slacks — wider, straight */
+.mini-bottom--slacks::before, .mini-bottom--slacks::after {
+  width: 12px; height: 28px;
+  bottom: 0; border-radius: 2px 2px 1px 1px;
+}
+.mini-bottom--slacks::before { left: 2px; }
+.mini-bottom--slacks::after { right: 2px; }
+
+/* Skirt — A-line shape */
+.mini-bottom--skirt::before {
+  width: 28px; height: 18px;
+  top: 0; left: 2px;
+  border-radius: 2px 2px 50% 50%;
+}
+.mini-bottom--skirt::after {
+  display: none;
+}
+
+/* Shorts — short + legs */
+.mini-bottom--shorts::before {
+  width: 26px; height: 12px;
+  top: 0; left: 3px;
+  border-radius: 2px 2px 4px 4px;
+}
+.mini-bottom--shorts::after {
+  width: 20px; height: 10px;
+  bottom: 4px; left: 6px;
+  background: #FFDCB5;
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+/* Jogger — tapered */
+.mini-bottom--jogger::before, .mini-bottom--jogger::after {
+  width: 12px; height: 26px;
+  bottom: 0;
+  border-radius: 4px 4px 3px 3px;
+  clip-path: polygon(0% 0%, 100% 0%, 85% 90%, 80% 100%, 20% 100%, 15% 90%);
+}
+.mini-bottom--jogger::before { left: 2px; }
+.mini-bottom--jogger::after { right: 2px; }
+
+/* Leggings — slim */
+.mini-bottom--leggings::before, .mini-bottom--leggings::after {
+  width: 8px; height: 28px;
+  bottom: 0; border-radius: 3px 3px 2px 2px;
+}
+.mini-bottom--leggings::before { left: 5px; }
+.mini-bottom--leggings::after { right: 5px; }
 
 /* ── Mini Accessory ──────────────────────────── */
 .mini-acc {

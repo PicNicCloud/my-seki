@@ -46,6 +46,7 @@ export interface AvatarConfig {
   top: string;
   topColor: string;
   bottom: string;
+  bottomColor: string;
   accessory: string;
 }
 
@@ -57,12 +58,14 @@ export const DEFAULT_AVATAR: AvatarConfig = {
   top: 'hoodie',
   topColor: '#808080',
   bottom: 'jeans',
+  bottomColor: '#4A6FA5',
   accessory: 'none',
 };
 
 export const SKIN_COLORS = ['#FFDCB5', '#F5C6A0', '#E8AB8B', '#C68F6E', '#A06B4E', '#7B4F35'];
 export const HAIR_COLORS = ['#2C2C2C', '#5C3A1E', '#D4A56A', '#C44030', '#4A7FBA', '#E88CB5'];
 export const TOP_COLORS = ['#2C2C2C', '#F5F5F5', '#808080', '#4A7FBA', '#C44030', '#5B8C5A'];
+export const BOTTOM_COLORS = ['#4A6FA5', '#2C2C2C', '#3D3D3D', '#C8B89A', '#5B7A5E', '#8B6B50'];
 export interface AvatarItem {
   id: string;
   label: string;
