@@ -47,7 +47,7 @@ export interface AvatarConfig {
   topColor: string;
   bottom: string;
   bottomColor: string;
-  accessory: string;
+  accessories: string[];
 }
 
 export const DEFAULT_AVATAR: AvatarConfig = {
@@ -59,7 +59,7 @@ export const DEFAULT_AVATAR: AvatarConfig = {
   topColor: '#808080',
   bottom: 'jeans',
   bottomColor: '#4A6FA5',
-  accessory: 'none',
+  accessories: [],
 };
 
 export const SKIN_COLORS = ['#FFF0E0', '#FFE8D0', '#FFDCB5', '#F5C6A0', '#E8AB8B', '#C68F6E', '#A06B4E', '#7B4F35'];
@@ -100,18 +100,17 @@ export const AVATAR_CATEGORIES: AvatarCategory[] = [
     items: [
       { id: 'short', label: '짧은 머리' },
       { id: 'long', label: '긴 머리' },
-      { id: 'curly', label: '곱슬' },
-      { id: 'tied', label: '묶은 머리' },
-      { id: 'cap', label: '모자 착용' },
-      { id: 'buzz', label: '짧은 커트' },
       { id: 'bob', label: '단발' },
+      { id: 'curly', label: '곱슬' },
+      { id: 'wavy', label: '웨이브' },
+      { id: 'tied', label: '묶은 머리' },
       { id: 'twintail', label: '양갈래' },
       { id: 'bun', label: '똥머리' },
-      { id: 'wavy', label: '웨이브' },
+      { id: 'ponytail', label: '포니테일' },
       { id: 'spiky', label: '삐침머리' },
       { id: 'parted', label: '가르마' },
       { id: 'slickback', label: '올백' },
-      { id: 'ponytail', label: '포니테일' },
+      { id: 'buzz', label: '짧은 커트' },
       { id: 'bald', label: '대머리' },
     ],
   },
@@ -127,6 +126,7 @@ export const AVATAR_CATEGORIES: AvatarCategory[] = [
       { id: 'sweater', label: '스웨터' },
       { id: 'vest', label: '조끼' },
       { id: 'blazer', label: '블레이저' },
+      { id: 'onepiece', label: '원피스' },
     ],
   },
   {
@@ -150,6 +150,7 @@ export const AVATAR_CATEGORIES: AvatarCategory[] = [
       { id: 'bag', label: '가방' },
       { id: 'earbuds', label: '이어버드' },
       { id: 'watch', label: '시계' },
+      { id: 'cap', label: '모자' },
       { id: 'none', label: '없음' },
     ],
   },
@@ -171,6 +172,8 @@ export function getAvatarDescription(
   if (config.hair) parts.push(t(config.hair));
   if (config.top) parts.push(t(config.top));
   if (config.bottom) parts.push(t(config.bottom));
-  if (config.accessory && config.accessory !== 'none') parts.push(t(config.accessory));
+  if (config.accessories && config.accessories.length > 0) {
+    config.accessories.forEach((acc) => parts.push(t(acc)));
+  }
   return parts.join(' · ');
 }

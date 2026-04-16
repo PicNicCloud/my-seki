@@ -196,6 +196,7 @@ const translations = {
   'item.sweater': { ko: '스웨터', ja: 'セーター' },
   'item.vest': { ko: '조끼', ja: 'ベスト' },
   'item.blazer': { ko: '블레이저', ja: 'ブレザー' },
+  'item.onepiece': { ko: '원피스', ja: 'ワンピース' },
   // Avatar items - bottom
   'item.jeans': { ko: '청바지', ja: 'ジーンズ' },
   'item.slacks': { ko: '슬랙스', ja: 'スラックス' },

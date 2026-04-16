@@ -60,7 +60,17 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
   const colorPicker = COLOR_PICKERS[currentCategory.key];
 
   const handleSelectItem = (itemId: string) => {
-    onUpdateAvatar({ ...avatar, [currentCategory.key]: itemId });
+    if (currentCategory.key === 'accessory') {
+      if (itemId === 'none') {
+        onUpdateAvatar({ ...avatar, accessories: [] });
+      } else if (avatar.accessories.includes(itemId)) {
+        onUpdateAvatar({ ...avatar, accessories: avatar.accessories.filter((a) => a !== itemId) });
+      } else {
+        onUpdateAvatar({ ...avatar, accessories: [...avatar.accessories, itemId] });
+      }
+    } else {
+      onUpdateAvatar({ ...avatar, [currentCategory.key]: itemId });
+    }
   };
 
   const handleSelectColor = (color: string) => {
@@ -146,7 +156,7 @@ const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
             {currentCategory.items.map((item) => (
               <button
                 key={item.id}
-                className={`grid-item ${currentValue === item.id ? 'selected' : ''}`}
+                className={`grid-item ${(currentCategory.key === 'accessory' ? (item.id === 'none' ? avatar.accessories.length === 0 : avatar.accessories.includes(item.id)) : currentValue === item.id) ? 'selected' : ''}`}
                 onClick={() => handleSelectItem(item.id)}
               >
                 <MiniPreview

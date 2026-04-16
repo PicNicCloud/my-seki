@@ -14,12 +14,12 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
   animate = false,
 }) => {
   const scale = size / 140;
-  const { expression, skinColor, hair, hairColor, top, topColor, bottom, bottomColor, accessory } = config;
+  const { expression, skinColor, hair, hairColor, top, topColor, bottom, bottomColor, accessories } = config;
 
   const skinGrad = `radial-gradient(ellipse at 40% 35%, color-mix(in srgb, ${skinColor} 60%, white) 0%, ${skinColor} 50%, color-mix(in srgb, ${skinColor} 75%, #5D4037) 100%)`;
   const bodyGrad = `linear-gradient(180deg, color-mix(in srgb, ${topColor} 80%, white) 0%, ${topColor} 50%, color-mix(in srgb, ${topColor} 80%, #333) 100%)`;
   const legGrad = `linear-gradient(180deg, ${bottomColor} 0%, color-mix(in srgb, ${bottomColor} 80%, #222) 100%)`;
-  const showBareLeg = bottom === 'skirt' || bottom === 'shorts';
+  const showBareLeg = bottom === 'skirt';
 
   return (
     <div
@@ -34,7 +34,7 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
         <div className={`av-hair-back av-hair-back--${hair}`} style={{ background: hairColor }} />
 
         {/* Headphones band */}
-        {accessory === 'headphones' && <div className="av-headphones-band" />}
+        {accessories.includes('headphones') && <div className="av-headphones-band" />}
 
         {/* Head */}
         <div className="av-head" style={{ background: skinGrad }}>
@@ -46,7 +46,7 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
           <div className="av-blush av-blush-l" />
           <div className="av-blush av-blush-r" />
           <div className={`av-mouth av-mouth--${expression}`} />
-          {accessory === 'glasses' && (
+          {accessories.includes('glasses') && (
             <div className="av-glasses">
               <div className="av-glass-l" />
               <div className="av-glass-bridge" />
@@ -59,7 +59,7 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
         <div className={`av-hair-front av-hair-front--${hair}`} style={{ background: hairColor }} />
 
         {/* Headphone cups */}
-        {accessory === 'headphones' && (
+        {accessories.includes('headphones') && (
           <>
             <div className="av-hp-cup av-hp-cup-l" />
             <div className="av-hp-cup av-hp-cup-r" />
@@ -70,9 +70,12 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
         <div className="av-arm av-arm-l" style={{ background: skinColor }} />
         <div className="av-arm av-arm-r" style={{ background: skinColor }} />
 
+        {/* Hood (behind head) */}
+        {top === 'hoodie' && <div className="av-hood" style={{ background: bodyGrad }} />}
+
         {/* Body */}
         <div className={`av-body av-body--${top}`} style={{ background: bodyGrad }}>
-          {accessory === 'scarf' && <div className="av-scarf" />}
+          {accessories.includes('scarf') && <div className="av-scarf" />}
           {top === 'shirt' && <div className="av-collar" />}
           {top === 'hoodie' && <div className="av-hood-string" />}
           {top === 'tshirt' && <div className="av-tshirt-neck" />}
@@ -91,9 +94,6 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
           {bottom === 'skirt' && (
             <div className="av-skirt-piece" style={{ background: legGrad }} />
           )}
-          {bottom === 'shorts' && (
-            <div className="av-shorts-piece" style={{ background: legGrad }} />
-          )}
         </div>
 
         {/* Shoes */}
@@ -101,14 +101,14 @@ const AvatarPreview: React.FC<AvatarPreviewProps> = ({
         <div className="av-shoe av-shoe-r" />
 
         {/* Bag strap */}
-        {(accessory === 'backpack' || accessory === 'bag') && (
-          <div className={`av-strap av-strap--${accessory}`} />
+        {(accessories.includes('backpack') || accessories.includes('bag')) && (
+          <div className={`av-strap av-strap--${accessories.includes('backpack') ? 'backpack' : 'bag'}`} />
         )}
 
         {/* Earbuds */}
-        {accessory === 'earbuds' && <div className="av-earbuds" />}
+        {accessories.includes('earbuds') && <div className="av-earbuds" />}
         {/* Watch */}
-        {accessory === 'watch' && <div className="av-watch" />}
+        {accessories.includes('watch') && <div className="av-watch" />}
       </div>
     </div>
   );
