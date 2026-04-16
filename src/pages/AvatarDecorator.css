@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--bg-color);
+  background: linear-gradient(180deg, #EDE7FE 0%, var(--bg-color) 35%);
 }
 
 /* ── Avatar Preview ──────────────────────────── */
@@ -78,6 +78,7 @@
 
 .ai-textarea:focus {
   border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(123, 156, 255, 0.1);
 }
 
 .ai-generate-btn {
