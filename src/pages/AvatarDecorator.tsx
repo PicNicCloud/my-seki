@@ -1,55 +1,112 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AVATAR_CATEGORIES, getAvatarEmoji } from '../data/subwayData';
+import type { AvatarConfig } from '../data/subwayData';
 import './AvatarDecorator.css';
 
-const AvatarDecorator: React.FC = () => {
+interface AvatarDecoratorProps {
+  avatar: AvatarConfig;
+  onUpdateAvatar: (avatar: AvatarConfig) => void;
+  onComplete: () => void;
+  onBack?: () => void;
+  showBack?: boolean;
+}
+
+const AvatarDecorator: React.FC<AvatarDecoratorProps> = ({
+  avatar,
+  onUpdateAvatar,
+  onComplete,
+  onBack,
+  showBack = true,
+}) => {
+  const [activeCategory, setActiveCategory] = useState(0);
+
+  const currentCategory = AVATAR_CATEGORIES[activeCategory];
+  const currentValue = avatar[currentCategory.key as keyof AvatarConfig];
+
+  const handleSelectItem = (itemId: string) => {
+    onUpdateAvatar({
+      ...avatar,
+      [currentCategory.key]: itemId,
+    });
+  };
+
+  const expressionEmoji = getAvatarEmoji(avatar);
+
+  const getSelectedLabel = (catKey: string) => {
+    const cat = AVATAR_CATEGORIES.find((c) => c.key === catKey);
+    const item = cat?.items.find(
+      (i) => i.id === avatar[catKey as keyof AvatarConfig]
+    );
+    return item;
+  };
+
   return (
-    <div className="avatar-decorator">
+    <div className="avatar-decorator page-enter">
       <header className="page-header">
-        <button className="back-btn">{'<'}</button>
+        {showBack && onBack ? (
+          <button className="back-btn" onClick={onBack}>←</button>
+        ) : (
+          <div className="header-spacer" />
+        )}
         <h2 className="page-title">아바타 꾸미기</h2>
-        <div style={{ width: 24 }}></div>
+        <div className="header-spacer" />
       </header>
 
-      <div className="tab-container">
-        <button className="tab active">직접 꾸미기</button>
-        <button className="tab">AI 생성</button>
-      </div>
-
-      <div className="avatar-preview">
-        <div className="avatar-circle-main">
-          {/* Avatar representation using CSS */}
-          <div className="face">
-            <div className="eyes">
-              <div className="eye"></div>
-              <div className="eye"></div>
+      {/* Avatar Preview */}
+      <div className="avatar-preview-section">
+        <div className="avatar-stage">
+          <div className="avatar-glow" />
+          <div className="avatar-body">
+            <div className="avatar-face-circle">
+              <span className="avatar-expression">{expressionEmoji}</span>
             </div>
-            <div className="blush"></div>
-            <div className="mouth"></div>
+            <div className="avatar-outfit-tags">
+              {['hair', 'top', 'bottom', 'accessory'].map((key) => {
+                const item = getSelectedLabel(key);
+                if (!item || item.id === 'none') return null;
+                return (
+                  <span key={key} className="outfit-tag">
+                    {item.emoji} {item.label}
+                  </span>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Customization Panel */}
       <div className="customization-panel">
         <nav className="category-nav">
-          <div className="category-item active">얼굴</div>
-          <div className="category-item">헤어</div>
-          <div className="category-item">상의</div>
-          <div className="category-item">하의</div>
-          <div className="category-item">신발</div>
-          <div className="category-item">악세서리</div>
+          {AVATAR_CATEGORIES.map((cat, idx) => (
+            <button
+              key={cat.key}
+              className={`category-tab ${idx === activeCategory ? 'active' : ''}`}
+              onClick={() => setActiveCategory(idx)}
+            >
+              {cat.label}
+            </button>
+          ))}
         </nav>
 
         <div className="item-grid">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
-            <div key={i} className={`grid-item ${i === 5 ? 'selected' : ''}`}>
-              <div className="item-preview"></div>
-            </div>
+          {currentCategory.items.map((item) => (
+            <button
+              key={item.id}
+              className={`grid-item ${currentValue === item.id ? 'selected' : ''}`}
+              onClick={() => handleSelectItem(item.id)}
+            >
+              <span className="item-emoji">{item.emoji}</span>
+              <span className="item-label">{item.label}</span>
+            </button>
           ))}
         </div>
       </div>
 
       <div className="footer-btn-container">
-        <button className="submit-btn">완료</button>
+        <button className="submit-btn" onClick={onComplete}>
+          완성! ✨
+        </button>
       </div>
     </div>
   );

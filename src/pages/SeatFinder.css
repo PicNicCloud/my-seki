@@ -1,124 +1,152 @@
 .seat-finder {
   padding: 20px;
+  padding-top: 24px;
 }
 
-.header {
-  margin-bottom: 24px;
+.finder-header {
+  margin-bottom: 20px;
 }
 
-.line-info {
+.finder-line-info {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  color: var(--text-sub);
   margin-bottom: 8px;
 }
 
-.line-badge {
-  background: var(--secondary-color);
-  color: white;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: bold;
+.finder-line-text {
+  font-size: 13px;
+  color: var(--text-sub);
+  font-weight: 500;
 }
 
-.station-title {
+.finder-station-title {
   font-size: 24px;
+  font-weight: 800;
   color: var(--text-main);
+  letter-spacing: -0.5px;
   margin-bottom: 4px;
 }
 
-.registered-count {
+.finder-count {
   font-size: 14px;
   color: var(--text-sub);
 }
 
-.station-progress {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  padding: 0 10px;
+.finder-count strong {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
-.node {
-  font-size: 10px;
-  color: var(--text-sub);
+/* Station Progress */
+.station-progress {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 12px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.station-progress::-webkit-scrollbar {
+  display: none;
+}
+
+.progress-node {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
-.node::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ddd;
-  margin-bottom: 4px;
-}
-
-.node.active::before {
-  background: var(--secondary-color);
-}
-
-.node.current::before {
-  background: white;
-  border: 3px solid var(--secondary-color);
+.node-dot {
   width: 12px;
   height: 12px;
+  border-radius: 50%;
+  background: #E0E0E0;
+  border: 2.5px solid #E0E0E0;
+  transition: all 0.2s;
 }
 
-.line {
+.progress-node.active .node-dot {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.progress-node.current .node-dot {
+  background: white;
+  border-color: var(--secondary-color);
+  width: 14px;
+  height: 14px;
+  box-shadow: 0 0 0 3px rgba(143, 212, 164, 0.25);
+}
+
+.node-label {
+  font-size: 10px;
+  color: var(--text-hint);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.progress-node.active .node-label,
+.progress-node.current .node-label {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.progress-line {
   flex: 1;
-  height: 2px;
-  background: #eee;
-  margin-top: -14px;
+  min-width: 20px;
+  height: 2.5px;
+  background: #E8E8E8;
+  margin-top: 5px;
+  border-radius: 2px;
 }
 
-.line.active {
+.progress-line.active {
   background: var(--secondary-color);
 }
 
+/* Filters */
 .filter-chips {
   display: flex;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .chip {
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 20px;
-  border: 1px solid #eee;
-  background: white;
-  font-size: 14px;
-  color: var(--text-main);
+  border: 1.5px solid var(--border-color);
+  background: var(--card-bg);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sub);
+  transition: all 0.2s;
 }
 
 .chip.active {
   background: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(123, 156, 255, 0.25);
 }
 
 .sort-bar {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: var(--text-sub);
+  color: var(--text-hint);
   margin-bottom: 12px;
+  font-weight: 500;
 }
 
+/* User List */
 .user-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .user-card {
@@ -127,46 +155,71 @@
   border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   box-shadow: var(--shadow-soft);
+  transition: transform 0.15s;
 }
 
-.avatar-circle {
-  width: 50px;
-  height: 50px;
+.user-card:active {
+  transform: scale(0.99);
+}
+
+.user-avatar-circle {
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #FFF5E6, #FFECD2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
   flex-shrink: 0;
 }
 
 .user-info {
   flex: 1;
+  min-width: 0;
+}
+
+.user-info-top {
+  margin-bottom: 4px;
 }
 
 .time-tag {
-  font-size: 10px;
-  color: #ff7070;
-  background: #fff0f0;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
   display: inline-block;
 }
 
 .user-station {
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
   margin-bottom: 2px;
 }
 
 .user-desc {
   font-size: 12px;
   color: var(--text-sub);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wait-btn {
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: #f8f8f8;
-  border: 1px solid #eee;
-  font-size: 12px;
-  color: var(--text-main);
+  padding: 10px 14px;
+  border-radius: var(--border-radius-sm);
+  background: var(--primary-light);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-color);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.wait-btn:active {
+  background: var(--primary-color);
+  color: white;
 }

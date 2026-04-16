@@ -1,65 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { getAvatarEmoji, getAvatarDescription } from '../data/subwayData';
+import type { AvatarConfig } from '../data/subwayData';
 import './ProfileRegistration.css';
 
-const ProfileRegistration: React.FC = () => {
+interface ProfileRegistrationProps {
+  avatar: AvatarConfig;
+  onBack?: () => void;
+}
+
+const ProfileRegistration: React.FC<ProfileRegistrationProps> = ({
+  avatar,
+  onBack,
+}) => {
+  const [nickname, setNickname] = useState('');
+  const [features, setFeatures] = useState('');
+  const emoji = getAvatarEmoji(avatar);
+  const desc = getAvatarDescription(avatar);
+
   return (
-    <div className="profile-registration">
+    <div className="profile-registration page-enter">
       <header className="page-header">
-        <button className="back-btn">{'<'}</button>
-        <h2 className="page-title">프로필 등록</h2>
-        <div style={{ width: 24 }}></div>
+        {onBack ? (
+          <button className="back-btn" onClick={onBack}>←</button>
+        ) : (
+          <div className="header-spacer" />
+        )}
+        <h2 className="page-title">내 프로필</h2>
+        <div className="header-spacer" />
       </header>
 
-      <section className="profile-image-section">
-        <h3 className="section-title">프로필 이미지</h3>
-        <div className="image-upload-circle">
-          <div className="camera-icon">📷</div>
-          <span>이미지 추가</span>
-        </div>
-      </section>
-
-      <section className="nickname-section">
-        <h3 className="section-title">닉네임</h3>
-        <input type="text" className="text-input" placeholder="닉네임을 입력하세요" />
-      </section>
-
-      <section className="outfit-section">
-        <h3 className="section-title">인상착의</h3>
-        <div className="dropdown-row">
-          <div className="dropdown">
-            <label>상의</label>
-            <select>
-              <option>검정 패딩</option>
-              <option>흰색 티셔츠</option>
-            </select>
+      <div className="profile-content">
+        <section className="profile-avatar-section">
+          <div className="profile-avatar-circle">
+            <span>{emoji}</span>
           </div>
-          <div className="dropdown">
-            <label>하의</label>
-            <select>
-              <option>청바지</option>
-              <option>슬랙스</option>
-            </select>
-          </div>
-        </div>
-        <div className="color-picker">
-          {['#000', '#FFF', '#999', '#1A237E', '#D32F2F', '#536DFE'].map((color, idx) => (
-            <div key={idx} className="color-circle" style={{ backgroundColor: color }}>
-              {idx === 5 && <div className="color-selected-check"></div>}
-            </div>
-          ))}
-        </div>
-      </section>
+          <p className="profile-outfit-desc">{desc || '아바타를 꾸며보세요'}</p>
+        </section>
 
-      <section className="feature-section">
-        <h3 className="section-title">기타 특징</h3>
-        <input type="text" className="text-input" placeholder="특징을 입력하세요 (예: 안경, 가방)" />
-        <p className="notice">
-          * 정확한 인상착의 정보는 다른 이용자가 자리를 찾는 데 도움이 됩니다.
-        </p>
-      </section>
+        <section className="profile-form-section">
+          <div className="form-group">
+            <label className="form-label">닉네임</label>
+            <input
+              type="text"
+              className="form-input"
+              placeholder="닉네임을 입력하세요"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">기타 특징</label>
+            <input
+              type="text"
+              className="form-input"
+              placeholder="예: 안경, 에어팟, 큰 가방"
+              value={features}
+              onChange={(e) => setFeatures(e.target.value)}
+            />
+            <p className="form-hint">
+              정확한 인상착의는 다른 이용자가 자리를 찾는 데 도움이 돼요 🍃
+            </p>
+          </div>
+        </section>
+
+        <section className="profile-info-section">
+          <div className="info-box">
+            <p>
+              이 정보는 같은 칸에 탄 이용자에게만 보여요.
+              언제든 수정할 수 있어요!
+            </p>
+          </div>
+        </section>
+      </div>
 
       <div className="footer-btn-container">
-        <button className="submit-btn">등록 완료</button>
+        <button className="submit-btn">저장하기</button>
       </div>
     </div>
   );

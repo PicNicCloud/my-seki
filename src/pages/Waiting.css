@@ -1,0 +1,125 @@
+.waiting-page {
+  height: 100%;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color);
+  text-align: center;
+}
+
+.waiting-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.waiting-animation {
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.waiting-train {
+  animation: trainSway 2.5s infinite ease-in-out;
+}
+
+.waiting-emoji {
+  font-size: 56px;
+}
+
+@keyframes trainSway {
+  0%, 100% { transform: translateX(-8px); }
+  50% { transform: translateX(8px); }
+}
+
+.waiting-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.w-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  animation: dotPulse 1.4s infinite ease-in-out both;
+}
+
+.w-dot:nth-child(1) { animation-delay: -0.32s; }
+.w-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0.4); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.waiting-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.waiting-subtitle {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.wait-info-card {
+  background: white;
+  padding: 20px 24px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+}
+
+.wait-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.wait-info-label {
+  font-size: 14px;
+  color: var(--text-sub);
+}
+
+.wait-info-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+.wait-count {
+  color: var(--primary-color);
+}
+
+.wait-info-divider {
+  height: 1px;
+  background: var(--border-color);
+}
+
+.waiting-footer {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.cancel-btn {
+  width: 100%;
+  padding: 17px;
+  background: #F5F3EE;
+  color: var(--text-sub);
+  border-radius: var(--border-radius-lg);
+  font-size: 15px;
+  font-weight: 700;
+}
