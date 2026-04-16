@@ -244,6 +244,12 @@
       "type": "file"
     },
     {
+      "path": "src/api/gemini.ts",
+      "accessCount": 3,
+      "lastAccessed": 1776319531259,
+      "type": "file"
+    },
+    {
       "path": "src/pages/Landing.css",
       "accessCount": 2,
       "lastAccessed": 1776315681531,
@@ -284,6 +290,12 @@
       "accessCount": 2,
       "lastAccessed": 1776318013376,
       "type": "directory"
+    },
+    {
+      "path": ".env",
+      "accessCount": 2,
+      "lastAccessed": 1776319543258,
+      "type": "file"
     },
     {
       "path": "tsconfig.json",
@@ -355,18 +367,6 @@
       "path": "src/pages/Login.css",
       "accessCount": 1,
       "lastAccessed": 1776316298898,
-      "type": "file"
-    },
-    {
-      "path": ".env",
-      "accessCount": 1,
-      "lastAccessed": 1776318388940,
-      "type": "file"
-    },
-    {
-      "path": "src/api/gemini.ts",
-      "accessCount": 1,
-      "lastAccessed": 1776318434368,
       "type": "file"
     }
   ],
