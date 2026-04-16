@@ -17,7 +17,7 @@ const ProfileRegistration: React.FC<ProfileRegistrationProps> = ({
   const [nickname, setNickname] = useState('');
   const [features, setFeatures] = useState('');
   const emoji = getAvatarEmoji(avatar);
-  const desc = getAvatarDescription(avatar);
+  const desc = getAvatarDescription(avatar, (id) => t(`item.${id}` as Parameters<typeof t>[0]));
 
   return (
     <div className="profile-registration page-enter">

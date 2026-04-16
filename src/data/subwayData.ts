@@ -153,13 +153,16 @@ export const DEFAULT_AVATAR: AvatarConfig = {
   accessory: 'none',
 };
 
-export function getAvatarDescription(config: AvatarConfig): string {
+export function getAvatarDescription(
+  config: AvatarConfig,
+  translateItem?: (itemId: string) => string,
+): string {
   const parts: string[] = [];
   for (const cat of AVATAR_CATEGORIES) {
     if (cat.key === 'expression') continue;
     const item = cat.items.find((i) => i.id === config[cat.key as keyof AvatarConfig]);
     if (item && item.id !== 'none') {
-      parts.push(item.label);
+      parts.push(translateItem ? translateItem(item.id) : item.label);
     }
   }
   return parts.join(' · ');

@@ -43,7 +43,7 @@ const LineSelect: React.FC<LineSelectProps> = ({ onSelectLine, onBack }) => {
               >
                 {line.id}
               </div>
-              <span className="line-card-name">{line.name}</span>
+              <span className="line-card-name">{t(`line.${line.id}` as Parameters<typeof t>[0])}</span>
               <span className="line-card-count">{line.stations.length}{t('lineSelect.stationCount')}</span>
             </button>
           ))}

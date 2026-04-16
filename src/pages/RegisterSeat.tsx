@@ -21,7 +21,7 @@ const RegisterSeat: React.FC<RegisterSeatProps> = ({
 }) => {
   const { t } = useI18n();
   const [destination, setDestination] = useState('');
-  const desc = getAvatarDescription(avatar);
+  const desc = getAvatarDescription(avatar, (id) => t(`item.${id}` as Parameters<typeof t>[0]));
   const emoji = getAvatarEmoji(avatar);
 
   return (
@@ -41,7 +41,7 @@ const RegisterSeat: React.FC<RegisterSeatProps> = ({
             {line.id}
           </div>
           <div className="car-info-text">
-            <strong>{line.name} {carNumber}{t('home.car')}</strong>
+            <strong>{t(`line.${line.id}` as Parameters<typeof t>[0])} {carNumber}{t('home.car')}</strong>
             <span>{t('register.riding')}</span>
           </div>
         </div>

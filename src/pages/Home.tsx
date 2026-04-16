@@ -30,7 +30,7 @@ const Home: React.FC<HomeProps> = ({ line, onSelectCar, onBack }) => {
             {line.id}
           </div>
           <h1 className="home-title">
-            {(line.name + t('home.heading')).split('\n').map((text, i) => (
+            {(t(`line.${line.id}` as Parameters<typeof t>[0]) + t('home.heading')).split('\n').map((text, i) => (
               <React.Fragment key={i}>{i > 0 && <br />}{text}</React.Fragment>
             ))}
           </h1>

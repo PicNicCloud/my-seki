@@ -110,7 +110,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
             {line.id}
           </div>
           <span className="finder-line-text">
-            {line.name} {carNumber}{t('home.car')}
+            {t(`line.${line.id}` as Parameters<typeof t>[0])} {carNumber}{t('home.car')}
           </span>
         </div>
         <h1 className="finder-station-title">{destination} {t('finder.direction')} 🚃</h1>

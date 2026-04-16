@@ -52,7 +52,7 @@ const Waiting: React.FC<WaitingProps> = ({
               >
                 {line.id}
               </div>
-              <strong>{line.name}</strong>
+              <strong>{t(`line.${line.id}` as Parameters<typeof t>[0])}</strong>
             </div>
           </div>
           <div className="wait-info-divider" />

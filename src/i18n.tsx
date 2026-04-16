@@ -1,6 +1,18 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 
 type Lang = 'ko' | 'ja';
+
+const STORAGE_KEY = 'subway-seat-lang';
+
+function getInitialLang(): Lang {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'ko' || saved === 'ja') return saved;
+  } catch {
+    // localStorage unavailable
+  }
+  return 'ko';
+}
 
 const translations = {
   // Landing
@@ -15,6 +27,17 @@ const translations = {
   'lineSelect.heading': { ko: '어떤 호선을\n타고 계신가요?', ja: 'どの路線に\n乗っていますか？' },
   'lineSelect.subtitle': { ko: '탑승 중인 노선을 선택해주세요', ja: '乗車中の路線を選んでください' },
   'lineSelect.stationCount': { ko: '개역', ja: '駅' },
+
+  // Line names
+  'line.1': { ko: '1호선', ja: '1号線' },
+  'line.2': { ko: '2호선', ja: '2号線' },
+  'line.3': { ko: '3호선', ja: '3号線' },
+  'line.4': { ko: '4호선', ja: '4号線' },
+  'line.5': { ko: '5호선', ja: '5号線' },
+  'line.6': { ko: '6호선', ja: '6号線' },
+  'line.7': { ko: '7호선', ja: '7号線' },
+  'line.8': { ko: '8호선', ja: '8号線' },
+  'line.9': { ko: '9호선', ja: '9号線' },
 
   // Home
   'home.title': { ko: '칸 선택', ja: '車両選択' },
@@ -130,7 +153,27 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>('ko');
+  const [lang, setLangState] = useState<Lang>(getInitialLang);
+
+  const setLang = (newLang: Lang) => {
+    setLangState(newLang);
+    try {
+      localStorage.setItem(STORAGE_KEY, newLang);
+    } catch {
+      // localStorage unavailable
+    }
+  };
+
+  // Sync if localStorage changes in another tab
+  useEffect(() => {
+    const handler = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY && (e.newValue === 'ko' || e.newValue === 'ja')) {
+        setLangState(e.newValue);
+      }
+    };
+    window.addEventListener('storage', handler);
+    return () => window.removeEventListener('storage', handler);
+  }, []);
 
   const t = (key: TranslationKey): string => {
     return translations[key]?.[lang] ?? key;
