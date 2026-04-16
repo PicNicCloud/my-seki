@@ -1,4 +1,79 @@
 {
-  "updatedAt": "2026-04-16T02:58:47.464Z",
-  "missions": []
+  "updatedAt": "2026-04-16T05:03:24.689Z",
+  "missions": [
+    {
+      "id": "session:e5df9f2b-7757-46d0-8da3-87cba14aefc2:none",
+      "source": "session",
+      "name": "none",
+      "objective": "Session mission",
+      "createdAt": "2026-04-16T04:59:33.029Z",
+      "updatedAt": "2026-04-16T05:03:24.689Z",
+      "status": "done",
+      "workerCount": 2,
+      "taskCounts": {
+        "total": 2,
+        "pending": 0,
+        "blocked": 0,
+        "inProgress": 0,
+        "completed": 2,
+        "failed": 0
+      },
+      "agents": [
+        {
+          "name": "Explore:ac50a96",
+          "role": "Explore",
+          "ownership": "ac50a9632e88bb55e",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-04-16T05:00:26.480Z"
+        },
+        {
+          "name": "Plan:affe050",
+          "role": "Plan",
+          "ownership": "affe0506e91dc84ee",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-04-16T05:03:24.689Z"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "session-start:ac50a9632e88bb55e:2026-04-16T04:59:33.029Z",
+          "at": "2026-04-16T04:59:33.029Z",
+          "kind": "update",
+          "agent": "Explore:ac50a96",
+          "detail": "started Explore:ac50a96",
+          "sourceKey": "session-start:ac50a9632e88bb55e"
+        },
+        {
+          "id": "session-stop:ac50a9632e88bb55e:2026-04-16T05:00:26.480Z",
+          "at": "2026-04-16T05:00:26.480Z",
+          "kind": "completion",
+          "agent": "Explore:ac50a96",
+          "detail": "completed",
+          "sourceKey": "session-stop:ac50a9632e88bb55e"
+        },
+        {
+          "id": "session-start:affe0506e91dc84ee:2026-04-16T05:00:59.343Z",
+          "at": "2026-04-16T05:00:59.343Z",
+          "kind": "update",
+          "agent": "Plan:affe050",
+          "detail": "started Plan:affe050",
+          "sourceKey": "session-start:affe0506e91dc84ee"
+        },
+        {
+          "id": "session-stop:affe0506e91dc84ee:2026-04-16T05:03:24.689Z",
+          "at": "2026-04-16T05:03:24.689Z",
+          "kind": "completion",
+          "agent": "Plan:affe050",
+          "detail": "completed",
+          "sourceKey": "session-stop:affe0506e91dc84ee"
+        }
+      ]
+    }
+  ]
 }

@@ -16,11 +16,20 @@ function getInitialLang(): Lang {
 
 const translations = {
   // Landing
-  'landing.title': { ko: '지하철\n자리의 주인', ja: '地下鉄\n席の主人' },
+  'landing.title': { ko: 'myseki', ja: 'myseki' },
   'landing.subtitle': { ko: '내릴 사람을 미리 찾고\n포근하게 앉아서 가세요 🍃', ja: '降りる人を先に見つけて\nゆったり座っていきましょう 🍃' },
-  'landing.start': { ko: '🚃 기차 타기', ja: '🚃 電車に乗る' },
+  'landing.start': { ko: '탑승하기', ja: '乗車する' },
   'landing.login': { ko: '이미 캐릭터가 있나요?', ja: 'すでにキャラクターがありますか？' },
   'landing.loginLink': { ko: '로그인', ja: 'ログイン' },
+
+  // Login
+  'login.title': { ko: '로그인', ja: 'ログイン' },
+  'login.id': { ko: '아이디', ja: 'ID' },
+  'login.password': { ko: '비밀번호', ja: 'パスワード' },
+  'login.idPlaceholder': { ko: '아이디를 입력하세요', ja: 'IDを入力' },
+  'login.pwPlaceholder': { ko: '비밀번호를 입력하세요', ja: 'パスワードを入力' },
+  'login.submit': { ko: '로그인', ja: 'ログイン' },
+  'login.error': { ko: '아이디 또는 비밀번호가 틀렸어요', ja: 'IDまたはパスワードが間違っています' },
 
   // CountrySelect
   'countrySelect.title': { ko: '어디 지하철인가요?', ja: 'どこの地下鉄ですか？' },
@@ -88,6 +97,7 @@ const translations = {
   'finder.stopsAfter': { ko: '정거장 후', ja: '駅後' },
   'finder.exit': { ko: '하차', ja: '降車' },
   'finder.wait': { ko: '대기', ja: '待機' },
+  'finder.changeLine': { ko: '노선/호차 변경', ja: '路線/車両 変更' },
   'finder.waiting': { ko: '대기중', ja: '待機中' },
   'finder.waitCount': { ko: '명 대기중', ja: '人待機中' },
 

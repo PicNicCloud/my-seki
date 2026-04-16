@@ -4,9 +4,10 @@ import './Landing.css';
 
 interface LandingProps {
   onStart: () => void;
+  onLogin: () => void;
 }
 
-const Landing: React.FC<LandingProps> = ({ onStart }) => {
+const Landing: React.FC<LandingProps> = ({ onStart, onLogin }) => {
   const { t } = useI18n();
 
   return (
@@ -65,7 +66,7 @@ const Landing: React.FC<LandingProps> = ({ onStart }) => {
           {t('landing.start')}
         </button>
         <p className="login-link">
-          {t('landing.login')} <span>{t('landing.loginLink')}</span>
+          {t('landing.login')} <span onClick={onLogin}>{t('landing.loginLink')}</span>
         </p>
       </div>
     </div>

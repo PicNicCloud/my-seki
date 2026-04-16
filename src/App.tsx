@@ -11,11 +11,13 @@ import Home from './pages/Home';
 import AvatarDecorator from './pages/AvatarDecorator';
 import RegisterSeat from './pages/RegisterSeat';
 import SeatFinder from './pages/SeatFinder';
+import Login from './pages/Login';
 import ProfileRegistration from './pages/ProfileRegistration';
 
 type Page =
   | 'landing'
   | 'countrySelect'
+  | 'login'
   | 'lineSelect'
   | 'home'
   | 'avatar'
@@ -40,7 +42,17 @@ function AppContent() {
     switch (currentPage) {
       case 'landing':
         return (
-          <Landing onStart={() => setCurrentPage('countrySelect')} />
+          <Landing
+            onStart={() => setCurrentPage('countrySelect')}
+            onLogin={() => setCurrentPage('login')}
+          />
+        );
+      case 'login':
+        return (
+          <Login
+            onSuccess={() => setCurrentPage('countrySelect')}
+            onBack={() => setCurrentPage('landing')}
+          />
         );
       case 'countrySelect':
         return (
@@ -108,6 +120,7 @@ function AppContent() {
             country={country}
             carNumber={selectedCar}
             destination={destination}
+            onChangeLine={() => setCurrentPage('lineSelect')}
           />
         );
       case 'profile':
@@ -115,7 +128,7 @@ function AppContent() {
           <ProfileRegistration avatar={avatar} />
         );
       default:
-        return <Landing onStart={() => setCurrentPage('lineSelect')} />;
+        return <Landing onStart={() => setCurrentPage('countrySelect')} onLogin={() => setCurrentPage('login')} />;
     }
   };
 

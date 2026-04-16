@@ -118,51 +118,75 @@
   },
   "hotPaths": [
     {
+      "path": "src/pages/SeatFinder.tsx",
+      "accessCount": 48,
+      "lastAccessed": 1776317801910,
+      "type": "file"
+    },
+    {
       "path": "src/App.tsx",
-      "accessCount": 30,
-      "lastAccessed": 1776310045705,
+      "accessCount": 39,
+      "lastAccessed": 1776316553336,
       "type": "file"
     },
     {
       "path": "CLAUDE.md",
-      "accessCount": 14,
-      "lastAccessed": 1776306783998,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/SeatFinder.tsx",
-      "accessCount": 13,
-      "lastAccessed": 1776310013582,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/Waiting.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1776309870578,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/RegisterSeat.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1776309132977,
+      "accessCount": 20,
+      "lastAccessed": 1776317216381,
       "type": "file"
     },
     {
       "path": "src/i18n.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1776309986061,
+      "accessCount": 16,
+      "lastAccessed": 1776317634729,
       "type": "file"
     },
     {
-      "path": "src/pages/Home.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1776309096594,
+      "path": "src/pages/SeatFinder.css",
+      "accessCount": 13,
+      "lastAccessed": 1776317505265,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/RegisterSeat.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1776316080099,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Waiting.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1776316124253,
+      "type": "file"
+    },
+    {
+      "path": "src/data/subwayData.ts",
+      "accessCount": 10,
+      "lastAccessed": 1776316014699,
       "type": "file"
     },
     {
       "path": "src/pages/LineSelect.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1776309010696,
+      "accessCount": 9,
+      "lastAccessed": 1776316040821,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Home.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1776316051544,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Landing.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1776316325467,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/AvatarDecorator.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1776315675437,
       "type": "file"
     },
     {
@@ -172,57 +196,81 @@
       "type": "file"
     },
     {
-      "path": "src/pages/AvatarDecorator.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1776307965573,
-      "type": "file"
-    },
-    {
       "path": "src/pages/ProfileRegistration.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1776308012852,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/Landing.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1776307940873,
-      "type": "file"
-    },
-    {
-      "path": "src/data/subwayData.ts",
-      "accessCount": 3,
-      "lastAccessed": 1776308844813,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/SeatFinder.css",
-      "accessCount": 3,
-      "lastAccessed": 1776310061468,
-      "type": "file"
-    },
-    {
-      "path": "package.json",
-      "accessCount": 2,
-      "lastAccessed": 1776304945093,
+      "accessCount": 5,
+      "lastAccessed": 1776315690792,
       "type": "file"
     },
     {
       "path": "src/styles/global.css",
-      "accessCount": 2,
-      "lastAccessed": 1776306044006,
-      "type": "file"
-    },
-    {
-      "path": "src/components/LanguageToggle.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1776307879448,
+      "accessCount": 5,
+      "lastAccessed": 1776316142817,
       "type": "file"
     },
     {
       "path": "src/pages/CountrySelect.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1776315702330,
+      "type": "file"
+    },
+    {
+      "path": "src/components/LanguageToggle.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776315690341,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 3,
+      "lastAccessed": 1776315706797,
+      "type": "file"
+    },
+    {
+      "path": "public/favicon.svg",
+      "accessCount": 3,
+      "lastAccessed": 1776316596518,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/AvatarDecorator.css",
       "accessCount": 2,
-      "lastAccessed": 1776309246643,
+      "lastAccessed": 1776315681454,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Landing.css",
+      "accessCount": 2,
+      "lastAccessed": 1776315681531,
+      "type": "file"
+    },
+    {
+      "path": "index.html",
+      "accessCount": 2,
+      "lastAccessed": 1776315681555,
+      "type": "file"
+    },
+    {
+      "path": "src/components/AvatarPreview.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776315689864,
+      "type": "file"
+    },
+    {
+      "path": "src",
+      "accessCount": 2,
+      "lastAccessed": 1776315698038,
+      "type": "directory"
+    },
+    {
+      "path": "vite.config.ts",
+      "accessCount": 2,
+      "lastAccessed": 1776315707366,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/LineSelect.css",
+      "accessCount": 2,
+      "lastAccessed": 1776316148688,
       "type": "file"
     },
     {
@@ -235,12 +283,6 @@
       "path": "README.md",
       "accessCount": 1,
       "lastAccessed": 1776304845136,
-      "type": "file"
-    },
-    {
-      "path": "vite.config.ts",
-      "accessCount": 1,
-      "lastAccessed": 1776304845189,
       "type": "file"
     },
     {
@@ -268,18 +310,6 @@
       "type": "file"
     },
     {
-      "path": "index.html",
-      "accessCount": 1,
-      "lastAccessed": 1776304856299,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/AvatarDecorator.css",
-      "accessCount": 1,
-      "lastAccessed": 1776304862399,
-      "type": "file"
-    },
-    {
       "path": "src/pages/ProfileRegistration.css",
       "accessCount": 1,
       "lastAccessed": 1776304862588,
@@ -292,15 +322,39 @@
       "type": "directory"
     },
     {
-      "path": "src/pages/Landing.css",
-      "accessCount": 1,
-      "lastAccessed": 1776308805177,
-      "type": "file"
-    },
-    {
       "path": "src/pages/CountrySelect.css",
       "accessCount": 1,
       "lastAccessed": 1776308862020,
+      "type": "file"
+    },
+    {
+      "path": "src/components/AvatarPreview.css",
+      "accessCount": 1,
+      "lastAccessed": 1776315582695,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/RegisterSeat.css",
+      "accessCount": 1,
+      "lastAccessed": 1776315703231,
+      "type": "file"
+    },
+    {
+      "path": "src/pages",
+      "accessCount": 1,
+      "lastAccessed": 1776316021361,
+      "type": "directory"
+    },
+    {
+      "path": "src/pages/Login.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776316294065,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Login.css",
+      "accessCount": 1,
+      "lastAccessed": 1776316298898,
       "type": "file"
     }
   ],

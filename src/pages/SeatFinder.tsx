@@ -18,6 +18,7 @@ interface SeatFinderProps {
   country: Country;
   carNumber: number;
   destination: string;
+  onChangeLine?: () => void;
 }
 
 const SeatFinder: React.FC<SeatFinderProps> = ({
@@ -25,9 +26,9 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
   country,
   carNumber,
   destination,
+  onChangeLine,
 }) => {
   const { t } = useI18n();
-  const [activeFilter, setActiveFilter] = useState('all');
   const [waitingIds, setWaitingIds] = useState<Set<number>>(new Set());
 
   const toggleWait = (id: number) => {
@@ -90,35 +91,35 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
     },
   ];
 
-  const filteredUsers =
-    activeFilter === 'all'
-      ? MOCK_USERS
-      : activeFilter === 'near'
-        ? MOCK_USERS.filter((u) => u.stops <= 2)
-        : MOCK_USERS.filter((u) => u.stops >= 3);
+  const maxStops = Math.max(...MOCK_USERS.map((u) => u.stops));
 
-  const filters = [
-    { key: 'all', label: `${t('finder.all')} ${MOCK_USERS.length}` },
-    {
-      key: 'near',
-      label: `${t('finder.near')} ${MOCK_USERS.filter((u) => u.stops <= 2).length}`,
-    },
-    {
-      key: 'far',
-      label: `${t('finder.far')} ${MOCK_USERS.filter((u) => u.stops >= 3).length}`,
-    },
-  ];
+  // Green(far) → Red(close) gradient via HSL interpolation
+  const getProximityColor = (stops: number) => {
+    const ratio = Math.min((stops - 1) / Math.max(maxStops - 1, 1), 1);
+    const hue = Math.round(ratio * 120); // 0=red, 120=green
+    return {
+      backgroundColor: `hsl(${hue}, 70%, 95%)`,
+      color: `hsl(${hue}, 65%, 42%)`,
+    };
+  };
+
+  const sortedUsers = [...MOCK_USERS].sort((a, b) => a.stops - b.stops);
 
   return (
     <div className="seat-finder page-enter">
       <header className="finder-header">
         <div className="finder-line-info">
           <div className="line-badge" style={{ backgroundColor: line.color }}>
-            {line.id}
+            {line.badge ?? line.id}
           </div>
           <span className="finder-line-text">
             {t(`${country === 'jp' ? 'line.jp.' : 'line.'}${line.id}` as Parameters<typeof t>[0])} {carNumber}{t('home.car')}
           </span>
+          {onChangeLine && (
+            <button className="change-line-btn" onClick={onChangeLine}>
+              {t('finder.changeLine')}
+            </button>
+          )}
         </div>
         <h1 className="finder-station-title">{destination} {t('finder.direction')} 🚃</h1>
         <p className="finder-count">
@@ -162,25 +163,9 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
       </div>
 
       {/* Filters */}
-      <div className="filter-chips">
-        {filters.map((f) => (
-          <button
-            key={f.key}
-            className={`chip ${activeFilter === f.key ? 'active' : ''}`}
-            onClick={() => setActiveFilter(f.key)}
-          >
-            {f.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="sort-bar">
-        <span>{t('finder.sortLabel')}</span>
-      </div>
-
       {/* User List */}
       <div className="user-list">
-        {filteredUsers.map((user) => (
+        {sortedUsers.map((user) => (
           <div key={user.id} className="user-card">
             <div className="user-avatar-wrap">
               <AvatarPreview config={user.avatar} size={46} />
@@ -188,16 +173,10 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
             <div className="user-info">
               <div className="user-info-top">
                 <span
-                  className="time-tag"
-                  style={{
-                    backgroundColor: user.stops <= 1 ? '#FFF0F0' : user.stops <= 2 ? '#FFF8EC' : '#F0F4FF',
-                    color: user.stops <= 1 ? '#FF7070' : user.stops <= 2 ? '#E09540' : '#7B9CFF',
-                  }}
-                >
-                  {user.time} {t('finder.exit')}
-                </span>
+                  className="proximity-dot"
+                  style={{ backgroundColor: getProximityColor(user.stops).color }}
+                />
               </div>
-              <h3 className="user-station">{user.station}</h3>
               <p className="user-desc">{user.desc}</p>
               {getWaitCount(user.id) > 0 && (
                 <span className="wait-count-tag">{getWaitCount(user.id)}{t('finder.waitCount')}</span>

@@ -29,7 +29,7 @@ const Home: React.FC<HomeProps> = ({ line, country, onSelectCar, onBack }) => {
             className="line-badge-large"
             style={{ backgroundColor: line.color }}
           >
-            {line.id}
+            {line.badge ?? line.id}
           </div>
           <h1 className="home-title">
             {(t(lineKey) + t('home.heading')).split('\n').map((text, i) => (

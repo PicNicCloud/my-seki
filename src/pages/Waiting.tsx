@@ -57,7 +57,7 @@ const Waiting: React.FC<WaitingProps> = ({
                 className="line-badge"
                 style={{ backgroundColor: line.color }}
               >
-                {line.id}
+                {line.badge ?? line.id}
               </div>
               <strong>{t(`${country === 'jp' ? 'line.jp.' : 'line.'}${line.id}` as Parameters<typeof t>[0])}</strong>
             </div>

@@ -45,7 +45,7 @@ const LineSelect: React.FC<LineSelectProps> = ({ country, onSelectLine, onBack }
                 className="line-card-badge"
                 style={{ backgroundColor: line.color }}
               >
-                {line.id}
+                {line.badge ?? line.id}
               </div>
               <span className="line-card-name">{t(`${lineKeyPrefix}${line.id}` as Parameters<typeof t>[0])}</span>
               <span className="line-card-count">{line.stations.length}{t('lineSelect.stationCount')}</span>

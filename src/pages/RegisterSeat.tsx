@@ -40,7 +40,7 @@ const RegisterSeat: React.FC<RegisterSeatProps> = ({
             className="line-badge"
             style={{ backgroundColor: line.color }}
           >
-            {line.id}
+            {line.badge ?? line.id}
           </div>
           <div className="car-info-text">
             <strong>{t(`${country === 'jp' ? 'line.jp.' : 'line.'}${line.id}` as Parameters<typeof t>[0])} {carNumber}{t('home.car')}</strong>
