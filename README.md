@@ -1,72 +1,43 @@
+# myseki
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+지하철 좌석 양도 모바일 웹앱. 같은 열차 승객들이 인상착의를 등록하고, 하차 근접도를 색상으로 공유하여 빈 좌석을 찾을 수 있는 서비스.
 
-Currently, two official plugins are available:
+**https://my-seki.vercel.app**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+React 19 + TypeScript + Vite / Gemini 2.5 Flash API / Plain CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env  # VITE_GEMINI_API_KEY 설정
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Dev server |
+| `npm run build` | Type check + Build |
+| `npm run lint` | ESLint |
+| `npm run preview` | Preview build |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_GEMINI_API_KEY` | Google Gemini API key (AI 아바타 생성용) |
+
+## Features
+
+- 한국/일본 지하철 지원 (KR/JP 언어 토글)
+- 아바타 직접 꾸미기 + AI 자연어 생성 (Gemini)
+- 하차 근접도 색상 표시 (초록~빨강)
+- 로그인 / 노선 선택 / 호차 선택 / 좌석 대기
+
+## Repository
+
+https://github.com/PicNicCloud/my-seki
