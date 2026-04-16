@@ -61,7 +61,7 @@ const SeatFinder: React.FC<SeatFinderProps> = ({
   const [chatInput, setChatInput] = useState('');
   const [myBubble, setMyBubble] = useState('');
   const [mockBubbles, setMockBubbles] = useState<Record<number, string>>({});
-  const myBubbleTimer = useRef<ReturnType<typeof setTimeout>>();
+  const myBubbleTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const [myPos, setMyPos] = useState<AvatarPos>({
     x: 42 + Math.random() * 16,
     y: 28 + Math.random() * 18,
