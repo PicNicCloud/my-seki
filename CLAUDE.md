@@ -84,6 +84,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 노선명은 국가별 prefix: 한국 `line.{id}`, 일본 `line.jp.{id}`
 - localStorage에 언어 설정 persist
 
+### AI 아바타 생성
+- `src/api/gemini.ts` — Gemini API 연동 모듈
+- 모델: **Google Gemini 2.5 Flash** (`gemini-2.5-flash`)
+- 자연어 인상착의 → 기존 아바타 파츠 조합(`AvatarConfig`)으로 자동 매핑
+- API 키: `.env`의 `VITE_GEMINI_API_KEY` (gitignore 대상)
+- `thinkingBudget: 0`으로 thinking token 비활성화 (빠른 응답)
+- AvatarDecorator에서 "직접 꾸미기" / "AI 생성" 탭으로 전환
+
 ### Styling
 - 디자인 토큰: `src/styles/global.css`의 CSS variables
 - 공통 컴포넌트 스타일: `.page-header`, `.submit-btn`, `.bottom-nav`, `.line-badge` 등 global.css에 정의
